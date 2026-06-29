@@ -127,3 +127,4 @@ Path scoping is also the cleanest lever for staying under the [skill listing bud
 - [Skill Activation Hook](./skill-activation-hook.md) — the deterministic second stage of the two-stage filter
 - [SDK Project Instructions](./sdk-project-instructions.md) — CLAUDE.md, the home of rules in the rules-vs-workflows split
 - [CLAUDE.md rules vs. skills workflows](../comparisons/claude-md-rules-vs-skills-workflows.md) — the rules-vs-workflows decision this page surfaces, expanded
+- [Large-Codebase Playbook](./large-codebase-playbook.md) — path-scoped skills as Strategy 8 of scaling the harness

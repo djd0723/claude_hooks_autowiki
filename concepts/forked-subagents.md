@@ -57,3 +57,4 @@ Because a fork's system prompt and tool definitions are identical to the parent,
 - [Subagents](./subagents.md) — the core concept a fork specializes
 - [Subagent Context](./subagent-context.md) — the fresh-context model a fork opts out of, and the depth limit
 - [Subagent Invocation](./subagent-invocation.md) — background execution that fork mode forces on every spawn
+- [Large-Codebase Playbook](./large-codebase-playbook.md) — the exploration-vs-editing split (Strategy 7) that read-only sub-agents enable

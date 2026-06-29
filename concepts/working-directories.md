@@ -49,3 +49,4 @@ To change the session's **primary** working directory instead of adding another,
 - [File Permission Patterns](./file-permission-patterns.md) — `Cd` rules and the project-root anchor for paths
 - [Configuration Scopes](./configuration-scopes.md) — why `.claude/` configuration is tied to specific roots
 - [Configuration loading from settings files](./settings-files.md) — the discovery rules for hooks and settings keys
+- [Large-Codebase Playbook](./large-codebase-playbook.md) — initializing in the right directory as a scale strategy

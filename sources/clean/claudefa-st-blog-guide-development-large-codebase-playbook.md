@@ -2,7 +2,7 @@
 type: source
 source_url: https://claudefa.st/blog/guide/development/large-codebase-playbook
 title: "Claude Code in Large Codebases: 8 Strategies"
-raw_capture: ../raw/tip.html
+raw_capture: ../raw/claudefa-st-blog-guide-development-large-codebase-playbook.html
 captured: 2026-06-29
 ---
 
