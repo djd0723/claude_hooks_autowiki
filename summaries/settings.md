@@ -162,7 +162,7 @@ See [sandbox settings](../concepts/sandbox-settings.md). Under `sandbox`, sandbo
 
 ## Environment variables
 
-Any environment variable can be set under the `env` key in `settings.json` to apply to every session and to spawned subprocesses; see the full list in the env-vars reference. As of v2.1.143, `NO_COLOR`/`FORCE_COLOR` set under `env` pass to subprocesses but do not change Claude Code's own interface colors (set those in your shell). Many settings have equivalent env vars (e.g., `DISABLE_AUTO_COMPACT`, `CLAUDE_CODE_DISABLE_AUTO_MEMORY`, `DISABLE_AUTOUPDATER`).
+Any environment variable can be set under the `env` key in `settings.json` to apply to every session and to spawned subprocesses; see the full list in the env-vars reference, or [environment variables](../concepts/environment-variables.md) for the curated daily-development subset. As of v2.1.143, `NO_COLOR`/`FORCE_COLOR` set under `env` pass to subprocesses but do not change Claude Code's own interface colors (set those in your shell). Many settings have equivalent env vars (e.g., `DISABLE_AUTO_COMPACT`, `CLAUDE_CODE_DISABLE_AUTO_MEMORY`, `DISABLE_AUTOUPDATER`).
 
 ## Worktree settings
 

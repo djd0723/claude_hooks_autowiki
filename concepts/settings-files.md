@@ -86,3 +86,4 @@ Validation errors surface in three places: a startup dialog (interactive), stder
 - [Permission Settings](./permission-settings.md) — the most common keys in a `settings.json`
 - [Sandbox Settings](./sandbox-settings.md) — the `sandbox` configuration block
 - [SDK Setting Sources](./sdk-setting-sources.md) — how the Agent SDK chooses which of these files to load
+- [Environment Variables](./environment-variables.md) — the `env` key written into these files and the daily-development variable subset
