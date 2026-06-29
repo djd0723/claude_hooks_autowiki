@@ -17,7 +17,7 @@ A plugin packages one or more components that extend Claude Code. The seven comp
 
 **Default location**: `skills/` (named subdirectories with `SKILL.md`) or `commands/` (flat `.md` files)
 
-Skills create `/name` shortcuts that users or Claude can invoke. Automatically discovered on plugin install.
+[Skills](./skills.md) create `/name` shortcuts that users or Claude can invoke. Automatically discovered on plugin install.
 
 ```text
 skills/
