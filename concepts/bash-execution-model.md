@@ -59,3 +59,4 @@ The `PowerShell` tool runs PowerShell commands natively instead of routing throu
 - [File Tool Behavior](./file-tool-behavior.md) — how `cat`/`head`/`grep` in Bash satisfy read-before-edit
 - [Tool Permission Rules](./tool-permission-rules.md) — `Bash(...)` and `PowerShell(...)` command patterns
 - [Monitors vs Command Hooks](../comparisons/monitors-vs-command-hooks.md) — the Monitor tool versus event-driven hooks
+- [SessionStart Context Injection (Auto-Load Context Pattern)](./session-context-injection.md) — how a `SessionStart` hook uses `CLAUDE_ENV_FILE` to persist env vars across commands
