@@ -100,3 +100,4 @@ The summary maps each strategy to a faculty it gives the agent: "CLAUDE.md tells
 - [Forked Subagents](./forked-subagents.md) / [Subagent Context](./subagent-context.md) — the exploration-vs-editing split of Strategy 7
 - [File Permission Patterns](./file-permission-patterns.md) / [Permission Settings](./permission-settings.md) — the committed `permissions.deny` of Strategy 4
 - [Self-Improving CLAUDE.md](./self-improving-claude-md.md) — automating the configuration review cadence
+- [Structure-Owned Generation](./structure-owned-generation.md) — the same harness-layer curation applied to docs, where the structure "is part of the product"
