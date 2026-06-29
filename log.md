@@ -6,6 +6,11 @@ type: log
 
 _Newest first._
 
+## [2026-06-29] maintain | full sweep (task-3 plugin pages)
+
+- fixed: `index.md` updated to include 7 plugin concept pages, 3 plugin comparison pages, and plugins-reference summary (all missing after task-3 foundation); `overview.md` expanded to cover plugins alongside hooks (was hooks-only); `synthesis.md` through-line numbering corrected (gap between #7 and #9 — renumbered to consecutive 8, 9)
+- flagged: 7 open questions in `synthesis.md` (agent hook real-world use, community recipes, scope conflicts, `MessageDisplay` in practice, `defer` Agent SDK patterns, monitors in the wild, plugin composition patterns) — will be answered by tip sources (tasks 12–30 in the ingest queue)
+
 ## [2026-06-29] maintain | full sweep
 
 - fixed: 5 orphaned pages added to `index.md` (`hook-input-output.md`, `hook-decision-control.md`, `summaries/hooks.md`, both comparison pages); `overview.md` filled with content (was boilerplate-only); 11 missing cross-references added across 6 concept/comparison pages; `MessageDisplay` added to no-matcher-support list in `summaries/hooks.md` (was inconsistent with `hook-matchers.md`)

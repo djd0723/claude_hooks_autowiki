@@ -86,7 +86,7 @@ When multiple `PreToolUse` hooks conflict, precedence is: `deny > defer > ask > 
 
 Every hook event receives a common envelope on stdin: `session_id`, `transcript_path`, `cwd`, `permission_mode`, `effort` (with `level`), `hook_event_name`, and `agent_id`/`agent_type` when inside a subagent. This means any hook can inspect the session context without any configuration — provenance, permission mode, and effort are always available.
 
-### 9. Monitors are a distinct notification mechanism (source 3)
+### 8. Monitors are a distinct notification mechanism (source 3)
 
 The plugin system introduces **monitors** — persistent background shell commands that run alongside Claude and deliver every stdout line as a real-time notification. Monitors are architecturally distinct from hooks:
 
@@ -95,7 +95,7 @@ The plugin system introduces **monitors** — persistent background shell comman
 
 Like hooks, monitors are unsandboxed at hook trust level. Unlike hooks, monitors do not have exit code semantics — they are one-way: stdout in, Claude notified. They are restricted to interactive CLI sessions and do not load for project-scope `@skills-dir` plugins. This scope restriction aligns with the trust model: background processes sourced from a repository require explicit workspace trust, and even then they are excluded.
 
-### 10. The `terminalSequence` output field enables terminal integration (source 2)
+### 9. The `terminalSequence` output field enables terminal integration (source 2)
 
 Hooks cannot write to `/dev/tty` directly, but can emit OSC escape sequences (OSC 0/1/2/9/99/777, BEL) via the `terminalSequence` field in JSON output. Claude Code emits these through its own terminal path. This enables hooks to set terminal titles, trigger notifications, or communicate with terminal multiplexers without requiring raw tty access.
 
