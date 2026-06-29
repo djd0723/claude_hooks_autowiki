@@ -6,7 +6,7 @@ updated: 2026-06-29
 tags: [plugins, migration, standalone, conversion, claude-directory, hooks]
 source_count: 1
 sources:
-  - sources/clean/plugins.md
+  - sources/clean/code-claude-com-docs-en-plugins-md.md
 ---
 
 # Plugin Migration

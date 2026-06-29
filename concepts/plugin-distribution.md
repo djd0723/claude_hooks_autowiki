@@ -6,7 +6,7 @@ updated: 2026-06-29
 tags: [plugins, distribution, marketplace, community, official, submission, validation]
 source_count: 1
 sources:
-  - sources/clean/plugins.md
+  - sources/clean/code-claude-com-docs-en-plugins-md.md
 ---
 
 # Plugin Distribution
