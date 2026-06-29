@@ -5,6 +5,7 @@ slug: code-claude-com-docs-en-plugins-reference-md
 created: 2026-06-29
 updated: 2026-06-29
 tags: [plugins, reference, schema, cli, components, skills, agents, mcp, lsp, monitors]
+source_count: 1
 sources:
   - sources/clean/code-claude-com-docs-en-plugins-reference-md.md
 ---
