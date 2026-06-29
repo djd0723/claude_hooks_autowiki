@@ -126,3 +126,4 @@ Path scoping is also the cleanest lever for staying under the [skill listing bud
 - [Skill Content Lifecycle](./skill-content-lifecycle.md) — progressive disclosure, the principle path scoping extends
 - [Skill Activation Hook](./skill-activation-hook.md) — the deterministic second stage of the two-stage filter
 - [SDK Project Instructions](./sdk-project-instructions.md) — CLAUDE.md, the home of rules in the rules-vs-workflows split
+- [CLAUDE.md rules vs. skills workflows](../comparisons/claude-md-rules-vs-skills-workflows.md) — the rules-vs-workflows decision this page surfaces, expanded

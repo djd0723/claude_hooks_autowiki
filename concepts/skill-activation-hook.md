@@ -131,3 +131,4 @@ The pattern's payoff is stated plainly: "The Skill Activation Hook removes human
 - [Skill Invocation Control](./skill-invocation-control.md) — `skillOverrides` and per-skill visibility, the config-side complement
 - [Production Hook Patterns](./production-hook-patterns.md) — sibling real-world hooks, incl. the stateful-reminder technique
 - [Setup Hooks](./setup-hooks.md) — a sibling claudefa.st practitioner pattern
+- [Description-driven activation vs. the skill-activation hook](../comparisons/description-driven-activation-vs-activation-hook.md) — this hook weighed against the native model-side path

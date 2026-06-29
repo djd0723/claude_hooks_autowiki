@@ -58,5 +58,6 @@ A fourth, structural one: an **overloaded `SKILL.md`**. Past roughly 5,000 token
 - [Skill Invocation Control](./skill-invocation-control.md) — the listing budget the per-prompt scan competes for, and `allowed-tools`
 - [Skill Evaluation](./skill-evaluation.md) — measuring and tuning a `description` so it fires on the right prompts
 - [Skill Activation Hook](./skill-activation-hook.md) — the deterministic alternative that bypasses model-side matching
+- [Description-driven activation vs. the skill-activation hook](../comparisons/description-driven-activation-vs-activation-hook.md) — when to trust the model vs. force the load
 - [Path-Scoped Skills](./path-scoped-skills.md) — the prior filter: paths limit visibility, description decides what fires
 - [Skill Content Lifecycle](./skill-content-lifecycle.md) — what "load the full body" costs across the rest of the session
