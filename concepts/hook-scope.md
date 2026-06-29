@@ -104,3 +104,5 @@ To skip the shell entirely (exec form), add `"args": []` — this spawns the scr
 - [Hook Types](./hook-types.md) — command, prompt, agent, http, mcp_tool
 - [Hook Matchers](./hook-matchers.md) — filtering which hooks fire
 - [Hook Exit Codes](./hook-exit-codes.md) — communicating decisions
+- [Hook Input and Output](./hook-input-output.md) — JSON input/output protocol
+- [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns

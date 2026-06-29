@@ -98,3 +98,5 @@ When multiple hooks match the same event, every hook's command runs to completio
 - [Hook Types](./hook-types.md) — how each hook runs
 - [Hook Exit Codes](./hook-exit-codes.md) — communicating decisions
 - [Hook Scope](./hook-scope.md) — where hooks are configured
+- [Hook Input and Output](./hook-input-output.md) — JSON input fields and output schema
+- [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns

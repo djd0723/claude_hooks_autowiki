@@ -57,3 +57,4 @@ Command hooks run synchronously by default — Claude waits for the hook to exit
 - [Hook Types](../concepts/hook-types.md) — full field reference for command hooks
 - [Hook Exit Codes](../concepts/hook-exit-codes.md) — how exit codes communicate decisions
 - [Hook Decision Control](../concepts/hook-decision-control.md) — per-event decision patterns
+- [Hook Input and Output](../concepts/hook-input-output.md) — JSON output fields for async hooks

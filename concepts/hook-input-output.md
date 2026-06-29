@@ -171,3 +171,5 @@ The hook must return the absolute path to the created worktree directory. Comman
 - [Hook Lifecycle Events](./hook-lifecycle-events.md) — the full event list
 - [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns
 - [Hook Types](./hook-types.md) — command vs. prompt vs. agent vs. http
+- [Hook Matchers](./hook-matchers.md) — filtering which hooks fire
+- [Hook Scope](./hook-scope.md) — configuration location and permission interaction

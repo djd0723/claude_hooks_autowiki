@@ -116,3 +116,5 @@ Both paths use the same 8-consecutive-block cap and `stop_hook_active` guard.
 - [Hook Input and Output](./hook-input-output.md) — full JSON input/output schema
 - [Hook Lifecycle Events](./hook-lifecycle-events.md) — the full event list
 - [Hook Types](./hook-types.md) — command vs. prompt vs. agent
+- [Hook Matchers](./hook-matchers.md) — filtering which hooks fire
+- [Hook Scope](./hook-scope.md) — configuration location and permission interaction

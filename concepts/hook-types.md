@@ -174,3 +174,5 @@ Agent hooks are experimental and may change. For production workflows, prefer co
 - [Hook Lifecycle Events](./hook-lifecycle-events.md) — which events hooks attach to
 - [Hook Exit Codes](./hook-exit-codes.md) — how command hooks return decisions
 - [Hook Matchers](./hook-matchers.md) — narrowing when hooks fire
+- [Hook Input and Output](./hook-input-output.md) — JSON input/output protocol
+- [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns

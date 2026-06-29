@@ -54,7 +54,7 @@ Key per-event matcher targets:
 | `StopFailure` | error type |
 | `InstructionsLoaded` | load reason (`session_start`, `nested_traversal`, `path_glob_match`, `include`, `compact`) |
 
-Events with no matcher support: `UserPromptSubmit`, `PostToolBatch`, `Stop`, `TeammateIdle`, `TaskCreated`, `TaskCompleted`, `WorktreeCreate`, `WorktreeRemove`, `CwdChanged`.
+Events with no matcher support: `UserPromptSubmit`, `PostToolBatch`, `Stop`, `TeammateIdle`, `TaskCreated`, `TaskCompleted`, `WorktreeCreate`, `WorktreeRemove`, `CwdChanged`, `MessageDisplay`.
 
 ## Exec form vs shell form
 
