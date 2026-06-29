@@ -143,5 +143,6 @@ and the running [synthesis](synthesis.md).
 - [Description-driven activation vs. activation hook](comparisons/description-driven-activation-vs-activation-hook.md) — model-judgment description matching vs. deterministic UserPromptSubmit hook; when each wins and how they layer
 - [CLAUDE.md rules vs. skills workflows](comparisons/claude-md-rules-vs-skills-workflows.md) — always-on rules vs. on-demand workflows; the symmetric "pay twice" failure and three-way decision tree
 - [Deterministic drift detection vs. LLM-in-the-loop drift audit](comparisons/deterministic-drift-detection-vs-llm-drift-audit.md) — git-plumbing checkpoint vs. headless-Claude audit for detecting generated-artifact drift; they compose
+- [Per-edit hook processing vs. session-batch processing](comparisons/per-edit-processing-vs-session-batch.md) — where in the lifecycle to run expensive hook work: per-edit PostToolUse vs. journal-cheap accumulation with batch processing at Stop
 
 ## Answers
