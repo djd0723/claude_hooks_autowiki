@@ -95,3 +95,4 @@ Events fall into three cadences:
 - [StatusLine-Driven Context Backup](./statusline-context-backup.md) — a practitioner pattern that front-runs `PreCompact` by triggering backups from the StatusLine instead
 - [Setup Hooks (Onboarding & Maintenance Pattern)](./setup-hooks.md) — the onboarding/CI pattern built on the once-per-session `Setup` event
 - [SessionStart Context Injection (Auto-Load Context Pattern)](./session-context-injection.md) — the `SessionStart`/`SessionEnd` practitioner pattern for auto-loading context and cleaning up per session
+- [Self-Improving CLAUDE.md (Stop-Hook Rule-Audit Pattern)](./self-improving-claude-md.md) — the `Stop` event used to spawn a headless reviewer that audits `CLAUDE.md` against the diff
