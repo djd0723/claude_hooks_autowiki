@@ -56,3 +56,4 @@ ClaudeKit's docs list events including `SubagentStart`, `TaskCompleted`, and `Te
 - [Hook Scope](./hook-scope.md) — these are all project-scoped (`.claude/settings.json`) hooks
 - [File Permission Patterns](./file-permission-patterns.md) — the access-control model the ignore-list and privacy gates complement
 - [AI Permission Reviewer (ClaudeFast Permission Hook Case Study)](./ai-permission-reviewer.md) — a sibling third-party case study, focused on the `PermissionRequest` permission surface
+- [Skill Activation Hook](./skill-activation-hook.md) — a sibling case study using the stateful-session technique on `UserPromptSubmit` to guarantee skill loading

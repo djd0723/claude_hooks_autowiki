@@ -139,3 +139,4 @@ The pattern's value is that it preserves determinism where you need it and adds 
 - [Hook Input and Output](./hook-input-output.md) — the `additionalContext` JSON contract the setup script uses to brief Claude
 - [Hooks Adoption Ladder (Practitioner Playbook)](./hooks-adoption-ladder.md) — the same kit's broader case for moving guarantees into deterministic hooks
 - [Hook Automation Use Cases](./hook-automation-use-cases.md) — where session-lifecycle automation sits among the generic recipes
+- [Skill Activation Hook](./skill-activation-hook.md) — a sibling claudefa.st pattern that pushes skill loading into a deterministic `UserPromptSubmit` hook

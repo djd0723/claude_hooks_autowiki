@@ -53,3 +53,4 @@ The benchmark lets you weigh the pass-rate improvement against the token and tim
 - [Skills](./skills.md) — the core concept
 - [Skill Invocation Control](./skill-invocation-control.md) — `skillOverrides`, used to disable a skill for a baseline run
 - [Bundled Skills](./bundled-skills.md) — `skill-creator` is distributed as a plugin
+- [Skill Activation Hook](./skill-activation-hook.md) — solving the invocation-reliability problem deterministically with a `UserPromptSubmit` hook
