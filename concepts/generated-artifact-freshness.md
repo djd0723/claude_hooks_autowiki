@@ -80,3 +80,4 @@ It is the lifecycle complement to [structure-owned generation](./structure-owned
 - [Structure-Owned Generation](./structure-owned-generation.md) — the sibling claudux pattern; this page is its operational/lifecycle half
 - [The Agent Manager Role](./agent-manager-role.md) — owns the team-agent handoff that `--handoff-strict` gates
 - [Large-Codebase Playbook](./large-codebase-playbook.md) — why drift detection matters when "the structure of the documentation is part of the product"
+- [Deterministic drift detection vs. LLM-in-the-loop drift audit](../comparisons/deterministic-drift-detection-vs-llm-drift-audit.md) — this page is the deterministic, no-AI side of that contrast

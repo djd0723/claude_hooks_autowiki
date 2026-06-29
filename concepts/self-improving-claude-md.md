@@ -147,3 +147,4 @@ Within the harness model, "Most hooks enforce something. This one improves somet
 - [Session Context Injection](./session-context-injection.md) — the reverse direction (load context at session start) the article cites as a variant
 - [The Agent Manager Role](./agent-manager-role.md) — the owner whose review queue this stop hook feeds to keep CLAUDE.md conventions current
 - [Structure-Owned Generation](./structure-owned-generation.md) — the same determinism-over-model-behavior instinct applied to docs generation
+- [Deterministic drift detection vs. LLM-in-the-loop drift audit](../comparisons/deterministic-drift-detection-vs-llm-drift-audit.md) — this page is the LLM-in-the-loop, judgment side of that contrast
