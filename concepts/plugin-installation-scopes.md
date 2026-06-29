@@ -3,10 +3,11 @@ type: concept
 title: "Plugin Installation Scopes"
 created: 2026-06-29
 updated: 2026-06-29
-tags: [plugins, scopes, installation, settings, skills-directory]
-source_count: 1
+tags: [plugins, scopes, installation, settings, skills-directory, enabled-plugins, marketplaces]
+source_count: 2
 sources:
   - sources/clean/code-claude-com-docs-en-plugins-reference-md.md
+  - sources/clean/code-claude-com-docs-en-settings-md.md
 ---
 
 # Plugin Installation Scopes
@@ -66,6 +67,43 @@ Installed plugins cannot reference files outside their directory. Paths that tra
 | Outside the marketplace | Skipped for security |
 
 For plugins installed with `--plugin-dir` or from a local path, only symlinks resolving within the plugin's own directory are preserved.
+
+## Configuring plugins in `settings.json`
+
+The scope a plugin lives in is just a `settings.json` at that scope. Two keys drive plugin configuration (see [Settings Files](./settings-files.md)):
+
+### `enabledPlugins`
+
+Maps `"plugin-name@marketplace-name"` to `true`/`false`. A plugin with no entry at any scope falls back to its [`defaultEnabled`](./plugin-manifest-schema.md) value.
+
+```json
+{
+  "enabledPlugins": {
+    "code-formatter@team-tools": true,
+    "experimental-features@personal": false
+  }
+}
+```
+
+Precedence follows the [normal scope order](./settings-precedence.md): **project settings override user settings**, so setting a plugin to `false` in `~/.claude/settings.json` does *not* disable one the project's `.claude/settings.json` enables — opt out in `.claude/settings.local.json` instead. Plugins force-enabled by managed settings cannot be disabled at all.
+
+### `extraKnownMarketplaces`
+
+Declares additional marketplaces (typically in repository settings so teammates are prompted to install them on trust). Each entry's `source` selects a type:
+
+| Source type | Uses |
+| :---------- | :--- |
+| `github` | GitHub repo (`repo`) |
+| `git` | Any git URL (`url`) — works with self-hosted GitLab/Bitbucket |
+| `directory` | Local filesystem path (`path`, development only) |
+| `hostPattern` | Regex matching marketplace hosts |
+| `settings` | Inline marketplace declared in `settings.json` (`name` + `plugins`); plugins must reference external sources |
+
+Optional per-entry flags: `skipLfs` (skip Git LFS downloads, v2.1.153+) and `autoUpdate` (refresh and update on startup — defaults `true` for official Anthropic marketplaces, `false` otherwise).
+
+### Managed marketplace restrictions
+
+Managed settings can lock down marketplace additions with `strictKnownMarketplaces` and `blockedMarketplaces` — blocked sources are checked before download so they never touch the filesystem.
 
 ## Related concepts
 
