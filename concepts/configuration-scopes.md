@@ -57,3 +57,4 @@ Permission rules are the notable exception: they **merge across scopes** rather 
 - [Settings Precedence](./settings-precedence.md) — the exact override order and array-merge rule
 - [Permission Settings](./permission-settings.md) — permission rules merge across scopes
 - [Plugin Installation Scopes](./plugin-installation-scopes.md) — the same four scopes applied to plugins
+- [Managed Settings](./managed-settings.md) — the managed-only lock-down keys available only in the managed scope

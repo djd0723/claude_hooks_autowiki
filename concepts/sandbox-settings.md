@@ -90,3 +90,5 @@ Several keys explicitly weaken isolation and should be used sparingly: `enableWe
 - [Settings Files](./settings-files.md) — where the `sandbox` block lives
 - [Permission Settings](./permission-settings.md) — `Edit`/`Read`/`WebFetch` rules feed sandbox filesystem and network restrictions
 - [Settings Precedence](./settings-precedence.md) — sandbox arrays concatenate and de-duplicate across scopes
+- [Permission Modes](./permission-modes.md) — `autoAllowBashIfSandboxed` lets sandboxed Bash skip the whole-tool prompt
+- [Managed Settings](./managed-settings.md) — the managed-only `allowManagedReadPathsOnly` / `allowManagedDomainsOnly` flags

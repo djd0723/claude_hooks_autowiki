@@ -51,6 +51,9 @@ Tools not listed above — such as `ExitPlanMode` or `ShareOnboardingGuide` — 
 ## Related concepts
 
 - [Built-in Tools](./built-in-tools.md) — the catalog of tool names these rules reference
+- [Permission Evaluation](./permission-evaluation.md) — how these rules resolve to allow/ask/deny, plus parameter and tool-name matching
+- [Bash Permission Matching](./bash-permission-matching.md) — how `Bash(...)` specifiers match commands, wrappers, and compounds
+- [File Permission Patterns](./file-permission-patterns.md) — how `Read(...)`/`Edit(...)` path specifiers match
 - [Permission Settings](./permission-settings.md) — the `allow`/`ask`/`deny` blocks and merge behavior
 - [Subagent Tool Access](./subagent-tool-access.md) — `tools` / `disallowedTools` precedence on subagents
 - [Skill Frontmatter](./skill-frontmatter.md) — the `allowed-tools` field

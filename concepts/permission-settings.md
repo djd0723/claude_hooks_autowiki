@@ -13,7 +13,7 @@ sources:
 
 The `permissions` block in [`settings.json`](./settings-files.md) controls which tools Claude Code may use and under what mode it starts. Unlike most settings, permission rules **merge across [scopes](./configuration-scopes.md)** rather than override — managed, user, project, and local rules combine.
 
-> This page covers the settings-side view. The dedicated permissions reference deepens rule syntax, tool-specific patterns, and Bash limitations; see the `permissions.md` source once ingested.
+> This page covers the settings-side view. The dedicated permissions reference deepens this across several pages: [Permission Evaluation](./permission-evaluation.md) (the deny→ask→allow algorithm and scope precedence), [Permission Modes](./permission-modes.md), [Bash Permission Matching](./bash-permission-matching.md), [File Permission Patterns](./file-permission-patterns.md), [Working Directories](./working-directories.md), and [Managed Settings](./managed-settings.md).
 
 ## The permission keys
 
@@ -66,4 +66,6 @@ Tool-name globs are supported only in the tool position after a literal `mcp__<s
 - [Configuration Scopes](./configuration-scopes.md) — managed scope can lock permission rules org-wide
 - [Sandbox Settings](./sandbox-settings.md) — `Edit`/`Read`/`WebFetch` rules also feed sandbox filesystem and network restrictions
 - [Tool Permission Rules](./tool-permission-rules.md) — the `ToolName(specifier)` format and per-tool specifier table
+- [Permission Evaluation](./permission-evaluation.md) — how a tool call resolves to allow/ask/deny
+- [Permission Modes](./permission-modes.md) — `defaultMode` and the per-session approval presets
 - [Built-in Tools](./built-in-tools.md) — the catalog of tool names `allow`/`ask`/`deny` reference
