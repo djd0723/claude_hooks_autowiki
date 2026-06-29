@@ -105,6 +105,7 @@ Swap the default git worktree behavior for custom VCS or setup:
 
 ## Related concepts
 
+- [Hooks Adoption Ladder (Practitioner Playbook)](./hooks-adoption-ladder.md) — the order to adopt these recipes in, and the deterministic-guarantee thesis behind them
 - [Production Hook Patterns (ClaudeKit Case Study)](./production-hook-patterns.md) — how a real shipping kit applies these recipes, and the design lessons that emerge
 - [Hook Lifecycle Events](./hook-lifecycle-events.md) — the full event reference these recipes attach to
 - [Hook Types](./hook-types.md) — `command`/`http`/`prompt`/`agent` handlers and the `async` flag that make these recipes possible

@@ -52,3 +52,4 @@ When [sandboxing](./sandbox-settings.md) is enabled with `autoAllowBashIfSandbox
 - [Permission Settings](./permission-settings.md) — where `defaultMode` and the disable flags live
 - [Managed Settings](./managed-settings.md) — locking the permissive modes org-wide
 - [Sandbox Settings](./sandbox-settings.md) — OS-level Bash isolation that complements modes
+- [Hooks Adoption Ladder (Practitioner Playbook)](./hooks-adoption-ladder.md) — "Safe YOLO": a `PreToolUse` deny-hook still blocks tools under `bypassPermissions`/`--dangerously-skip-permissions`
