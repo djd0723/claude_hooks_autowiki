@@ -1,0 +1,677 @@
+<html data-wf-domain="mlops.community" data-wf-page="697943c0ba5dc32af0c3acf1" data-wf-site="696f97c36cfad65500435415" lang="en" data-wf-collection="697943c0ba5dc32af0c3aceb" data-wf-item-slug="the-complete-guide-to-claude-code-hooks-automating-your-ai-coding-workflow" class="w-mod-js w-mod-ix wf-publicsans-n4-active wf-publicsans-n6-active wf-publicsans-n3-active wf-publicsans-n5-active wf-publicsans-n7-active wf-bricolagegrotesque-n7-active wf-bricolagegrotesque-n3-active wf-bricolagegrotesque-n5-active wf-bricolagegrotesque-n4-active wf-bricolagegrotesque-n6-active wf-active w-mod-ix3 lenis"><head><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><meta charset="utf-8"><link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"><title>The Complete Guide to Claude Code Hooks: Automating Your AI Coding Workflow</title><meta content="This blog explains how Claude Code Hooks let you automate and control Claude's behavior throughout its lifecycle, turning it from a coding assistant into a programmable part of your engineering workflow. Hooks can run shell commands, call APIs, invoke LLMs, or launch subagents whenever specific events occur." name="description"><meta content="The Complete Guide to Claude Code Hooks: Automating Your AI Coding Workflow" property="og:title"><meta content="This blog explains how Claude Code Hooks let you automate and control Claude's behavior throughout its lifecycle, turning it from a coding assistant into a programmable part of your engineering workflow. Hooks can run shell commands, call APIs, invoke LLMs, or launch subagents whenever specific events occur." property="og:description"><meta content="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303dc80cd033158dd12b9b_ChatGPT%20Image%20Jun%2016%2C%202026%2C%2002_00_04%20AM.png" property="og:image"><meta content="The Complete Guide to Claude Code Hooks: Automating Your AI Coding Workflow" name="twitter:title"><meta content="This blog explains how Claude Code Hooks let you automate and control Claude's behavior throughout its lifecycle, turning it from a coding assistant into a programmable part of your engineering workflow. Hooks can run shell commands, call APIs, invoke LLMs, or launch subagents whenever specific events occur." name="twitter:description"><meta content="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303dc80cd033158dd12b9b_ChatGPT%20Image%20Jun%2016%2C%202026%2C%2002_00_04%20AM.png" name="twitter:image"><meta property="og:type" content="website"><meta content="summary_large_image" name="twitter:card"><meta content="width=device-width, initial-scale=1" name="viewport"><link href="https://cdn.prod.website-files.com/696f97c36cfad65500435415/css/dev-mlops.webflow.shared.05286b69c.min.css" rel="stylesheet" type="text/css" integrity="sha384-BShracs1OPZ97I/40CNiSABiZaLGZclPg513a7VYu0vH6fF0vsjrwTVLClzMjFzG" crossorigin="anonymous"><style>html.w-mod-js:not(.w-mod-ix3) :is([data-load-text], .nav_brand, .menu_button-mobile, .nav_menu_link, .text-style-nowrap, .logo-wall__logo) {visibility: hidden !important;}</style><link href="https://fonts.googleapis.com" rel="preconnect"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-3KZ51QYGGN&amp;gtg_health=1"></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bricolage+Grotesque:300,400,500,600,700%7CPublic+Sans:300,400,500,600,700" media="all"><script type="text/javascript">WebFont.load({  google: {    families: ["Bricolage Grotesque:300,400,500,600,700","Public Sans:300,400,500,600,700"]  }});</script><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/696f97c36cfad65500435415/699f397b95fd07c464959872_Favicon.jpg" rel="shortcut icon" type="image/x-icon"><link href="https://cdn.prod.website-files.com/696f97c36cfad65500435415/699f3980581f6b38722841f8_Webclip.jpg" rel="apple-touch-icon"><script>(function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push.apply(w[g],Array.isArray(i)?i:[i]);})(window,['G-3KZ51QYGGN'],'google_tags_first_party');</script><script async="" src="/haqt6iy0yx2eNjk2Zjk3YzM2Y2ZhZDY1NTAwNDM1NDE1/SVpEVQua4bGs7HrdwERmpE5SKmI"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('set', 'developer_id.dZGVlNj', true);gtag('set', 'developer_id.dYWYxNW', true);gtag('js', new Date());gtag('config', 'G-3KZ51QYGGN');</script><style>
+/* LENIS SMOOTH SCROLL */
+ html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+  
+/* PREVENTING CONTENT FLASH ON PAGE LOAD */  
+.page-wrapper {opacity: 0;}
+html.w-editor .page-wrapper {opacity: 1;} 
+  
+</style><script>
+  // Remove the automatic canonical tag from Webflow
+  const existing = document.querySelector('link[rel="canonical"]');
+  if (existing) existing.remove();
+
+  // Add the correct canonical
+  const curl = "https://cenrax.substack.com/p/the-complete-guide-to-claude-code?triedRedirect=true";
+  const link = document.createElement('link');
+
+  if (curl != "") {
+    link.href = "https://cenrax.substack.com/p/the-complete-guide-to-claude-code?triedRedirect=true";
+  } else {
+    link.href = 'https://mlops.community/blog/the-complete-guide-to-claude-code-hooks-automating-your-ai-coding-workflow';
+  }
+
+  link.rel = 'canonical';
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script><link href="https://cenrax.substack.com/p/the-complete-guide-to-claude-code?triedRedirect=true" rel="canonical"></head><body style="overflow: auto;"><div class="page-wrapper" style="opacity: 1;"><div class="global-styles w-embed"><style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Make text look crisper and more legible in all browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus state style for keyboard navigation for the focusable elements */
+*[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+   outline: 0.125rem solid #4d65ff;
+   outline-offset: 0.125rem;
+}
+
+/* Set color style to inherit */
+.inherit-color * {
+    color: inherit;
+}
+
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+	margin-bottom: 0 !important;
+}
+
+
+/* Make sure containers never lose their center alignment */
+.container-medium,.container-small, .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+/* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+/*
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*/
+
+/* Apply "..." after 3 lines of text */
+.text-style-3lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+/* Apply "..." after 2 lines of text */
+.text-style-2lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* These classes are never overwritten */
+.hide {
+  display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+    .hide, .hide-tablet {
+        display: none !important;
+    }
+}
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape{
+      display: none !important;
+    }
+}
+  @media screen and (max-width: 479px) {
+    .hide-mobile{
+      display: none !important;
+    }
+    .home-hero_title .float-right{float:none;}
+}
+ 
+.margin-0 {
+  margin: 0rem !important;
+}
+  
+.padding-0 {
+  padding: 0rem !important;
+}
+
+.spacing-clean {
+padding: 0rem !important;
+margin: 0rem !important;
+}
+
+.margin-top {
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-top {
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+  
+.margin-right {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-right {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-bottom {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-bottom {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-left {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+  
+.padding-left {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+  
+.margin-horizontal {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.padding-horizontal {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+
+.margin-vertical {
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+  
+.padding-vertical {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+/* Custom CSS */
+
+h1,h2,h3,h4,h5,h6{font-weight:400;}
+
+.menu_button-mobile svg path{fill:currentColor;}
+
+.most_shared-tag{background: linear-gradient(100deg, var(--Violet-100, #FBE8F5) 11.03%, var(--Violet-200, #F9D1EB) 85.37%, var(--Primary-Main, #E54FA6) 144.77%)}
+
+[data-load-text] .gsap_split_word-mask, [data-load-text] .gsap_split_word-mask .gsap_split_word {line-height: inherit;}
+
+.text-rich-text figure div{width:100%;}
+
+.text-rich-text pre{
+  padding: 3rem 1.5rem 1.5rem;
+  background-image: url(https://cdn.prod.website-files.com/696f97c36cfad65500435415/69865e1c7d3b59c59d9ef110_Code-Block-Top-Bar.svg)!important;
+    background-position: 0 0!important;
+    background-repeat: no-repeat!important;
+    background-size: 48rem!important;
+    background-color:#ffff !important;
+    color: var(--_color-palette---text--primary)!important;
+  }
+
+ .text-rich-text p code{
+  padding: 3rem 1.5rem 1.5rem;
+  background-image: url(https://cdn.prod.website-files.com/696f97c36cfad65500435415/69865e1c7d3b59c59d9ef110_Code-Block-Top-Bar.svg)!important;
+    background-position: 0 0!important;
+    background-repeat: no-repeat!important;
+    background-size: 48rem!important;
+    background-color:#ffff !important;
+    display: block;
+    border-radius: var(--spacers--1x);
+    font-size: var(--_typography---font-size--text-sm);
+    border: 1px solid var(--_primitive-colors---neutral--n950);
+    margin: 1.5rem 0;
+  }
+
+.text-rich-text pre code{text-wrap: auto;}
+    
+
+pre.w-code-block code{border:none; background:transparent; margin-top:3rem;}
+
+.podcast-episode_card .most_shared-tag {
+  display: none;
+}
+.podcast-list_grid .podcast_card-item:nth-child(4n) .podcast-episode_card .most_shared-tag {
+  display: flex;
+}
+
+.text-rich-text iframe{aspect-ratio: 16 / 9; object-fit: cover; margin-top:2rem;}
+
+.text-rich-text figure iframe{margin-top:0rem;}
+
+.table-bordered {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #D3D8EA;
+  padding: 8px;
+  text-align: left;
+}
+
+.table-bordered th{
+	font-size: var(--_typography---font-size--text-xl);
+  line-height: var(--_typography---line-height--150);
+}
+
+.table-bordered th {
+  background-color: #FBE8F5; /* Optional: adds a light gray background to the header */
+}
+
+/* City and Podcast card animation */
+.featured_card .cover-image {transition: transform .4s cubic-bezier(.645, .045, .355, 1);}
+.featured_card .featured_card-overlay{opacity: 0;}
+.featured_card .featured_play-icon-wrap{transform: scale(0)}
+
+.featured_card:hover{color:var(--_color-palette---text--alternate);}
+.featured_card:hover .cover-image{transform:scale(1.1);}
+.featured_card:hover .featured_play-icon-wrap{transform:scale(1);}
+.featured_card:hover .featured_card-overlay{opacity:1;}
+
+
+/* Testimonials Slider */
+.wf-design-mode [data-overlap-slider-collection]{
+  overflow: auto;
+}
+
+/* Rotating Text */
+[data-rotating-words] {
+  display: inline-block;
+  position: relative;
+}
+
+.rotating-text__inner {
+  display: inline-block;
+}
+
+.rotating-text__word {
+  display: block;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rotating-line{
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  white-space: nowrap;
+}
+
+.rotating-line-mask{
+  overflow-x: visible !important;
+  overflow-y: clip !important;
+}
+
+[data-directional-hover-tile] {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(-100%);
+  will-change: transform;
+}
+
+[data-logo-wall-list] [data-logo-wall-item]:nth-child(n+11) {
+  display: none;
+}
+
+[data-3d-hover-target] {
+  transform: perspective(50vw);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.link:hover [data-icon-arrow]{transform: translateX(0.25rem);}
+.link:hover [data-icon-plus]{transform: rotate(90deg);}
+
+.blog_recent-wrap:hover, .blog_card:hover{transform:translateY(-1rem);}
+.blog_recent-wrap .heading-style-h5, .blog_card .heading-style-h6 {transition: color .4s cubic-bezier(.645, .045, .355, 1);}
+.blog_recent-wrap:hover .heading-style-h5, .blog_card:hover .heading-style-h6{color:var(--_color-palette---text--alternate);}
+
+@media screen and (max-width: 991px) {
+  [data-logo-wall-list] [data-logo-wall-item]:nth-child(n+9) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  [data-logo-wall-list] [data-logo-wall-item]:nth-child(n+7) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  [data-logo-wall-list] [data-logo-wall-item]:nth-child(n+7) {
+    display: none;
+  }
+}
+
+</style></div><nav id="menu" data-wf--navbar--variant="secondary" data-wf-component-id="1bc391bd-e69d-eaa0-f691-6d08ac4b1020" data-wf-variant-state="ad6e9874-b963-1ff9-1f9a-75c29f449091" class="nav_component w-variant-ad6e9874-b963-1ff9-1f9a-75c29f449091"><div class="nav_container"><a href="/" aria-label="'MLOps Community — Home" class="nav_brand w-nav-brand" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate3d(0px, -120%, 0px);"><img src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/696fc3c0db651ee10574cd5b_99ca6f918927b4b7082433132938ac72_MLOps-Logo.svg" loading="lazy" width="130" height="40" alt="MLOps Community logo with pink stacked bars" class="nav_logo"></a><div class="nav_menu-wrap w-variant-ad6e9874-b963-1ff9-1f9a-75c29f449091"><div class="nav_menu"><div class="nav_list"><div class="menu_dropdown-item"><div class="nav_menu_link is-dropdown is-events" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate3d(0px, -120%, 0px);"><span>Events</span><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="dropdown_arrow" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"><path d="M3.3335 6L7.47953 9.55375C7.77912 9.81054 8.2212 9.81054 8.5208 9.55375L12.6668 6" stroke="currentColor" stroke-linecap="round"></path></svg></div><div class="menu_dropdown-content-wrap" style="display: none;"><div class="menu_dropdown-content" style="transform: translate3d(0px, 1rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;"><div class="menu_dropdown-links"><a href="/meetups" class="menu_dropdown-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 14 14" fill="none" class="dropdown_link-icon"><circle cx="1.98582" cy="1.98582" r="1.98582" transform="matrix(-1 0 0 1 9.10986 2.91663)" stroke="currentColor" stroke-width="0.875"></circle><path d="M3.64893 9.83464C3.64893 9.40751 3.91743 9.02649 4.31968 8.88284C6.1332 8.23515 8.115 8.23515 9.92853 8.88284C10.3308 9.02649 10.5993 9.40751 10.5993 9.83464V10.4877C10.5993 11.0772 10.0772 11.5301 9.49357 11.4467L9.299 11.4189C7.85639 11.2128 6.39181 11.2128 4.9492 11.4189L4.75463 11.4467C4.17105 11.5301 3.64893 11.0772 3.64893 10.4877V9.83464Z" stroke="currentColor" stroke-width="0.875"></path><path d="M10.1028 6.94322C10.9645 6.94322 11.6631 6.24466 11.6631 5.38294C11.6631 4.52122 10.9645 3.82265 10.1028 3.82265" stroke="currentColor" stroke-width="0.875" stroke-linecap="round"></path><path d="M11.812 10.5029L11.9648 10.5247C12.4234 10.5902 12.8336 10.2344 12.8336 9.77126V9.25812C12.8336 8.92251 12.6226 8.62314 12.3066 8.51027C11.9913 8.39768 11.6696 8.30999 11.3442 8.24722" stroke="currentColor" stroke-width="0.875" stroke-linecap="round"></path><path d="M3.89769 6.94322C3.03597 6.94322 2.3374 6.24466 2.3374 5.38294C2.3374 4.52122 3.03597 3.82265 3.89769 3.82265" stroke="currentColor" stroke-width="0.875" stroke-linecap="round"></path><path d="M2.18854 10.5029L2.03566 10.5247C1.57713 10.5902 1.16689 10.2344 1.16689 9.77126V9.25812C1.16689 8.92251 1.37786 8.62314 1.69391 8.51027C2.00917 8.39768 2.33091 8.30999 2.65625 8.24722" stroke="currentColor" stroke-width="0.875" stroke-linecap="round"></path></svg><span>In Person Events</span></a><a href="https://home.mlops.community/public/events" target="_blank" class="menu_dropdown-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 14 14" fill="none" class="dropdown_link-icon"><rect x="1.1665" y="9.91667" width="11.6667" height="1.75" rx="0.583333" stroke="currentColor" stroke-width="0.875"></rect><rect x="1.75" y="2.91667" width="10.5" height="7" rx="0.583333" stroke="currentColor" stroke-width="0.875"></rect><path d="M8.1665 3.20834H5.83317" stroke="currentColor" stroke-width="1.45833" stroke-linecap="round"></path></svg><span>Virtual Events</span></a></div><div class="menu_dropdown-visual"><img src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/69d98195e0ae7faa7117e334_Dropdwon-In-Person-Events.png" loading="lazy" width="138" height="96" alt="" class="full-image"></div></div></div></div><a href="/podcast" class="nav_menu_link" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate3d(0px, -120%, 0px);">Podcast</a><a href="/blog" class="nav_menu_link" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate3d(0px, -120%, 0px);">Blog</a><a href="https://jobs.mlops.community/" target="_blank" class="nav_menu_link" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate3d(0px, -120%, 0px);">Find a Job</a></div><div class="nav_cta"><a data-wf--button--variant="secondary-md-dark" href="https://mlopscommunity.pipedrive.com/scheduler/lpqRW6Cb/meeting-with-diego-mangabeira" target="_blank" class="button w-variant-d99a38d8-c3cc-bb2f-6ef3-237a025908bd w-inline-block" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate3d(0px, -120%, 0px);"><span>Partner with us</span></a><a data-wf--button--variant="primary-md" href="https://gatewaze.mlops.community/" target="_blank" class="button w-inline-block" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate3d(0px, -120%, 0px);"><span>Join</span></a></div></div></div><div class="menu_button-mobile" style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate3d(0px, -120%, 0px);"><div data-wf-target="[[[&quot;1bc391bd-e69d-eaa0-f691-6d08ac4b1020&quot;,&quot;1bc391bd-e69d-eaa0-f691-6d08ac4b1033&quot;],[&quot;7d11ac12-0458-c5a0-ce66-250a13b709c4&quot;]]]" class="icon-1x1-md-regular" data-w-id="1bc391bd-e69d-eaa0-f691-6d08ac4b1033" data-animation-type="lottie" data-src="https://cdn.prod.website-files.com/6870218a8bb3f85c03ba0df2/6870218a8bb3f85c03ba0e3b_Menu-Button-Animation.json" data-loop="0" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="0" data-duration="1" data-loading="eager"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 16" width="20" height="16" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_2"><rect width="20" height="16" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_2)"><g transform="matrix(1,0,0,1,-0.25,-0.25)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,10.25,15.25)"><path fill="rgb(26,34,56)" fill-opacity="1" d=" M9.166999816894531,1 C9.166999816894531,1 -9.166000366210938,1 -9.166000366210938,1 C-9.666000366210938,1 -10,0.6000000238418579 -10,0 C-10,-0.6000000238418579 -9.666000366210938,-1 -9.166000366210938,-1 C-9.166000366210938,-1 9.166999816894531,-1 9.166999816894531,-1 C9.666999816894531,-1 10,-0.6000000238418579 10,0 C10,0.6000000238418579 9.666999816894531,1 9.166999816894531,1z"></path></g><g opacity="1" transform="matrix(1,0,0,1,10.25,8.25)"><path fill="rgb(26,34,56)" fill-opacity="1" d=" M9.166999816894531,1 C9.166999816894531,1 -9.166000366210938,1 -9.166000366210938,1 C-9.666000366210938,1 -10,0.6000000238418579 -10,0 C-10,-0.6000000238418579 -9.666000366210938,-1 -9.166000366210938,-1 C-9.166000366210938,-1 9.166999816894531,-1 9.166999816894531,-1 C9.666999816894531,-1 10,-0.6000000238418579 10,0 C10,0.6000000238418579 9.666999816894531,1 9.166999816894531,1z"></path></g><g opacity="1" transform="matrix(1,0,0,1,10.25,1.25)"><path fill="rgb(26,34,56)" fill-opacity="1" d=" M9.166999816894531,1 C9.166999816894531,1 -9.166000366210938,1 -9.166000366210938,1 C-9.666000366210938,1 -10,0.6000000238418579 -10,0 C-10,-0.6000000238418579 -9.666000366210938,-1 -9.166000366210938,-1 C-9.166000366210938,-1 9.166999816894531,-1 9.166999816894531,-1 C9.666999816894531,-1 10,-0.6000000238418579 10,0 C10,0.6000000238418579 9.666999816894531,1 9.166999816894531,1z"></path></g></g></g></svg></div></div></div></nav><main class="main-wrapper"><section class="section_article-hero"><div class="bg_lines-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 851 1057" fill="none" class="lines_pattern"><g clip-path="url(#clip0_2139_203)"><path d="M99.5011 1.46687e-05L325.413 391.29C344.043 423.56 332.11 464.461 299.894 483.061L237.614 519.018C225.773 525.855 216.184 535.174 209.103 545.944C192.228 571.573 189.74 605.479 206.023 633.683L450.549 1057.21" stroke="currentColor"></path><path d="M-0.498908 1.46687e-05L225.413 391.29C244.043 423.56 232.11 464.461 199.894 483.061L137.614 519.018C125.773 525.855 116.184 535.174 109.103 545.944C92.2282 571.573 89.7399 605.479 106.023 633.683L350.549 1057.21" stroke="currentColor"></path><path d="M199.501 1.46687e-05L425.413 391.29C444.043 423.56 432.11 464.461 399.894 483.061L337.614 519.018C325.773 525.855 316.184 535.174 309.103 545.944C292.228 571.573 289.74 605.479 306.023 633.683L550.549 1057.21" stroke="currentColor"></path><path d="M299.501 1.46687e-05L525.413 391.29C544.043 423.56 532.11 464.461 499.894 483.061L437.614 519.018C425.773 525.855 416.184 535.174 409.103 545.944C392.228 571.573 389.74 605.479 406.023 633.683L650.549 1057.21" stroke="currentColor"></path><path d="M399.501 1.46687e-05L625.413 391.29C644.043 423.56 632.11 464.461 599.894 483.061L537.614 519.018C525.773 525.855 516.184 535.174 509.103 545.944C492.228 571.573 489.74 605.479 506.023 633.683L750.549 1057.21" stroke="currentColor"></path><path d="M499.501 1.46687e-05L725.413 391.29C744.043 423.56 732.11 464.461 699.894 483.061L637.614 519.018C625.773 525.855 616.184 535.174 609.103 545.944C592.228 571.573 589.74 605.479 606.023 633.683L850.549 1057.21" stroke="currentColor"></path></g><defs><clipPath id="clip0_2139_203"><rect width="851" height="1057" fill="currentColor"></rect></clipPath></defs></svg></div><div class="padding-global"><div class="container-large"><div class="basic-hero_component"><div class="article-hero_header"><div class="article_visual" style="opacity: 0.78201; transform: translate3d(0px, 21.799px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: opacity, transform;"><img src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303dc80cd033158dd12b9b_ChatGPT%20Image%20Jun%2016%2C%202026%2C%2002_00_04%20AM.png" loading="lazy" alt="" class="cover-image"></div><div class="article-hero_content" style="opacity: 0.62335; transform: translate3d(0px, 37.665px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: opacity, transform;"><div class="tag"><img src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/69712fc17f3bcd7d7fdcb686_Calendar.svg" loading="lazy" width="18" height="18" alt="Calendar icon
+" class="icon-1x1-sm-plus"><span class="text-style-subheading">June 16, 2026</span></div><h1 class="heading-style-h3">The Complete Guide to Claude Code Hooks: Automating Your AI Coding Workflow</h1><div class="w-dyn-list"><div role="list" class="w-dyn-items"><div role="listitem" class="w-dyn-item"><div class="author"><img alt="" loading="lazy" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/698621d13b83d31e6fba057f_Author-Portrait.avif" class="article_author-portrait"><div class="w-layout-vflex"><a href="/author/subham-kundu" class="author_name text-size-lg w-inline-block">Subham Kundu</a><span class="text-size-sm text-color-secondary">Founding Engineer</span></div></div></div></div></div></div></div></div></div></div><div data-wf--basic-shape-line--variant="primary-bg" class="shape_wrap w-variant-8c0e382d-c4be-c0b2-ae9c-187dceafd8e4"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1440 90" fill="none"><path d="M1440 88.4993L715.171 88.5C693.328 88.5 675.729 73.409 675.729 55.3129V27.1524C675.729 12.575 661.809 0.500001 644.197 0.500001H0" stroke="currentColor"></path></svg></div></section><section class="section_article-body"><div class="padding-global"><div data-w-id="e2c641f9-2c2b-1b19-fcf8-cd74a8c84c45" style="opacity: 0;" class="article-body_component"><h2 class="heading-style-h5">Every lifecycle event, every hook, every use case. Explained.</h2><div class="text-color-secondary"><div><div class="text-rich-text w-richtext"><h2>Why Hooks Change Everything</h2><p>If you’ve used Claude Code for more than a week, you’ve probably hit this moment: Claude writes some code, and you wish it would <em>automatically</em> run your linter. Or block a <code>rm -rf</code> before it executes. Or load your team’s context on every session. Or kick off tests the moment a file changes.</p><p>That’s what hooks are for.</p><p>Hooks are user-defined shell commands, HTTP endpoints, or even LLM prompts that execute automatically at specific points in Claude Code’s lifecycle. They turn Claude from a helpful assistant into a fully-integrated part of your engineering pipeline.</p><p>This post is a complete tour of every hook event available in Claude Code, when each one fires, and what you can actually do with them.</p><h2>The Big Picture</h2><p>Before we dive into individual hooks, here’s the full lifecycle at a glance. Hooks fire at three different cadences:</p><ul role="list"><li><strong>Session-level</strong>: once per session (start, end, instruction loads)</li><li><strong>Turn-level</strong>: once per user prompt (submit, stop, compact)</li><li><strong>Tool-level</strong>: on every tool call inside the agentic loop (pre, post, permission)</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!m0Ro!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F972cd104-017a-475e-ae9c-3f938f8c683d_2953x3440.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738cb8_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252F972cd104-017a-475e-ae9c-3f938f8c683d_2953x3440.jpeg" loading="lazy"></div></a></figure><p>Now let’s walk through each group.</p><h2>1. Session Lifecycle Hooks</h2><p>These hooks fire when a session begins, ends, or when instruction files get loaded into context. Use them to prime Claude with context, log session metadata, or persist environment variables across the whole session.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>SessionStart</strong>: Fires when a new session begins or resumes. Matchers include <code>startup</code>, <code>resume</code>, <code>clear</code>, <code>compact</code>. Can inject context via <code>additionalContext</code> or persist env vars via <code>CLAUDE_ENV_FILE</code>.</li><li><strong>SessionEnd</strong>: Fires when the session terminates. Matchers indicate the reason: <code>clear</code>, <code>logout</code>, <code>prompt_input_exit</code>, etc. No decision control here, so use it for cleanup only.</li><li><strong>InstructionsLoaded</strong>: Fires each time a <code>CLAUDE.md</code> or <code>.claude/rules/*.md</code> file is loaded, either at session start or lazily during the session.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!Z1oW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F98e93610-6cd6-49b3-a372-bbbbb95784ad_4611x684.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f52084f55c3a8738c9a_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252F98e93610-6cd6-49b3-a372-bbbbb95784ad_4611x684.jpeg" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Auto-load your team’s current sprint tickets into Claude’s context on <code>SessionStart</code></li><li>Set up project-specific environment variables (Node version, API keys, feature flags) so every Bash command Claude runs has them</li><li>Log session metadata to a metrics dashboard for auditing how the team uses Claude</li><li>Clean up temporary files or close database connections on <code>SessionEnd</code></li></ul><h2>2. User Prompt Hooks</h2><p>The moment you hit enter, Claude Code fires <code>UserPromptSubmit</code> before sending anything to the model. This is your chance to intercept, enrich, or block what the user is asking.</p><p><strong>Hook in this group:</strong></p><ul role="list"><li><strong>UserPromptSubmit</strong>: Fires after the user submits a prompt but before Claude processes it. Can block the prompt entirely with exit code 2 or JSON <code>decision: "block"</code>, or enrich it with <code>additionalContext</code>.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!1DUn!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e655da0-bf71-494b-abb4-e41fe8a6d493_1707x1719.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738cae_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252F1e655da0-bf71-494b-abb4-e41fe8a6d493_1707x1719.jpeg" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Block prompts that contain production credentials or PII before they ever reach the model</li><li>Automatically append repo-specific context (current branch, recent commits, open PRs) to every prompt</li><li>Auto-generate session titles using <code>sessionTitle</code> based on the first prompt</li><li>Route certain prompts to a specialized agent by injecting instructions via <code>additionalContext</code></li></ul><h2>3. Tool Execution Hooks</h2><p>This is where most of the magic happens. Every time Claude wants to use a tool (Bash, Edit, Write, Read, WebSearch, MCP tools, anything) these hooks fire around the call.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>PreToolUse</strong>: Runs before the tool executes. Can allow, deny, ask the user, or defer the call. Can also modify the tool’s input parameters via <code>updatedInput</code>.</li><li><strong>PostToolUse</strong>: Runs after the tool succeeds. Can block Claude from continuing, inject additional context, or replace MCP tool output.</li><li><strong>PostToolUseFailure</strong>: Runs when a tool call fails. Use it to log errors, send alerts, or give Claude corrective feedback.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!dEIK!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb148bd80-d2db-4c25-ac55-4f51b87a69ce_1515x3031.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738cc2_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252Fb148bd80-d2db-4c25-ac55-4f51b87a69ce_1515x3031.jpeg" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Block destructive Bash commands (<code>rm -rf</code>, <code>DROP TABLE</code>, force-push to main) before they run</li><li>Auto-format and lint any file Claude edits via <code>PostToolUse</code> on Edit/Write</li><li>Automatically run tests after every code change and feed results back to Claude</li><li>Rewrite npm/pip install commands to use the company mirror via <code>updatedInput</code></li><li>Log every MCP tool call for audit trails in regulated environments</li><li>Detect common tool failures (auth expired, rate limited) and tell Claude how to recover</li></ul><h2>4. Permission Hooks</h2><p>When Claude wants to do something that requires permission, Claude Code normally shows a dialog. These hooks let you approve or deny programmatically, or react when the auto-mode classifier denies a call.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>PermissionRequest</strong>: Fires when a permission dialog would appear. Can auto-allow (with optional input modification), auto-deny, or add persistent permission rules.</li><li><strong>PermissionDenied</strong>: Fires when auto-mode denies a tool call. Read-only, but can tell the model it may retry via <code>retry: true</code>.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!iZrj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a19cc41-79e0-47e8-a526-4f40f0669254_3483x2820.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738cbf_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252F5a19cc41-79e0-47e8-a526-4f40f0669254_3483x2820.jpeg" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Auto-approve Bash commands that match a whitelist (read-only git ops, test commands, linters) without prompting</li><li>Auto-deny writes to sensitive paths (<code>.env</code>, <code>secrets/</code>, <code>production/</code>)</li><li>Automatically add “always allow” rules based on which team member is using Claude</li><li>Tell Claude to retry a denied tool call with a different approach</li><li>Log every permission decision for compliance and later auditing</li><li>Modify tool input at permission time (e.g., force a dry-run flag)</li></ul><h2>5. Subagent &amp; Task Hooks</h2><p>Claude Code can spawn subagents (via the Agent tool) and manage tasks through its task system. These hooks let you observe and control that nested activity.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>SubagentStart</strong>: Fires when a subagent is spawned. Can inject context just for the subagent.</li><li><strong>SubagentStop</strong>: Fires when the subagent finishes. Can block the subagent from stopping.</li><li><strong>TaskCreated</strong>: Fires when a task is being created. Can block creation if it doesn’t meet criteria.</li><li><strong>TaskCompleted</strong>: Fires when a task is marked complete. Can block completion if tests fail or criteria aren’t met.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!c6wE!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb0213027-2dca-4c64-86a6-b9108cef24d7_3311x2227.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738ca2_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252Fb0213027-2dca-4c64-86a6-b9108cef24d7_3311x2227.jpeg" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Enforce that every task subject starts with a ticket ID like <code>[PROJ-123]</code></li><li>Block task completion until the full test suite passes</li><li>Inject security guidelines into every subagent that does code exploration</li><li>Track subagent execution times in a metrics system for performance analysis</li><li>Prevent Explore subagents from accessing certain directories</li><li>Require a linked design doc before any task involving architecture changes can be created</li></ul><h2>6. Stop &amp; Completion Hooks</h2><p>When Claude finishes a turn, these hooks decide whether it really gets to stop or whether there’s more work to do.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>Stop</strong>: Fires when the main agent finishes responding. Can force Claude to continue working by returning <code>decision: "block"</code> with a reason.</li><li><strong>StopFailure</strong>: Fires instead of Stop when the turn ends due to an API error (rate limit, auth failure, etc.). Observation only.</li><li><strong>TeammateIdle</strong>: Fires when an agent-team teammate is about to go idle. Can require more work before allowing idle state.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!trVD!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9ff90e4-0660-4167-8510-c253ebd87b13_3353x1629.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738cc7_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252Fe9ff90e4-0660-4167-8510-c253ebd87b13_3353x1629.jpeg" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Prevent Claude from stopping until all TODOs in the changed files are resolved</li><li>Require passing lint and type checks before any Stop is allowed</li><li>Auto-retry on transient API errors by detecting rate_limit in StopFailure</li><li>Send a Slack notification when a teammate hits an auth error</li><li>Block teammate idle until a CI pipeline has been triggered</li><li>Verify build artifacts exist before letting a subagent close out</li></ul><h2>7. Compaction Hooks</h2><p>When the context window fills up, Claude Code compacts the conversation, summarizing older turns to make room. These hooks let you control when and how that happens.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>PreCompact</strong>: Fires before compaction. Can block it (which aborts auto-compact or cancels a manual <code>/compact</code>).</li><li><strong>PostCompact</strong>: Fires after compaction completes. Observation only. Receives the generated summary.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!L1dQ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fad20f2fa-400c-45b5-af51-a2b4e8a6f801_1802x2436.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738cbc_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252Fad20f2fa-400c-45b5-af51-a2b4e8a6f801_1802x2436.png" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Block manual <code>/compact</code> unless the user passes specific instructions</li><li>Archive the full conversation to external storage before compaction drops context</li><li>Log compaction events with the generated summary for later review</li><li>Detect when context windows are filling too fast and warn the user</li><li>Save pre-compaction state so you can restore important context after if needed</li></ul><h2>8. File &amp; Environment Hooks</h2><p>These hooks let Claude Code react to changes in the filesystem or working environment. Perfect for direnv-style workflows or reactive configuration.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>CwdChanged</strong>: Fires when the working directory changes (e.g., Claude runs <code>cd</code>). Has access to <code>CLAUDE_ENV_FILE</code> for persisting env vars.</li><li><strong>FileChanged</strong>: Fires when a watched file changes on disk. The <code>matcher</code> field specifies filenames to watch.</li><li><strong>ConfigChange</strong>: Fires when a settings file changes during a session. Can block the change.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!Q-dr!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F047a8845-437a-46a0-9412-13919efb6735_2310x2011.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738ca5_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252F047a8845-437a-46a0-9412-13919efb6735_2310x2011.jpeg" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Reload Node/Python versions automatically when Claude cd’s into a different project</li><li>Pick up new <code>.env</code> values the moment the file changes on disk</li><li>Block unauthorized changes to <code>.claude/settings.json</code> outside of code review</li><li>Auto-activate the right conda environment based on directory</li><li>Watch <code>package.json</code> and reinstall dependencies when it changes</li><li>Audit every config change for compliance, including who/when/what changed</li></ul><h2>9. Worktree Hooks</h2><p>If you use <code>claude --worktree</code> or subagents with <code>isolation: "worktree"</code>, Claude Code creates an isolated working copy. These hooks let you use alternative version control systems (SVN, Perforce, Mercurial) or run custom setup.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>WorktreeCreate</strong>: Replaces the default git worktree behavior. Must return the absolute path to the new worktree.</li><li><strong>WorktreeRemove</strong>: Fires when a worktree is being cleaned up. Use it to clean up state that WorktreeCreate set up.</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!cO7C!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6fbc0847-347e-4711-ad00-35bf2c8b5d91_1094x3741.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738ca8_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252F6fbc0847-347e-4711-ad00-35bf2c8b5d91_1094x3741.png" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Use SVN, Mercurial, or Perforce instead of git for isolated sessions</li><li>Copy <code>.env</code> and other gitignored config files into new worktrees automatically</li><li>Register new worktrees with an internal tracking system</li><li>Archive worktree state before cleanup for debugging failed subagent runs</li><li>Apply custom permissions or ownership to worktree directories on creation</li></ul><h2>10. MCP Elicitation &amp; Notification Hooks</h2><p>MCP servers can request input from the user mid-task. These hooks let you intercept, auto-respond, or observe those requests, plus handle general Claude Code notifications.</p><p><strong>Hooks in this group:</strong></p><ul role="list"><li><strong>Elicitation</strong>: Fires when an MCP server requests user input. Can auto-accept, decline, or cancel without showing a dialog.</li><li><strong>ElicitationResult</strong>: Fires after the user responds, before the answer goes back to the MCP server. Can override the user’s response.</li><li><strong>Notification</strong>: Fires when Claude Code shows any notification (permission prompt, idle prompt, auth success, elicitation dialog).</li></ul><figure class="w-richtext-align-center w-richtext-figure-type-image"><a href="https://substackcdn.com/image/fetch/$s_!GvK0!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb337dbc2-35a7-4ab5-8f5e-9186627d00a7_2551x3231.png" target="_blank"><div><img alt="" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a303f53084f55c3a8738cb3_https%253A%252F%252Fsubstack-post-media.s3.amazonaws.com%252Fpublic%252Fimages%252Fb337dbc2-35a7-4ab5-8f5e-9186627d00a7_2551x3231.jpeg" loading="lazy"></div></a></figure><p><strong>Use cases:</strong></p><ul role="list"><li>Auto-fill MCP authentication prompts from your secret manager</li><li>Desktop-notify the team chat whenever Claude needs a permission decision</li><li>Log every MCP elicitation for audit purposes</li><li>Override user answers in certain regulated flows (e.g., force multi-factor confirmation)</li><li>Send a phone alert when Claude has been idle too long on a long-running task</li><li>Route elicitation requests to a Slack channel for async team approval</li></ul><h2>Hook Handler Types</h2><p>Every hook you configure is one of four handler types:</p><ul role="list"><li><strong>command</strong>: Runs a shell command. Receives JSON on stdin, returns decisions via exit code or stdout JSON. This is the workhorse.</li><li><strong>http</strong>: Sends the hook input as a POST request to a URL. Great for integrating with internal services without writing shell scripts on every dev’s machine.</li><li><strong>prompt</strong>: Sends the hook input to a fast Claude model that returns a yes/no decision. Useful when the decision needs judgment, not just regex matching.</li><li><strong>agent</strong>: Spawns a full subagent with tool access (Read, Grep, Glob) that can investigate before deciding. Heavier-weight but powerful for verification that needs to inspect actual files.</li></ul><p>Command hooks also support an <code>async: true</code> flag, which runs them in the background so Claude keeps working. Perfect for long test suites, deployments, or external API calls where you don’t need the result to block the current turn.</p><h2>Where to Define Hooks</h2><p>Hooks can live in several places, each with different scope:</p><ul role="list"><li><code>~/.claude/settings.json</code>: applies to all your projects, local to your machine</li><li><code>.claude/settings.json</code>: project-scoped, commits to the repo (shareable)</li><li><code>.claude/settings.local.json</code>: project-scoped but gitignored (personal overrides)</li><li>Plugin <code>hooks/hooks.json</code>: bundled with a plugin, activates when the plugin is enabled</li><li>Skill or agent frontmatter: scoped to the component’s lifecycle</li><li>Managed policy settings: organization-wide, admin-controlled</li></ul><p>Type <code>/hooks</code> in Claude Code to browse everything that’s currently configured and where it came from.</p><h2>Final Thoughts</h2><p>Hooks are the difference between Claude Code as a clever autocomplete and Claude Code as a first-class citizen in your engineering workflow. Start small. A lint-on-write <code>PostToolUse</code> hook and a <code>rm -rf</code> blocker in <code>PreToolUse</code> will already change how much you trust Claude to work autonomously. From there, the lifecycle is your playground.</p><p>If you build something interesting, share it. The community is still figuring out what’s possible, and every hook someone publishes is a pattern the rest of us can learn from.</p><p>‍</p><p><strong><em>If you want to discuss generative AI with me, feel free to connect with me at LinkedIn </em></strong><a href="https://www.linkedin.com/in/subham-kundu-2746b515b/"><strong><em>https://www.linkedin.com/in/subham-kundu-2746b515b/</em></strong></a></p><p>‍</p></div><div class="w-dyn-list"><div role="list" class="article_tags w-dyn-items"><div role="listitem" class="w-dyn-item"><a href="/tag/generative-ai-2" class="article_tag w-inline-block"><span>Generative AI</span></a></div><div role="listitem" class="w-dyn-item"><a href="/tag/agentic-ai" class="article_tag w-inline-block"><span>Agentic AI</span></a></div><div role="listitem" class="w-dyn-item"><a href="/tag/ai-agents" class="article_tag w-inline-block"><span>AI Agents</span></a></div><div role="listitem" class="w-dyn-item"><a href="/tag/claude-code" class="article_tag w-inline-block"><span>Claude Code</span></a></div><div role="listitem" class="w-dyn-item"><a href="/tag/mcp" class="article_tag w-inline-block"><span>MCP</span></a></div></div></div></div></div></div></div></section><section class="section_article-author"><div class="bg_lines-wrap is-align-right"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 851 1057" fill="none" class="lines_pattern is-article-author"><g clip-path="url(#clip0_2139_203)"><path d="M99.5011 1.46687e-05L325.413 391.29C344.043 423.56 332.11 464.461 299.894 483.061L237.614 519.018C225.773 525.855 216.184 535.174 209.103 545.944C192.228 571.573 189.74 605.479 206.023 633.683L450.549 1057.21" stroke="currentColor"></path><path d="M-0.498908 1.46687e-05L225.413 391.29C244.043 423.56 232.11 464.461 199.894 483.061L137.614 519.018C125.773 525.855 116.184 535.174 109.103 545.944C92.2282 571.573 89.7399 605.479 106.023 633.683L350.549 1057.21" stroke="currentColor"></path><path d="M199.501 1.46687e-05L425.413 391.29C444.043 423.56 432.11 464.461 399.894 483.061L337.614 519.018C325.773 525.855 316.184 535.174 309.103 545.944C292.228 571.573 289.74 605.479 306.023 633.683L550.549 1057.21" stroke="currentColor"></path><path d="M299.501 1.46687e-05L525.413 391.29C544.043 423.56 532.11 464.461 499.894 483.061L437.614 519.018C425.773 525.855 416.184 535.174 409.103 545.944C392.228 571.573 389.74 605.479 406.023 633.683L650.549 1057.21" stroke="currentColor"></path><path d="M399.501 1.46687e-05L625.413 391.29C644.043 423.56 632.11 464.461 599.894 483.061L537.614 519.018C525.773 525.855 516.184 535.174 509.103 545.944C492.228 571.573 489.74 605.479 506.023 633.683L750.549 1057.21" stroke="currentColor"></path><path d="M499.501 1.46687e-05L725.413 391.29C744.043 423.56 732.11 464.461 699.894 483.061L637.614 519.018C625.773 525.855 616.184 535.174 609.103 545.944C592.228 571.573 589.74 605.479 606.023 633.683L850.549 1057.21" stroke="currentColor"></path></g><defs><clipPath id="clip0_2139_203"><rect width="851" height="1057" fill="currentColor"></rect></clipPath></defs></svg></div><div data-wf--basic-shape-line--variant="primary-bg" class="shape_wrap w-variant-8c0e382d-c4be-c0b2-ae9c-187dceafd8e4"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1440 90" fill="none"><path d="M1440 88.4993L715.171 88.5C693.328 88.5 675.729 73.409 675.729 55.3129V27.1524C675.729 12.575 661.809 0.500001 644.197 0.500001H0" stroke="currentColor"></path></svg></div><div class="padding-global"><div class="container-large"><div class="article-author_component"><h2 data-w-id="40be30db-03ad-2192-7ce9-1cf4dbcf1b08" style="opacity: 0;" class="heading-style-h5">Author</h2><div class="w-dyn-list"><div role="list" class="article-author_wrap w-dyn-items"><div role="listitem" class="w-dyn-item"><div class="article-author_card" style="opacity: 0;"><img width="64" height="64" alt="" loading="lazy" src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/698621d13b83d31e6fba057f_Author-Portrait.avif" class="article_author-portrait"><div class="max-width-full"><div class="article-author_heading"><div class="w-layout-vflex article-author_info"><a href="/author/subham-kundu" class="author_name w-inline-block"><span>Subham Kundu</span></a><span class="text-size-sm text-color-secondary">Founding Engineer</span></div><div class="author_card-social"><a aria-label="Follow on LinkedIn" href="https://www.linkedin.com/in/subham-kundu-2746b515b/" target="_blank" class="author_link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_3327_4106)"><path d="M12 1V23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12H23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23C15.0376 23 17.5 18.0751 17.5 12C17.5 5.92487 15.0376 1 12 1C8.96243 1 6.5 5.92487 6.5 12C6.5 18.0751 8.96243 23 12 23Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g><defs><clipPath id="clip0_3327_4106"><rect width="24" height="24" fill="currentColor"></rect></clipPath></defs></svg></a><a aria-label="Follow on LinkedIn" href="mailto:subhamkundu999@gmail.com" class="author_link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M1 13V19C1 19.5304 1.21071 20.0391 1.58579 20.4142C1.96086 20.7893 2.46957 21 3 21H21C21.5304 21 22.0391 20.7893 22.4142 20.4142C22.7893 20.0391 23 19.5304 23 19V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M23 8V5C23 4.46957 22.7893 3.96086 22.4142 3.58579C22.0391 3.21071 21.5304 3 21 3H3C2.46957 3 1.96086 3.21071 1.58579 3.58579C1.21071 3.96086 1 4.46957 1 5V8L12 14L23 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div></div><p class="text-color-secondary">As AI agents like Claude and Cursor integrate into enterprise workflows, organizations face critical security challenges around safe resource access. The Model Context Protocol (MCP) is establishing communication standards, while OAuth 2.1 and token exchange mechanisms provide authentication frameworks. These technologies aim to balance AI capabilities with enterprise security requirements for sensitive corporate data.</p></div></div></div></div></div></div></div></div><div data-wf--basic-shape-line--variant="primary-bg-flip" class="shape_wrap w-variant-a6c596c2-d363-68af-9a3c-5fd0de1adf79"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1440 90" fill="none"><path d="M1440 88.4993L715.171 88.5C693.328 88.5 675.729 73.409 675.729 55.3129V27.1524C675.729 12.575 661.809 0.500001 644.197 0.500001H0" stroke="currentColor"></path></svg></div></section><section class="section_article-related"><div class="padding-global"><div class="container-large"><div class="article-related_component"><h2 data-w-id="3e99a914-988b-3e81-62ea-39f5bb9c476e" style="opacity: 0;" class="heading-style-h3">Related posts</h2><div class="w-dyn-list"><div role="list" class="blog_list w-dyn-items" style="opacity: 0;"><div role="listitem" class="w-dyn-item"><a href="/blog/human-memory-as-the-perfect-template-for-ai-memory" class="blog_card w-inline-block"><img src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a26e2f811488e8c622d8636_image%20(197).png" loading="lazy" width="410" height="232" alt="" class="blog_card-img"><div class="blog_card-content"><div class="blog_card-info text-color-secondary"><div class="tag"><img src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/69712fc17f3bcd7d7fdcb686_Calendar.svg" loading="lazy" width="18" height="18" alt="Calendar icon
+" class="icon-1x1-sm-plus"><span class="text-style-subheading">June 9, 2026</span></div><h3 class="heading-style-h6">Human Memory As The Perfect Template For AI Memory</h3><p class="text-size-md text-style-3lines">The blog breaks down human memory into functional layers and maps them to the architectural requirements of AI systems. It shows how separating sensing, storage, context, and reasoning leads to more robust agents, and why today’s embedding‑only approaches fall short.</p></div><div class="link"><span class="text-size-xl">View Article</span><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" data-icon-arrow="" class="text-link_icon"><path d="M13.3333 13.3334L16.0774 10.5893C16.4029 10.2639 16.4029 9.73626 16.0774 9.41083L13.3333 6.66675M15.8333 10.0001L4.16667 10.0001" stroke="currentColor" stroke-width="1.11111" stroke-linecap="round"></path></svg></div></div></a></div><div role="listitem" class="w-dyn-item"><a href="/blog/reppit-a-framework-to-ship-production-code-2-3x-faster" class="blog_card w-inline-block"><img src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a1da106adeae9c1a5a38aa5_ChatGPT%20Image%20Jun%201%2C%202026%2C%2011_09_06%20PM.png" loading="lazy" width="410" height="232" alt="" class="blog_card-img"><div class="blog_card-content"><div class="blog_card-info text-color-secondary"><div class="tag"><img src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/69712fc17f3bcd7d7fdcb686_Calendar.svg" loading="lazy" width="18" height="18" alt="Calendar icon
+" class="icon-1x1-sm-plus"><span class="text-style-subheading">June 2, 2026</span></div><h3 class="heading-style-h6">RePPIT: A Framework to Ship Production Code 2-3X Faster</h3><p class="text-size-md text-style-3lines">A walk-through of RePPIT, a five-step framework for shipping production code 2-3x faster with AI that is used by companies of all sizes from seed-stage startups to public enterprises.</p></div><div class="link"><span class="text-size-xl">View Article</span><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" data-icon-arrow="" class="text-link_icon"><path d="M13.3333 13.3334L16.0774 10.5893C16.4029 10.2639 16.4029 9.73626 16.0774 9.41083L13.3333 6.66675M15.8333 10.0001L4.16667 10.0001" stroke="currentColor" stroke-width="1.11111" stroke-linecap="round"></path></svg></div></div></a></div><div role="listitem" class="w-dyn-item"><a href="/blog/an-agent-shouldnt-trust-everything-it-reads" class="blog_card w-inline-block"><img src="https://cdn.prod.website-files.com/697943c0eec43991c9a94738/6a14401394893b34903343d5_ChatGPT%20Image%20May%2025%2C%202026%2C%2008_26_47%20PM.png" loading="lazy" width="410" height="232" alt="" class="blog_card-img"><div class="blog_card-content"><div class="blog_card-info text-color-secondary"><div class="tag"><img src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/69712fc17f3bcd7d7fdcb686_Calendar.svg" loading="lazy" width="18" height="18" alt="Calendar icon
+" class="icon-1x1-sm-plus"><span class="text-style-subheading">May 26, 2026</span></div><h3 class="heading-style-h6">An Agent Shouldn't Trust Everything it Reads</h3><p class="text-size-md text-style-3lines">Once agents can use tools, ordinary business content can become part of the control surface. Documents, tickets, webpages, records, and retrieval results may contain instructions the agent should read as data, not follow as commands. Based on a conversation with Pramod Krishnan from PwC, this piece looks at indirect prompt injection, tool permissions, trace review, and why production agents need a clear separation between content and action.</p></div><div class="link"><span class="text-size-xl">View Article</span><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" data-icon-arrow="" class="text-link_icon"><path d="M13.3333 13.3334L16.0774 10.5893C16.4029 10.2639 16.4029 9.73626 16.0774 9.41083L13.3333 6.66675M15.8333 10.0001L4.16667 10.0001" stroke="currentColor" stroke-width="1.11111" stroke-linecap="round"></path></svg></div></div></a></div></div></div></div></div></div></section><section class="cta"><div class="padding-global"><div class="container-large"><div class="cta_component"><div class="cta_content"><h2 data-w-id="e01f1632-32a2-172a-c6be-2af07982cddf" class="heading-style-cta" style="opacity: 0;">Become Part of the Global Movement</h2></div><div data-w-id="3285e12a-4496-2e28-beef-4d1448e5563c" class="cta_form" style="opacity: 0;"><p class="text-size-lg">Become part of a thriving network of over 70,000 AI and ML professionals. Experience unparalleled opportunities for learning, collaboration, and growth—all for free!</p><a data-wf--button--variant="primary-lg-dark" href="https://gatewaze.mlops.community/" target="_blank" class="button w-variant-470f7644-4270-b5d8-5ed2-ba67269cf385 w-inline-block"><span>Join the Community</span></a></div></div></div></div></section></main><footer class="footer"><div class="bg_lines-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 851 1057" fill="none" class="lines_pattern"><g clip-path="url(#clip0_2139_203)"><path d="M99.5011 1.46687e-05L325.413 391.29C344.043 423.56 332.11 464.461 299.894 483.061L237.614 519.018C225.773 525.855 216.184 535.174 209.103 545.944C192.228 571.573 189.74 605.479 206.023 633.683L450.549 1057.21" stroke="currentColor"></path><path d="M-0.498908 1.46687e-05L225.413 391.29C244.043 423.56 232.11 464.461 199.894 483.061L137.614 519.018C125.773 525.855 116.184 535.174 109.103 545.944C92.2282 571.573 89.7399 605.479 106.023 633.683L350.549 1057.21" stroke="currentColor"></path><path d="M199.501 1.46687e-05L425.413 391.29C444.043 423.56 432.11 464.461 399.894 483.061L337.614 519.018C325.773 525.855 316.184 535.174 309.103 545.944C292.228 571.573 289.74 605.479 306.023 633.683L550.549 1057.21" stroke="currentColor"></path><path d="M299.501 1.46687e-05L525.413 391.29C544.043 423.56 532.11 464.461 499.894 483.061L437.614 519.018C425.773 525.855 416.184 535.174 409.103 545.944C392.228 571.573 389.74 605.479 406.023 633.683L650.549 1057.21" stroke="currentColor"></path><path d="M399.501 1.46687e-05L625.413 391.29C644.043 423.56 632.11 464.461 599.894 483.061L537.614 519.018C525.773 525.855 516.184 535.174 509.103 545.944C492.228 571.573 489.74 605.479 506.023 633.683L750.549 1057.21" stroke="currentColor"></path><path d="M499.501 1.46687e-05L725.413 391.29C744.043 423.56 732.11 464.461 699.894 483.061L637.614 519.018C625.773 525.855 616.184 535.174 609.103 545.944C592.228 571.573 589.74 605.479 606.023 633.683L850.549 1057.21" stroke="currentColor"></path></g><defs><clipPath id="clip0_2139_203"><rect width="851" height="1057" fill="currentColor"></rect></clipPath></defs></svg></div><div class="shape_wrap"><img src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/6972daff91d177fd1be0b2c9_646b56368c4721874265809ad217b306_Footer-Shape.svg" loading="lazy" width="1440" height="149" alt="" class="full-image"></div><div class="padding-global"><div class="container-large"><div class="footer_component"><div class="footer_links"><div data-w-id="5b3d2484-9301-96b7-7033-e7d95665685c" class="footer_links-left" style="opacity: 0;"><a aria-label="'MLOps Community — Home" href="#" class="footer_logo w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 208 64" fill="none"><g clip-path="url(#clip0_2825_304)"><path d="M67.6133 27.5824V9.33301H73.6057L78.6869 23.0739H78.8249L83.7965 9.33301H89.5129V27.5805H85.7303L85.9799 13.3689H85.6755L80.1519 27.5805H76.8382L71.3978 13.3689H71.0934L71.3429 27.5805H67.6152L67.6133 27.5824Z" fill="#F4F6FA"></path><path d="M104.214 24.2403V27.5844H92.5374V9.33496H96.5071V24.2403H104.214Z" fill="#F4F6FA"></path><path d="M113.153 27.9699C111.828 27.9699 110.641 27.7619 109.59 27.3479C108.541 26.934 107.643 26.3253 106.898 25.5238C106.152 24.7223 105.581 23.7355 105.186 22.5654C104.789 21.3953 104.592 20.0531 104.592 18.5427C104.592 16.3858 104.97 14.6032 105.724 13.193C106.479 11.7828 107.515 10.7243 108.83 10.0135C110.146 9.3046 111.634 8.94922 113.29 8.94922C114.579 8.94922 115.749 9.15716 116.798 9.57114C117.847 9.98513 118.745 10.5938 119.49 11.3953C120.235 12.1968 120.811 13.193 121.216 14.3821C121.62 15.5711 121.823 16.9303 121.823 18.4614C121.823 19.9926 121.62 21.4009 121.216 22.5805C120.811 23.7601 120.225 24.7506 119.461 25.5521C118.698 26.3536 117.781 26.9585 116.715 27.3631C115.647 27.7676 114.458 27.9718 113.152 27.9718L113.153 27.9699ZM113.265 24.7884C114.24 24.7884 115.059 24.5502 115.722 24.0701C116.384 23.5918 116.891 22.9 117.24 21.9964C117.59 21.0928 117.766 19.9869 117.766 18.6788C117.766 17.3707 117.586 16.1533 117.227 15.1949C116.868 14.2365 116.348 13.505 115.666 12.9964C114.985 12.4898 114.155 12.2365 113.18 12.2365C112.204 12.2365 111.407 12.4804 110.736 12.9681C110.065 13.4558 109.549 14.1628 109.189 15.0834C108.83 16.004 108.651 17.1476 108.651 18.5125C108.651 19.5087 108.756 20.3971 108.968 21.1798C109.18 21.9642 109.479 22.6221 109.866 23.1571C110.254 23.692 110.732 24.0966 111.303 24.3744C111.874 24.6523 112.528 24.7884 113.263 24.7884H113.265Z" fill="#F4F6FA"></path><path d="M124.095 32.2268V13.0662H127.38L127.409 17.1021L127.906 17.1305C128.072 16.1532 128.361 15.3328 128.775 14.6692C129.189 14.0057 129.728 13.5086 130.391 13.1759C131.053 12.8451 131.819 12.6787 132.684 12.6787C133.974 12.6787 135.078 12.9963 135.998 13.6333C136.919 14.2685 137.624 15.1626 138.112 16.3157C138.599 17.4688 138.843 18.828 138.843 20.3932C138.843 21.8488 138.622 23.1456 138.182 24.2779C137.739 25.4121 137.081 26.31 136.206 26.9735C135.331 27.637 134.24 27.9697 132.934 27.9697C132.013 27.9697 131.235 27.7939 130.599 27.4442C129.964 27.0945 129.441 26.6011 129.025 25.9659C128.611 25.3289 128.265 24.569 127.989 23.6862H127.465C127.575 24.1834 127.677 24.6919 127.77 25.206C127.862 25.7221 127.936 26.2249 127.991 26.7126C128.046 27.2003 128.074 27.6748 128.074 28.1361V32.2287H124.097L124.095 32.2268ZM131.55 24.7883C132.214 24.7883 132.775 24.6049 133.235 24.2363C133.694 23.8677 134.049 23.3516 134.299 22.6881C134.548 22.0246 134.671 21.2684 134.671 20.4216C134.671 19.501 134.543 18.7127 134.284 18.0567C134.027 17.4027 133.658 16.8923 133.18 16.5237C132.7 16.1551 132.129 15.9698 131.467 15.9698C130.877 15.9698 130.371 16.1002 129.949 16.3573C129.526 16.6163 129.17 16.9566 128.885 17.38C128.599 17.8034 128.391 18.2609 128.263 18.7486C128.134 19.2363 128.07 19.7013 128.07 20.1437V20.6692C128.07 21.0189 128.115 21.3838 128.208 21.7618C128.301 22.1399 128.448 22.5085 128.65 22.8677C128.853 23.2268 129.093 23.5501 129.369 23.8355C129.645 24.121 129.966 24.3516 130.335 24.5274C130.701 24.7032 131.108 24.7902 131.548 24.7902L131.55 24.7883Z" fill="#F4F6FA"></path><path d="M146.741 27.9697C145.766 27.9697 144.881 27.877 144.089 27.6937C143.297 27.5103 142.617 27.2419 142.046 26.8922C141.475 26.5424 141.014 26.1228 140.666 25.6332C140.316 25.1455 140.085 24.5954 139.976 23.9886L143.014 22.7447C143.087 23.1493 143.29 23.5273 143.62 23.8771C143.951 24.2268 144.399 24.5084 144.959 24.7201C145.52 24.9319 146.197 25.0377 146.989 25.0377C147.836 25.0377 148.49 24.913 148.949 24.6653C149.409 24.4158 149.639 24.0623 149.639 23.6011C149.639 23.2513 149.511 22.9754 149.254 22.7712C148.995 22.5689 148.618 22.3931 148.121 22.2457C147.624 22.0982 147.025 21.9602 146.326 21.8298C145.645 21.6653 144.949 21.4895 144.24 21.3043C143.532 21.1209 142.878 20.862 142.28 20.5293C141.681 20.1984 141.193 19.7599 140.817 19.2155C140.439 18.6729 140.25 17.9754 140.25 17.1285C140.25 16.2816 140.49 15.4688 140.968 14.8053C141.447 14.1418 142.146 13.6219 143.068 13.2439C143.989 12.8658 145.112 12.6768 146.437 12.6768C147.634 12.6768 148.683 12.8393 149.586 13.1607C150.488 13.4839 151.229 13.9452 151.809 14.5444C152.39 15.1437 152.781 15.8582 152.983 16.6862L149.753 17.7637C149.679 17.3213 149.499 16.9338 149.214 16.603C148.929 16.2722 148.552 16.0227 148.082 15.8563C147.613 15.6919 147.065 15.6068 146.439 15.6068C145.647 15.6068 145.034 15.7372 144.603 15.9943C144.171 16.2533 143.955 16.5936 143.955 17.017C143.955 17.3667 144.097 17.6521 144.382 17.8733C144.668 18.0945 145.068 18.2741 145.583 18.4121C146.099 18.5501 146.705 18.6937 147.405 18.8412C148.142 18.9886 148.86 19.1588 149.56 19.3535C150.259 19.5463 150.891 19.7996 151.452 20.1134C152.014 20.4272 152.46 20.8412 152.79 21.3572C153.121 21.8733 153.288 22.5368 153.288 23.3478C153.288 24.3081 153.031 25.1322 152.514 25.8222C151.998 26.5141 151.254 27.0434 150.278 27.412C149.303 27.7806 148.123 27.9659 146.743 27.9659L146.741 27.9697Z" fill="#F4F6FA"></path><path d="M76.1368 55.0203C74.8023 55.0203 73.6057 54.8181 72.5471 54.4173C71.4866 54.0147 70.5906 53.4249 69.8609 52.648C69.1293 51.8691 68.5736 50.9088 68.1879 49.7671C67.8042 48.6234 67.6133 47.3115 67.6133 45.8295C67.6133 44.3475 67.8099 42.9845 68.2031 41.7955C68.5963 40.6065 69.1577 39.5951 69.8893 38.7634C70.6208 37.9316 71.496 37.2946 72.5206 36.856C73.5433 36.4156 74.6851 36.1963 75.9459 36.1963C76.9138 36.1963 77.8098 36.3286 78.6321 36.5933C79.4544 36.8579 80.1671 37.2379 80.7701 37.7313C81.3731 38.2246 81.8438 38.8295 82.1822 39.5422C82.5205 40.2549 82.6982 41.0601 82.7171 41.9562L79.8949 42.6688C79.9138 41.7917 79.7342 41.0639 79.3599 40.4874C78.9856 39.9108 78.4865 39.4779 77.8665 39.1849C77.2446 38.8919 76.5773 38.7464 75.8646 38.7464C75.2068 38.7464 74.5679 38.8749 73.9459 39.1301C73.324 39.3872 72.772 39.7936 72.2881 40.3513C71.8042 40.9089 71.4204 41.6273 71.1369 42.5063C70.8533 43.3834 70.7116 44.4458 70.7116 45.6896C70.7116 47.2813 70.9441 48.5762 71.411 49.5724C71.876 50.5686 72.5244 51.3001 73.3562 51.7671C74.1879 52.234 75.1425 52.4665 76.22 52.4665C77.2975 52.4665 78.1576 52.2567 78.7966 51.8351C79.4355 51.4155 79.9062 50.8521 80.2087 50.147C80.5111 49.4419 80.6793 48.6423 80.7153 47.7463L83.3731 48.2132C83.3542 49.1452 83.2086 50.0279 82.9345 50.8616C82.6604 51.6933 82.2351 52.4211 81.6604 53.043C81.0858 53.665 80.341 54.1508 79.426 54.4967C78.513 54.8445 77.4166 55.0185 76.1368 55.0185V55.0203Z" fill="#F4F6FA"></path><path d="M91.9025 55.021C90.532 55.021 89.3165 54.728 88.2579 54.142C87.1974 53.5579 86.3713 52.7072 85.7778 51.5901C85.1842 50.4747 84.8874 49.1024 84.8874 47.4748C84.8874 45.8472 85.1974 44.4294 85.8194 43.3311C86.4413 42.2328 87.2768 41.4105 88.3278 40.8623C89.3789 40.3122 90.5622 40.04 91.8779 40.04C93.1936 40.04 94.4356 40.3236 95.496 40.8907C96.5546 41.4578 97.3921 42.3009 98.0045 43.4162C98.617 44.5315 98.9232 45.9228 98.9232 47.5863C98.9232 49.2498 98.617 50.609 98.0045 51.7148C97.3921 52.8226 96.5565 53.6505 95.496 54.1987C94.4356 54.7469 93.239 55.021 91.9063 55.021H91.9025ZM92.0121 52.66C92.8344 52.66 93.5376 52.4691 94.1218 52.0834C94.7059 51.6978 95.1539 51.1326 95.4658 50.3821C95.7758 49.6335 95.9308 48.7356 95.9308 47.694C95.9308 46.6525 95.7664 45.6865 95.4374 44.9096C95.1085 44.1326 94.6378 43.5334 94.0253 43.1119C93.4129 42.6903 92.6681 42.4805 91.791 42.4805C91.0046 42.4805 90.3146 42.6676 89.721 43.0438C89.1275 43.4181 88.6738 43.9757 88.3638 44.7186C88.0519 45.4597 87.8987 46.3614 87.8987 47.4218C87.8987 49.0872 88.2636 50.3764 88.9951 51.2914C89.7267 52.2063 90.7305 52.6638 92.0102 52.6638L92.0121 52.66Z" fill="#F4F6FA"></path><path d="M101.186 54.6637V40.3954H103.707L103.543 44.8396H104.036C104.273 43.7602 104.598 42.8679 105.01 42.1647C105.422 41.4596 105.923 40.9303 106.518 40.5731C107.112 40.2158 107.802 40.0381 108.588 40.0381C109.465 40.0381 110.191 40.2479 110.768 40.6695C111.343 41.091 111.783 41.6581 112.084 42.3708C112.384 43.0834 112.545 43.8887 112.564 44.7866H113.002C113.24 43.7432 113.573 42.8698 114.002 42.1647C114.431 41.4596 114.966 40.9303 115.605 40.5731C116.244 40.2158 116.957 40.0381 117.743 40.0381C118.53 40.0381 119.15 40.1893 119.717 40.4899C120.282 40.7923 120.758 41.2366 121.142 41.8207C121.526 42.4067 121.813 43.1326 122.006 44.0021C122.199 44.8698 122.293 45.8717 122.293 47.0059V54.6618H119.305V47.3896C119.305 46.3292 119.214 45.4501 119.031 44.7564C118.847 44.0607 118.566 43.539 118.182 43.1931C117.798 42.8452 117.314 42.6713 116.728 42.6713C116.07 42.6713 115.49 42.8963 114.987 43.3443C114.484 43.7923 114.078 44.4105 113.768 45.1968C113.458 45.9832 113.265 46.8887 113.193 47.9133V54.6637H110.261V47.5843C110.261 46.4861 110.169 45.5768 109.987 44.8528C109.804 44.1307 109.522 43.5863 109.138 43.2214C108.755 42.8547 108.271 42.6713 107.685 42.6713C106.991 42.6713 106.392 42.9057 105.889 43.3708C105.386 43.8377 104.989 44.4728 104.696 45.2781C104.403 46.0834 104.22 46.9889 104.148 47.9945V54.6618H101.188L101.186 54.6637Z" fill="#F4F6FA"></path><path d="M124.938 54.6637V40.3954H127.46L127.295 44.8396H127.789C128.025 43.7602 128.35 42.8679 128.762 42.1647C129.174 41.4596 129.675 40.9303 130.271 40.5731C130.864 40.2158 131.554 40.0381 132.341 40.0381C133.218 40.0381 133.944 40.2479 134.52 40.6695C135.095 41.091 135.535 41.6581 135.836 42.3708C136.138 43.0834 136.297 43.8887 136.316 44.7866H136.755C136.993 43.7432 137.325 42.8698 137.755 42.1647C138.184 41.4596 138.719 40.9303 139.358 40.5731C139.996 40.2158 140.709 40.0381 141.496 40.0381C142.282 40.0381 142.902 40.1893 143.469 40.4899C144.034 40.7923 144.511 41.2366 144.894 41.8207C145.278 42.4067 145.565 43.1326 145.758 44.0021C145.951 44.8698 146.046 45.8717 146.046 47.0059V54.6618H143.057V47.3896C143.057 46.3292 142.966 45.4501 142.783 44.7564C142.599 44.0607 142.318 43.539 141.934 43.1931C141.55 42.8452 141.066 42.6713 140.48 42.6713C139.823 42.6713 139.242 42.8963 138.739 43.3443C138.237 43.7923 137.83 44.4105 137.52 45.1968C137.21 45.9832 137.017 46.8887 136.945 47.9133V54.6637H134.014V47.5843C134.014 46.4861 133.921 45.5768 133.739 44.8528C133.556 44.1307 133.274 43.5863 132.891 43.2214C132.507 42.8547 132.023 42.6713 131.437 42.6713C130.743 42.6713 130.144 42.9057 129.641 43.3708C129.138 43.8377 128.741 44.4728 128.448 45.2781C128.155 46.0834 127.972 46.9889 127.9 47.9945V54.6618H124.94L124.938 54.6637Z" fill="#F4F6FA"></path><path d="M153.189 55.0211C151.581 55.0211 150.367 54.4691 149.545 53.3614C148.722 52.2536 148.312 50.5864 148.312 48.3539V40.3974H151.299V48.0249C151.299 49.5259 151.528 50.6412 151.985 51.3727C152.441 52.1043 153.163 52.471 154.15 52.471C154.698 52.471 155.182 52.333 155.601 52.0589C156.021 51.7848 156.392 51.4011 156.711 50.9058C157.03 50.4124 157.286 49.8321 157.478 49.1629C157.669 48.4956 157.802 47.7603 157.875 46.9531V40.3955H160.836V54.6638H158.314L158.45 50.1365H157.985C157.747 51.2707 157.414 52.2007 156.985 52.9209C156.556 53.643 156.025 54.1742 155.395 54.5126C154.766 54.851 154.029 55.0192 153.189 55.0192V55.0211Z" fill="#F4F6FA"></path><path d="M163.86 54.6636V40.3953H166.437L166.272 44.8395H166.737C166.993 43.7412 167.337 42.8414 167.766 42.1363C168.195 41.4331 168.743 40.9057 169.41 40.5579C170.078 40.2119 170.858 40.0361 171.754 40.0361C173.344 40.0361 174.554 40.6032 175.386 41.7374C176.217 42.8717 176.633 44.6013 176.633 46.9227V54.6617H173.618V47.2251C173.618 45.6334 173.38 44.4671 172.906 43.7261C172.429 42.9851 171.718 42.6146 170.768 42.6146C169.945 42.6146 169.246 42.8754 168.671 43.3972C168.097 43.9189 167.652 44.5994 167.342 45.4406C167.032 46.2818 166.858 47.1968 166.822 48.1854V54.6617H163.862L163.86 54.6636Z" fill="#F4F6FA"></path><path d="M180.847 38.0076C180.208 38.0076 179.724 37.8752 179.395 37.6106C179.066 37.3459 178.902 36.9471 178.902 36.4159C178.902 35.8847 179.066 35.5104 179.395 35.2363C179.724 34.9622 180.208 34.8242 180.847 34.8242C181.486 34.8242 181.998 34.9622 182.327 35.2363C182.656 35.5104 182.82 35.9055 182.82 36.4159C182.82 36.9263 182.656 37.344 182.327 37.6106C181.998 37.8752 181.505 38.0076 180.847 38.0076ZM179.367 54.6634V40.3951H182.327V54.6634H179.367Z" fill="#F4F6FA"></path><path d="M190.23 54.966C188.822 54.966 187.777 54.5822 187.092 53.8129C186.408 53.0454 186.064 51.8658 186.064 50.2741V42.8375H183.954L184.009 40.3952H185.38C185.854 40.3952 186.211 40.3177 186.448 40.1608C186.684 40.0058 186.832 39.726 186.886 39.3234L187.16 37.21H188.941V40.3933H192.86V42.8904H188.941V50.1891C188.941 50.9017 189.106 51.4159 189.435 51.7259C189.763 52.0378 190.247 52.1928 190.888 52.1928C191.236 52.1928 191.588 52.1512 191.943 52.0681C192.298 51.9868 192.641 51.8261 192.969 51.5879V54.4688C192.421 54.6522 191.918 54.7788 191.463 54.8526C191.007 54.9263 190.595 54.9622 190.23 54.9622V54.966Z" fill="#F4F6FA"></path><path d="M200.295 59.4928C199.563 59.4928 198.828 59.4153 198.089 59.2603C197.348 59.1053 196.667 58.8671 196.045 58.5476C195.425 58.2263 194.904 57.8104 194.484 57.3L195.69 54.9409C196.164 55.5628 196.805 56.0335 197.609 56.3529C198.412 56.6724 199.263 56.8331 200.159 56.8331C201.181 56.8331 202.026 56.6176 202.694 56.1885C203.361 55.7575 203.868 55.094 204.214 54.198C204.561 53.3019 204.745 52.1772 204.762 50.8218L205.009 48.0789H204.488C204.285 49.3776 203.972 50.421 203.542 51.2074C203.113 51.9938 202.588 52.5609 201.966 52.9087C201.344 53.2566 200.614 53.4305 199.773 53.4305C198.731 53.4305 197.858 53.1696 197.155 52.6498C196.45 52.128 195.921 51.3511 195.565 50.3171C195.21 49.2831 195.03 48.0165 195.03 46.5175V40.3984H197.99V45.8578C197.99 47.5969 198.223 48.8672 198.69 49.6725C199.155 50.4778 199.854 50.8804 200.786 50.8804C201.299 50.8804 201.754 50.7519 202.157 50.4967C202.558 50.2415 202.911 49.8615 203.212 49.3587C203.514 48.8558 203.75 48.2301 203.924 47.4797C204.098 46.7292 204.202 45.8596 204.24 44.8729V40.4003H207.229V50.9636C207.229 52.0978 207.136 53.1186 206.955 54.024C206.773 54.9295 206.493 55.7254 206.119 56.4116C205.745 57.0977 205.283 57.6743 204.735 58.1393C204.187 58.6062 203.542 58.9484 202.803 59.1677C202.062 59.387 201.227 59.4966 200.295 59.4966V59.4928Z" fill="#F4F6FA"></path><path d="M18.752 31.8808V32.1152C18.3512 32.9129 18.1244 33.8108 18.1244 34.7579V39.7333C18.1244 42.3098 16.0847 44.4421 13.5044 44.4421H-0.00590515V35.1095H13.5951C15.8503 35.1095 17.7993 33.7825 18.752 31.8789V31.8808Z" fill="#E54FA6"></path><path d="M32.8843 19.5557V28.8902H23.9071C21.6519 28.8902 19.703 30.2115 18.7502 32.1151V31.8807C19.1472 31.0868 19.3722 30.1889 19.3722 29.2456V24.2645C19.3722 21.688 21.4156 19.5557 23.9959 19.5557H32.8824H32.8843Z" fill="#E54FA6"></path><path d="M18.752 12.3252V12.5558C18.3512 13.3535 18.1244 14.2515 18.1244 15.1985V20.1796C18.1244 22.7561 16.0847 24.8884 13.5044 24.8884H-0.00590515V15.5558H13.5951C15.8503 15.5558 17.7993 14.2288 18.752 12.3252Z" fill="#E54FA6"></path><path d="M32.8843 -6.27796e-05V9.33257H23.9071C21.6519 9.33257 19.703 10.6539 18.7502 12.5537V12.3231C19.1472 11.5254 19.3722 10.6312 19.3722 9.68796V4.7069C19.3722 2.13036 21.4156 -0.00195312 23.9959 -0.00195312H32.8824L32.8843 -6.27796e-05Z" fill="#E54FA6"></path><path d="M18.752 51.4364V51.6708C18.3512 52.4685 18.1244 53.3664 18.1244 54.3135V59.2889C18.1244 61.8692 16.0847 63.9977 13.5044 63.9977H-0.00590515V54.6632H13.5951C15.8503 54.6632 17.7993 53.3362 18.752 51.4326V51.4364Z" fill="#E54FA6"></path><path d="M55.9957 39.1794V48.5139L23.9089 48.4459C21.6538 48.4459 19.7048 49.7672 18.7521 51.6708V51.4364C19.149 50.6387 19.374 49.7445 19.374 48.8012V43.8258C19.374 41.2455 21.4175 39.1113 23.9978 39.1113L55.9957 39.1794Z" fill="#E54FA6"></path></g><defs><clipPath id="clip0_2825_304"><rect width="207.231" height="63.9995" fill="white"></rect></clipPath></defs></svg></a><div class="footer_social"><a aria-label="MLOps Community on X (Twitter)" href="https://x.com/mlopscommunity" target="_blank" class="social_link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M10.8427 15.152L4.40697 22.5005H0.842224L9.17772 12.9785L10.8427 15.152Z" fill="currentColor"></path><path d="M12.7882 8.241L18.681 1.5H22.2435L14.4382 10.4265L12.7882 8.241Z" fill="currentColor"></path><path d="M23.616 22.5H16.4467L0.383972 1.5H7.73472L23.616 22.5ZM17.43 20.3678H19.404L6.66222 3.5205H4.54422L17.43 20.3678Z" fill="currentColor"></path></svg></a><a aria-label="MLOps Community on YouTube" href="https://www.youtube.com/channel/UCG6qpjVnBTTT8wLGBygANOQ" target="_blank" class="social_link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M23.775 7.49995C23.775 7.49995 23.55 5.84995 22.8 5.09995C21.9 4.12495 20.85 4.12495 20.4 4.04995C17.025 3.82495 12 3.82495 12 3.82495C12 3.82495 6.975 3.82495 3.6 4.04995C3.15 4.12495 2.1 4.12495 1.2 5.09995C0.45 5.84995 0.225 7.49995 0.225 7.49995C0.225 7.49995 0 9.44995 0 11.4V13.2C0 15.15 0.225 17.1 0.225 17.1C0.225 17.1 0.45 18.75 1.2 19.5C2.1 20.475 3.3 20.4 3.825 20.55C5.775 20.7 12 20.775 12 20.775C12 20.775 17.025 20.775 20.4 20.55C20.85 20.475 21.9 20.475 22.8 19.5C23.55 18.75 23.775 17.1 23.775 17.1C23.775 17.1 24 15.15 24 13.2V11.4C24 9.44995 23.775 7.49995 23.775 7.49995ZM9.525 15.45V8.69995L15.975 12.075L9.525 15.45Z" fill="currentColor"></path></svg></a><a aria-label="MLOps Community on LinkedIn" href="https://www.linkedin.com/company/mlopscommunity/" target="_blank" class="social_link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M7.1 20.5002H3.6V9.0002H7.2V20.5002H7.1ZM5.3 7.4002C4.2 7.4002 3.2 6.5002 3.2 5.3002C3.2 4.2002 4.1 3.2002 5.3 3.2002C6.4 3.2002 7.4 4.1002 7.4 5.3002C7.4 6.5002 6.5 7.4002 5.3 7.4002ZM20.5 20.5002H16.9V14.9002C16.9 13.6002 16.9 11.9002 15.1 11.9002C13.2 11.9002 13 13.3002 13 14.8002V20.5002H9.4V9.0002H12.8V10.6002C13.3 9.7002 14.4 8.8002 16.2 8.8002C19.8 8.8002 20.5 11.2002 20.5 14.3002V20.5002Z" fill="currentColor"></path></svg></a><a aria-label="Join the MLOps Community on Slack" href="https://gatewaze.mlops.community/?mode=slack" target="_blank" class="social_link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M9 0.75C8.40326 0.75 7.83097 0.987053 7.40901 1.40901C6.98705 1.83097 6.75 2.40326 6.75 3C6.75 3.59674 6.98705 4.16903 7.40901 4.59099C7.83097 5.01295 8.40326 5.25 9 5.25H11.25V3C11.25 2.40326 11.0129 1.83097 10.591 1.40901C10.169 0.987053 9.59674 0.75 9 0.75Z" fill="currentColor"></path><path d="M9 6.75H3C2.40326 6.75 1.83097 6.98705 1.40901 7.40901C0.987053 7.83097 0.75 8.40326 0.75 9C0.75 9.59674 0.987053 10.169 1.40901 10.591C1.83097 11.0129 2.40326 11.25 3 11.25H9C9.59674 11.25 10.169 11.0129 10.591 10.591C11.0129 10.169 11.25 9.59674 11.25 9C11.25 8.40326 11.0129 7.83097 10.591 7.40901C10.169 6.98705 9.59674 6.75 9 6.75Z" fill="currentColor"></path><path d="M23.25 9C23.25 8.40326 23.0129 7.83097 22.591 7.40901C22.169 6.98705 21.5967 6.75 21 6.75C20.4033 6.75 19.831 6.98705 19.409 7.40901C18.9871 7.83097 18.75 8.40326 18.75 9V11.25H21C21.5967 11.25 22.169 11.0129 22.591 10.591C23.0129 10.169 23.25 9.59674 23.25 9Z" fill="currentColor"></path><path d="M17.25 9V3C17.25 2.40326 17.0129 1.83097 16.591 1.40901C16.169 0.987053 15.5967 0.75 15 0.75C14.4033 0.75 13.831 0.987053 13.409 1.40901C12.9871 1.83097 12.75 2.40326 12.75 3V9C12.75 9.59674 12.9871 10.169 13.409 10.591C13.831 11.0129 14.4033 11.25 15 11.25C15.5967 11.25 16.169 11.0129 16.591 10.591C17.0129 10.169 17.25 9.59674 17.25 9Z" fill="currentColor"></path><path d="M15 23.25C15.5967 23.25 16.169 23.0129 16.591 22.591C17.0129 22.169 17.25 21.5967 17.25 21C17.25 20.4033 17.0129 19.831 16.591 19.409C16.169 18.9871 15.5967 18.75 15 18.75H12.75V21C12.75 21.5967 12.9871 22.169 13.409 22.591C13.831 23.0129 14.4033 23.25 15 23.25Z" fill="currentColor"></path><path d="M15 17.25H21C21.5967 17.25 22.169 17.0129 22.591 16.591C23.0129 16.169 23.25 15.5967 23.25 15C23.25 14.4033 23.0129 13.831 22.591 13.409C22.169 12.9871 21.5967 12.75 21 12.75H15C14.4033 12.75 13.831 12.9871 13.409 13.409C12.9871 13.831 12.75 14.4033 12.75 15C12.75 15.5967 12.9871 16.169 13.409 16.591C13.831 17.0129 14.4033 17.25 15 17.25Z" fill="currentColor"></path><path d="M0.75 15C0.75 15.5967 0.987053 16.169 1.40901 16.591C1.83097 17.0129 2.40326 17.25 3 17.25C3.59674 17.25 4.16903 17.0129 4.59099 16.591C5.01295 16.169 5.25 15.5967 5.25 15V12.75H3C2.40326 12.75 1.83097 12.9871 1.40901 13.409C0.987053 13.831 0.75 14.4033 0.75 15Z" fill="currentColor"></path><path d="M6.75 15V21C6.75 21.5967 6.98705 22.169 7.40901 22.591C7.83097 23.0129 8.40326 23.25 9 23.25C9.59674 23.25 10.169 23.0129 10.591 22.591C11.0129 22.169 11.25 21.5967 11.25 21V15C11.25 14.4033 11.0129 13.831 10.591 13.409C10.169 12.9871 9.59674 12.75 9 12.75C8.40326 12.75 7.83097 12.9871 7.40901 13.409C6.98705 13.831 6.75 14.4033 6.75 15Z" fill="currentColor"></path></svg></a><a aria-label="MLOps Podcast on Spotify" href="https://open.spotify.com/show/7wZygk3mUUqBaRbBGB1lgh?si=87e338dfd69f41db&amp;nd=1&amp;dlsi=01981ccfb0d843cb" target="_blank" class="social_link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_2825_351)"><path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C18.6 24 24 18.6 24 12C24 5.4 18.7 0 12 0ZM17.5 17.3C17.3 17.7 16.8 17.8 16.5 17.5C13.7 15.8 10.1 15.4 5.9 16.4C5.5 16.5 5.1 16.2 5 15.9C4.9 15.5 5.2 15.1 5.5 15C10.1 14 14 14.4 17.1 16.3C17.6 16.5 17.7 17 17.5 17.3ZM19 14C18.7 14.4 18.2 14.6 17.7 14.3C14.5 12.3 9.5 11.7 5.8 12.9C5.3 13 4.8 12.8 4.7 12.3C4.6 11.8 4.8 11.3 5.3 11.2C9.7 9.9 15.1 10.5 18.8 12.8C19.1 13 19.3 13.6 19 14ZM19.1 10.7C15.2 8.4 8.8 8.2 5.2 9.3C4.6 9.5 4 9.1 3.8 8.6C3.6 8 4 7.4 4.5 7.2C8.8 5.9 15.8 6.2 20.2 8.8C20.7 9.1 20.9 9.8 20.6 10.4C20.3 10.8 19.6 11 19.1 10.7Z" fill="currentColor"></path></g><defs><clipPath id="clip0_2825_351"><rect width="24" height="24" fill="currentColor"></rect></clipPath></defs></svg></a><a aria-label="MLOps Podcast on Apple Podcasts" href="https://podcasts.apple.com/us/podcast/mlops-community/id1505372978" target="_blank" class="social_link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_2825_354)"><path d="M17.4004 0C18.584 1.76099e-05 19.5279 0.0798112 20.3037 0.303711C21.0237 0.519698 21.5522 0.839618 21.9922 1.18359C22.7522 1.76759 23.2963 2.6082 23.5283 3.2002C24.0001 4.39195 24 5.75165 24 6.59961V17.4004C24 18.2563 23.9921 19.6081 23.5283 20.7998C23.2963 21.3918 22.7602 22.2244 21.9922 22.8164C21.5522 23.1524 21.0237 23.4803 20.3037 23.6963C19.5359 23.9282 18.584 24 17.4004 24H6.59961C5.41597 24 4.47214 23.9202 3.69629 23.6963C2.97633 23.4803 2.4478 23.1604 2.00781 22.8164C1.24781 22.2324 0.70368 21.3918 0.47168 20.7998C0.00785708 19.6081 2.44583e-06 18.2563 0 17.4004V6.59961C2.44246e-06 5.74366 0.00785716 4.39195 0.47168 3.2002C0.70368 2.6082 1.23981 1.77559 2.00781 1.18359C2.4478 0.847614 2.97633 0.519698 3.69629 0.303711C4.47214 0.0798112 5.41597 1.75857e-05 6.59961 0H17.4004ZM12 13.1748C11.256 13.1748 10.6237 13.4148 10.2637 13.7988C10.0797 13.9988 9.97633 14.1994 9.94434 14.4873C9.88039 15.0471 9.9204 15.527 9.98438 16.3027C10.0484 17.0387 10.1683 18.0227 10.3203 19.0146C10.4323 19.7265 10.5196 20.1108 10.5996 20.3828C10.7356 20.8308 11.224 21.2148 12 21.2148C12.776 21.2148 13.2724 20.8228 13.4004 20.3828C13.4804 20.1108 13.5677 19.7265 13.6797 19.0146C13.8317 18.0147 13.9516 17.0387 14.0156 16.3027C14.0876 15.527 14.1196 15.0471 14.0557 14.4873C14.0237 14.1994 13.9283 13.9908 13.7363 13.7988C13.3763 13.4228 12.744 13.1748 12 13.1748ZM11.9756 2.65527C7.38376 2.67145 3.62361 6.39935 3.55957 10.9912C3.51157 14.7112 5.88801 17.8955 9.20801 19.0635C9.28792 19.0953 9.36826 19.0233 9.36035 18.9434C9.32035 18.6554 9.27223 18.3671 9.24023 18.0791C9.22423 17.9753 9.16001 17.8957 9.07227 17.8477C6.44831 16.7037 4.61553 14.0714 4.64746 11.0234C4.68746 7.02344 7.95234 3.76735 11.9443 3.73535C16.0321 3.70358 19.3682 7.01584 19.3682 11.0957C19.368 14.1114 17.5441 16.7037 14.9443 17.8477C14.8484 17.8876 14.7844 17.9752 14.7764 18.0791C14.7364 18.3671 14.6962 18.6554 14.6562 18.9434C14.6403 19.0312 14.7277 19.0952 14.8076 19.0635C18.0955 17.9115 20.4559 14.7755 20.4561 11.0957C20.4401 6.4397 16.6396 2.64727 11.9756 2.65527ZM11.7842 5.45508C8.79218 5.56708 6.39254 8.03925 6.35254 11.0312C6.32862 12.9991 7.31228 14.7434 8.82422 15.7754C8.89621 15.8231 9 15.7666 9 15.6787C8.97602 15.3348 8.97619 15.0308 8.99219 14.7109C9.00016 14.607 8.9598 14.5114 8.87988 14.4395C7.95998 13.5755 7.39976 12.3432 7.43164 10.9834C7.49564 8.5834 9.42422 6.63116 11.8242 6.53516C14.432 6.43122 16.5759 8.52678 16.5762 11.1025C16.5762 12.4145 16.0159 13.5995 15.1279 14.4395C15.0561 14.5114 15.0166 14.6071 15.0166 14.7109C15.0326 15.0229 15.0238 15.3269 15.0078 15.6709C14.9998 15.7589 15.1046 15.8226 15.1846 15.7666C16.6723 14.7506 17.6562 13.0305 17.6562 11.0947C17.6641 7.91087 15.0001 5.32712 11.7842 5.45508ZM12 8.43945C10.912 8.43951 10.0322 9.31926 10.0322 10.4072C10.0323 11.4951 10.9121 12.3749 12 12.375C13.088 12.375 13.9677 11.4952 13.9678 10.4072C13.9678 9.32723 13.088 8.43945 12 8.43945Z" fill="currentColor"></path></g><defs><clipPath id="clip0_2825_354"><rect width="24" height="24" fill="currentColor"></rect></clipPath></defs></svg></a></div></div><div class="footer_links-grid"><div data-w-id="5b3d2484-9301-96b7-7033-e7d95665689c" class="footer_links-block" style="opacity: 0;"><span class="heading-style-h6">Events</span><a href="/meetups" class="footer_link">In-Person Meetups</a><a href="https://home.mlops.community/public/events" target="_blank" class="footer_link">Virtual Events</a></div><div data-w-id="5b3d2484-9301-96b7-7033-e7d9566568a5" class="footer_links-block" style="opacity: 0;"><span class="heading-style-h6">Content</span><a href="/podcast" class="footer_link">Podcast</a><a href="/blog" class="footer_link">Blog</a><a href="https://gatewaze.mlops.community/" target="_blank" class="footer_link">Newsletter</a></div><div data-w-id="5b3d2484-9301-96b7-7033-e7d9566568ae" class="footer_links-block" style="opacity: 0;"><span class="heading-style-h6">Community</span><a href="https://mlopscommunity.pipedrive.com/scheduler/lpqRW6Cb/meeting-with-diego-mangabeira" target="_blank" class="footer_link">Partner with Us</a><a href="https://gatewaze.mlops.community/" target="_blank" class="footer_link">Join the Community</a><a href="https://jobs.mlops.community/" target="_blank" class="footer_link">Find a Job</a><a href="/privacy-policy" class="footer_link">Privacy Policy</a></div></div></div><div class="footer_copyright"><div data-w-id="5b3d2484-9301-96b7-7033-e7d9566568b7" class="footer_copyright-content" style="opacity: 0;"><h2 data-rotating-title="" class="rotating-text__heading" aria-label="Network."><div class="rotating-line-mask" aria-hidden="true" style="position: relative; display: block; text-align: start; overflow: clip;"><div class="rotating-line" aria-hidden="true" style="position: relative; display: block; text-align: start;"><span data-rotating-words="Learn., Meet., Grow." class="rotating-text__highlight"><span class="rotating-text__inner" style="width: 428.594px;"><span class="rotating-text__word" style="translate: none; rotate: none; scale: none; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">Learn.</span><span class="rotating-text__word" style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0%, 150%);">Meet.</span><span class="rotating-text__word" style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0%, 150%);">Grow.</span></span></span></div></div></h2><div class="footer_copyright-text"><p>© <span class="copyright-year">2026</span> MLOps Community. All rights reserved.</p></div></div></div><img src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/697377fc48c5901e22e4d411_Footer-Blur.svg" loading="lazy" alt="" class="footer_blur"></div></div></div></footer></div><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=696f97c36cfad65500435415" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/js/webflow.schunk.f2efb3c5440a81cf.js" type="text/javascript" integrity="sha384-VK02VJvMib7ytrF5M2joPWNtDQs366FZgEQ5B+Iwnjx0WBnwQXfootyziSYxdrmS" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/696f97c36cfad65500435415/js/webflow.665f4daa.83b88b4bca87c6b5.js" type="text/javascript" integrity="sha384-r+4BZ5DLncwxAjWVtIadDWN98CjtfOG2xq0Jkf62WqXas8ZGBMFlHO7MFnGkCcYT" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/Draggable.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/InertiaPlugin.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/SplitText.min.js" type="text/javascript"></script><script src="https://cdn.prod.website-files.com/gsap/3.15.0/Observer.min.js" type="text/javascript"></script><script type="text/javascript">gsap.registerPlugin(ScrollTrigger,Draggable,InertiaPlugin,SplitText,Observer);</script><script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script> 
+
+
+<script>
+// ----------------------------------------------------  
+// Run code once the entire page has loaded
+// ----------------------------------------------------  
+$(window).on("load", function () {
+
+  // -------------------------------------------------
+  // Change Year dynamically
+  // -------------------------------------------------  
+  const currentYear = new Date().getFullYear();
+  $('.copyright-year').text(currentYear);
+  // -------------------------------------------------
+  // Change Year dynamically
+  // -------------------------------------------------  
+
+  
+  // -------------------------------------------------
+  // PREVENTING CONTENT FLASH ON PAGE LOAD
+  // -------------------------------------------------
+  $(".page-wrapper").each(function () {
+    gsap.set(".page-wrapper", {
+      opacity: 1
+    });
+  });
+  
+  // ----------------------------------------------------
+  // Run mobile menu behavior only on 991px and below
+  // ----------------------------------------------------
+
+  function initMobileMenu() {
+    var menuButton = $('.menu_button-mobile');
+    var body = $('body');
+
+    // Toggle body scroll when mobile menu opens/closes
+    menuButton.on('click.mobileMenu', function () {
+      if (body.css('overflow') === 'hidden') {
+        body.css('overflow', 'auto');
+      } else {
+        body.css('overflow', 'hidden');
+      }
+    });
+
+    // Close mobile menu when a nav link is clicked
+    $(".nav_menu_link").not(".is-dropdown").on("click.mobileMenu", function () {
+      $(".menu_button-mobile").trigger("click");
+    });
+  }
+
+  function destroyMobileMenu() {
+    var body = $('body');
+
+    // Remove events
+    $('.menu_button-mobile').off('.mobileMenu');
+    $('.nav_menu_link').off('.mobileMenu');
+
+    // Reset overflow just in case
+    body.css('overflow', 'auto');
+  }
+
+  // Media query for 991px and below
+  var mobileQuery = window.matchMedia('(max-width: 991px)');
+
+  function handleBreakpoint(e) {
+    if (e.matches) {
+      // Mobile active
+      initMobileMenu();
+    } else {
+      // Desktop active
+      destroyMobileMenu();
+    }
+  }
+
+  // Run on load
+  handleBreakpoint(mobileQuery);
+
+  // Run on resize
+  mobileQuery.addEventListener('change', handleBreakpoint);
+
+  
+  // Select the menu element (make sure it has the id "menu")
+  var menu = $('#menu');
+
+  // Select the brand image inside the navigation component
+  var brandImage = $('.nav_component .nav_logo');
+
+  // Initial menu height using a CSS custom property
+  var initialHeight = '6.5rem';
+
+  // Menu height when the page is scrolled
+  var scrolledHeight = '4.5rem';
+
+  // Initial brand image width
+  var initialWidth = '8.125rem';
+
+  // Brand image width when the page is scrolled
+  var scrolledWidth = '7rem';
+
+  function applyScrollEffects() {
+    // Apply scroll behavior only on desktop (991px and above)
+    if ($(window).width() >= 991) {
+      $(window).scroll(function () {
+        // Check if the user has scrolled more than 16px
+        if ($(window).scrollTop() > 16) {
+          menu.css({
+            height: scrolledHeight,
+            'background-color': 'var(--_primitive-colors---neutral--n950)'
+          });
+
+          brandImage.css({
+            width: scrolledWidth
+          });
+        } else {
+          menu.css({
+            height: initialHeight,
+            'background-color': 'transparent'
+          });
+
+          brandImage.css({
+            width: initialWidth
+          });
+        }
+      });
+    }
+  }
+
+  // Run the function on page load
+  applyScrollEffects();
+
+  // Re-check behavior on window resize
+  $(window).resize(applyScrollEffects);
+
+  // End: menu resize on scroll
+  
+
+  // -------------------------------------------------
+  // LENIS SMOOTH SCROLL
+  // -------------------------------------------------
+  let lenis;
+
+  // Run only outside Webflow Designer/Editor mode
+  if (Webflow.env("editor") === undefined) {
+    // Initialize Lenis with base settings
+    lenis = new Lenis({
+      lerp: 0.1,               // Lower values = smoother, slower scroll
+      duration: 1.4,           // Duration of the scroll animation
+      wheelMultiplier: 1.3,    // Scroll wheel sensitivity
+      gestureOrientation: "vertical", // Enable vertical scroll
+      normalizeWheel: false,   // Disable wheel normalization
+      smoothTouch: false       // Disable smooth scroll on touch devices
+    });
+
+    // Request Animation Frame (RAF) loop
+    function raf(time) {
+      lenis.raf(time);         // Update Lenis on each frame
+      requestAnimationFrame(raf);
+    }
+
+    // Start the RAF loop
+    requestAnimationFrame(raf);
+  }
+  // -------------------------------------------------
+  // END LENIS SMOOTH SCROLL
+  // ------------------------------------------------- 
+  
+});
+// ----------------------------------------------------  
+// Run code once the entire page has loaded
+// ----------------------------------------------------    
+  
+// ----------------------------------------------------  
+// Osmo Resources
+// ----------------------------------------------------    
+//===== Rotating Text =====//
+function initRotatingText() {
+  document.querySelectorAll('[data-rotating-title]').forEach((heading) => {
+
+    const stepDuration = parseFloat(heading.getAttribute('data-step-duration') || '1.75');
+
+    SplitText.create(heading, {
+      type: 'lines',
+      mask: 'lines',
+      autoSplit: true,
+      linesClass: 'rotating-line',
+      onSplit(instance) {
+        const rotatingSpan = heading.querySelector('[data-rotating-words]');
+        if (!rotatingSpan) return;
+
+        const rawWords = rotatingSpan.getAttribute('data-rotating-words') || '';
+        const words = rawWords
+          .split(',')
+          .map((w) => w.trim())
+          .filter(Boolean);
+
+        if (!words.length) return;
+
+        // Build inner wrapper with stacked words
+        const wrapper = document.createElement('span');
+        wrapper.className = 'rotating-text__inner';
+
+        const wordEls = words.map((word) => {
+          const el = document.createElement('span');
+          el.className = 'rotating-text__word';
+          el.textContent = word;
+          wrapper.appendChild(el);
+          return el;
+        });
+
+        // Replace the original content of the highlight span
+        rotatingSpan.textContent = '';
+        rotatingSpan.appendChild(wrapper);
+
+        requestAnimationFrame(() => {
+          
+          // Define duration of your in + out movement
+          const inDuration = 0.75;
+          const outDuration = 0.6;
+
+          // Initial state: everyone hidden below
+          gsap.set(wordEls, { yPercent: 150, autoAlpha: 0 });
+
+          // Show first word immediately
+          let activeIndex = 0;
+          const firstWord = wordEls[activeIndex];
+          gsap.set(firstWord, { yPercent: 0, autoAlpha: 1 });
+
+          // Set initial width to first word
+          const firstWidth = firstWord.getBoundingClientRect().width;
+          wrapper.style.width = firstWidth + 'px';
+
+          function showNext() {
+            const nextIndex = (activeIndex + 1) % wordEls.length;
+            const prev = wordEls[activeIndex];
+            const current = wordEls[nextIndex];
+
+            const targetWidth = current.getBoundingClientRect().width;
+
+            // Animate wrapper width to match new word
+            gsap.to(wrapper, {
+              width: targetWidth,
+              duration: inDuration,
+              ease: 'power4.inOut'
+            });
+
+            // Move old word out
+            if (prev && prev !== current) {
+              gsap.to(prev, {
+                yPercent: -150,
+                autoAlpha: 0,
+                duration: outDuration,
+                ease: 'power4.inOut'
+              });
+            }
+
+            // Reveal new word
+            gsap.fromTo(
+              current,
+              { yPercent: 150, autoAlpha: 0 },
+              {
+                yPercent: 0,
+                autoAlpha: 1,
+                duration: inDuration,
+                ease: 'power4.inOut'
+              }
+            );
+
+            activeIndex = nextIndex;
+
+            gsap.delayedCall(stepDuration, showNext);
+          }
+
+          // First word is already visible, start rotating after a full step
+          if (wordEls.length > 1) {
+            gsap.delayedCall(stepDuration, showNext);
+          }
+        });
+      }
+    });
+  });
+}
+
+// Initialize Rotating Text
+document.addEventListener("DOMContentLoaded", function () {
+  initRotatingText();
+});
+//===== Rotating Text =====//  
+
+// ----------------------------------------------------  
+// Osmo Resources
+// ----------------------------------------------------  
+  
+</script>
+<meta property="og:url" content="https://mlops.community/blog/the-complete-guide-to-claude-code-hooks-automating-your-ai-coding-workflow"></body></html>
