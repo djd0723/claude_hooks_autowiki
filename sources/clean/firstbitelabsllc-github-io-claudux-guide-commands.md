@@ -1,0 +1,517 @@
+---
+type: source
+source_url: https://firstbitelabsllc.github.io/claudux/guide/commands
+title: "Commands Reference | claudux"
+raw_capture: ../raw/firstbitelabsllc-github-io-claudux-guide-commands.html
+captured: 2026-06-29
+---
+
+Skip to content
+
+CLclaudux
+
+SearchK
+
+Main Navigation GuideFeaturesTechnicalAPI
+
+Appearance
+
+Menu
+
+On this page
+
+Sidebar Navigation
+
+## 🚀 Getting Started
+
+Overview
+
+Installation
+
+Commands
+
+Configuration
+
+On this page
+
+- Core Commands
+
+- claudux update
+
+- claudux serve
+
+- claudux recreate
+
+- claudux template
+
+- Change Tracking Commands
+
+- claudux diff
+
+- claudux status
+
+- claudux audit
+
+- claudux validate
+
+- Utility Commands
+
+- claudux check
+
+- claudux --help
+
+- claudux --version
+
+- Interactive Mode
+
+- Advanced Usage
+
+- Backend Selection
+
+- Environment Variables
+
+- Flags and Options
+
+- Command Workflow
+
+- Exit Codes
+
+- 🏠 Home
+
+- 📚 Guide
+
+- Commands
+
+# Commands Reference ​
+
+## Core Commands ​
+
+### claudux update ​
+
+Generate or update documentation by analyzing your codebase.
+
+bash
+
+```
+claudux update
+```
+
+1
+
+With focused directive:
+
+bash
+
+```
+claudux update -m "Add API documentation for new endpoints"
+claudux update --with "Focus on the authentication module"
+```
+
+1
+2
+
+Process:
+
+- Scans source code for structure and patterns
+
+- Analyzes existing documentation for outdated content
+
+- Generates new pages and updates existing ones
+
+- Validates internal links (external URLs are skipped) to prevent 404s
+
+- Shows detailed change summary
+
+### claudux serve ​
+
+Start the VitePress development server to preview documentation locally.
+
+bash
+
+```
+claudux serve
+```
+
+1
+
+- Opens at http://localhost:5173
+
+- Hot reload when files change
+
+- Full-text search enabled
+
+- Mobile-responsive design
+
+### claudux recreate ​
+
+Delete all existing documentation and start fresh.
+
+bash
+
+```
+claudux recreate
+```
+
+1
+
+Use when:
+
+- Major project restructuring
+
+- Switching documentation approach
+
+- Fixing fundamental organization issues
+
+### claudux template ​
+
+Generate a claudux.md file with documentation preferences for your project.
+
+bash
+
+```
+claudux template
+```
+
+1
+
+Creates a preferences file that guides future documentation generation based on your project's specific patterns and conventions.
+
+## Change Tracking Commands ​
+
+### claudux diff ​
+
+Show files that have changed since the last documentation generation.
+
+bash
+
+```
+claudux diff
+```
+
+1
+
+Compares the current HEAD against the checkpoint SHA stored in .claudux-state.json, then adds uncommitted documentation/config changes such as docs/**, docs-structure.json, docs-map.md, .ai-docs-style.md, and docs-site-plan.json. Lists all modified, added, deleted, staged, or untracked files that may need doc updates.
+
+### claudux status ​
+
+Show documentation freshness and last generation details.
+
+bash
+
+```
+claudux status
+```
+
+1
+
+Displays:
+
+- Last generation timestamp and checkpoint commit SHA
+
+- Backend used (Claude or Codex)
+
+- Documented file count
+
+- Commits behind HEAD (if stale)
+
+- Uncommitted documentation/config changes (if the checkpoint commit is otherwise fresh)
+
+### claudux audit ​
+
+Print a no-AI readiness report for humans, CI, and team-agent handoffs.
+
+bash
+
+```
+claudux audit
+claudux audit --json
+claudux audit --strict
+claudux audit --release
+claudux audit --handoff-strict
+```
+
+1
+2
+3
+4
+5
+
+Reports:
+
+- Project name, detected type, branch, HEAD SHA, and backend
+
+- Documentation directory presence and markdown file count
+
+- docs-structure.json validity, page count, source-owned page count, and pinned section count
+
+- Internal link validation status
+
+- Checkpoint freshness, changed files since checkpoint, and uncommitted docs/config changes
+
+Use --json when another tool needs to parse the report. Use --strict when invalid manifests or broken links should fail the command. Use --release before tagging or publishing so package metadata, packability, and docs/config drift become hard failures. Use --handoff-strict before passing work to another agent when checkpoint freshness should be mandatory.
+
+### claudux validate ​
+
+Run link validation on the generated documentation.
+
+bash
+
+```
+claudux validate
+```
+
+1
+
+Checks all internal links in VitePress config and markdown files. Reports broken links without re-generating docs.
+
+## Utility Commands ​
+
+### claudux check ​
+
+Validate your environment and dependencies.
+
+bash
+
+```
+claudux check
+```
+
+1
+
+Checks:
+
+- Node.js version (>=18 required)
+
+- Active backend (Claude or Codex)
+
+- Backend CLI installation and authentication
+
+- Documentation directory status
+
+### claudux --help ​
+
+Display help information and usage examples.
+
+bash
+
+```
+claudux --help
+claudux help
+claudux -h
+```
+
+1
+2
+3
+
+### claudux --version ​
+
+Show the installed claudux version.
+
+bash
+
+```
+claudux --version
+claudux version
+claudux -V
+```
+
+1
+2
+3
+
+## Interactive Mode ​
+
+Run claudux without arguments to access the interactive menu:
+
+bash
+
+```
+claudux
+```
+
+1
+
+The menu adapts based on whether documentation already exists:
+
+First run (no docs):
+
+- Generate docs (scan code -> markdown)
+
+- Serve (VitePress dev server)
+
+- Create claudux.md (docs preferences)
+
+Existing docs:
+
+- Update docs (regenerate from code)
+
+- Update (focused) (enter directive -> update)
+
+- Diff (files changed since last gen)
+
+- Status (documentation freshness)
+
+- Validate links (check for broken links)
+
+- Serve (VitePress dev server)
+
+- Create claudux.md (docs preferences)
+
+- Recreate (start fresh)
+
+## Advanced Usage ​
+
+### Backend Selection ​
+
+Switch between AI backends using environment variables:
+
+bash
+
+```
+# Default -- uses Claude
+claudux update
+
+# Use Codex instead
+CLAUDUX_BACKEND=codex claudux update
+
+# Or export for the session
+export CLAUDUX_BACKEND=codex
+export CODEX_MODEL=gpt-5.4            # default
+export CODEX_REASONING_EFFORT=xhigh   # default
+claudux update
+```
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+
+### Environment Variables ​
+
+Control model selection and behavior:
+
+bash
+
+```
+# Force specific Claude model
+FORCE_MODEL=opus claudux update
+FORCE_MODEL=sonnet claudux update  # Default
+
+# Pre-set directive message
+CLAUDUX_MESSAGE="Focus on API docs" claudux update
+```
+
+1
+2
+3
+4
+5
+6
+
+### Flags and Options ​
+
+Update command options:
+
+bash
+
+```
+claudux update -m "message"     # Focused directive
+claudux update --with "message" # Same as -m
+claudux update --strict         # Re-prompt (then error) on broken internal links
+claudux audit --json            # Machine-readable readiness report
+claudux audit --strict          # Fail if manifest or links are invalid
+claudux audit --release         # Fail docs/package release-readiness drift
+claudux audit --handoff-strict  # Fail stale checkpoints or dirty docs state
+```
+
+1
+2
+3
+4
+5
+6
+7
+
+## Command Workflow ​
+
+Typical development cycle:
+
+bash
+
+```
+# Initial setup
+claudux update
+
+# Make code changes
+# ... edit your source files ...
+
+# Update docs to reflect changes
+claudux update
+
+# Preview changes
+claudux serve
+
+# Focused updates for specific changes
+claudux update -m "Document the new authentication flow"
+```
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+
+## Exit Codes ​
+
+Claudux follows standard Unix exit code conventions:
+
+- 0: Success
+
+- 1: General error
+
+- 2: Incorrect usage
+
+- 124: Timeout
+
+- 130: Interrupted (Ctrl+C)
+
+Use in CI/CD:
+
+bash
+
+```
+claudux update || exit 1  # Fail build if docs generation fails
+```
+
+1
+
+Edit this page
+
+Last updated: 5/23/26, 9:07 PM
+
+Pager
+
+Previous pageInstallation
+
+Next pageConfiguration
+
+Generated with claudux
+
+Copyright © 2026 First Bite Labs
