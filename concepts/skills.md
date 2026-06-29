@@ -94,3 +94,4 @@ Add a `.claude-plugin/plugin.json` to a skill folder and it loads as a [skills-d
 - [Skill Subagent Execution](./skill-subagent-execution.md) — `context: fork` and skill ↔ subagent interplay
 - [Skill Evaluation](./skill-evaluation.md) — measuring and iterating with `skill-creator`
 - [Bundled Skills](./bundled-skills.md) — the skills that ship with Claude Code
+- [SDK Skills Loading](./sdk-skills-loading.md) — discovering and enabling skills from the Agent SDK
