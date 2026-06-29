@@ -115,3 +115,4 @@ Swap the default git worktree behavior for custom VCS or setup:
 - [Subagent Hooks](./subagent-hooks.md) — gating nested subagent activity
 - [Permission Evaluation](./permission-evaluation.md) — how auto-allow/deny recipes interact with the permission system
 - [AI Permission Reviewer (ClaudeFast Permission Hook Case Study)](./ai-permission-reviewer.md) — a real product implementing the `PermissionRequest` recipes as a tiered AI reviewer
+- [Session Accumulation Pattern](./session-accumulation-pattern.md) — the "journal in PostToolUse, batch-process at Stop" pattern for incremental per-session processing

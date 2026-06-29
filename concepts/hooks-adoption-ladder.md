@@ -116,3 +116,4 @@ Portability note worth knowing before you commit: **Codex CLI** ships "almost a 
 - [Hook Scope and Configuration Location](./hook-scope.md) — why the Stage-2 guard belongs in user-global settings
 - [StatusLine-Driven Context Backup](./statusline-context-backup.md) — the same source's proactive context-recovery system (the 33K autocompact-buffer math and dual trigger design)
 - [The Agent Manager Role](./agent-manager-role.md) — who owns this ladder org-wide once a whole team is on the harness
+- [Session Accumulation Pattern](./session-accumulation-pattern.md) — the positive pattern resolving "never put tsc in PostToolUse": journal deltas in PostToolUse, batch-process at Stop
