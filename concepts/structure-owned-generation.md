@@ -71,6 +71,7 @@ It is the documentation-generation instance of the wiki's recurring lesson: when
 
 ## Related concepts
 
+- [Generated-Artifact Freshness](./generated-artifact-freshness.md) — the operational/lifecycle half of this pattern: checkpoint drift detection and the graduated `claudux audit` gates
 - [Large-Codebase Playbook](./large-codebase-playbook.md) — "structure of the documentation is part of the product"; harness-layer curation at scale
 - [Self-Improving CLAUDE.md](./self-improving-claude-md.md) — the same determinism-over-model-behavior instinct applied to CLAUDE.md upkeep
 - [The Agent Manager Role](./agent-manager-role.md) — owns the CI/team-agent handoff that `claudux audit` feeds

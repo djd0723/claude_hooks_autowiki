@@ -94,3 +94,4 @@ The article predicts "agent manager or an equivalent title" will appear in org c
 - [Settings Files](./settings-files.md) — the `.claude/settings.json` the manager standardizes
 - [Large-Codebase Playbook](./large-codebase-playbook.md) — the eight-strategy harness this role owns and reviews at scale
 - [Structure-Owned Generation](./structure-owned-generation.md) — `claudux audit`, the no-AI readiness gate for the CI and team-agent handoffs this role owns
+- [Generated-Artifact Freshness](./generated-artifact-freshness.md) — `--handoff-strict` makes checkpoint freshness a mandatory precondition at the agent handoff this role owns
