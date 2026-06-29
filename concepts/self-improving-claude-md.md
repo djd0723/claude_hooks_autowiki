@@ -145,3 +145,4 @@ Within the harness model, "Most hooks enforce something. This one improves somet
 - [Setup Hooks](./setup-hooks.md) — sibling claudefa.st practitioner hook
 - [Production Hook Patterns](./production-hook-patterns.md) — the threshold/stateful-firing discipline this pattern depends on
 - [Session Context Injection](./session-context-injection.md) — the reverse direction (load context at session start) the article cites as a variant
+- [The Agent Manager Role](./agent-manager-role.md) — the owner whose review queue this stop hook feeds to keep CLAUDE.md conventions current
