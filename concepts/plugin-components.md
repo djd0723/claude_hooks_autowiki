@@ -171,6 +171,8 @@ Plugin themes are read-only. Pressing `Ctrl+E` on one in `/theme` copies it into
 
 ## Related concepts
 
+- [Creating Plugins](./creating-plugins.md) — assembling these components into a working plugin
+- [Plugin Default Settings](./plugin-default-settings.md) — a root `settings.json` that activates one of the plugin's agents
 - [Plugin Manifest Schema](./plugin-manifest-schema.md) — component path fields and manifest configuration
 - [Plugin Directory Structure](./plugin-directory-structure.md) — standard layout and file locations reference
 - [Plugin Environment Variables](./plugin-environment-variables.md) — `CLAUDE_PLUGIN_ROOT`, `CLAUDE_PLUGIN_DATA`, `CLAUDE_PROJECT_DIR`
