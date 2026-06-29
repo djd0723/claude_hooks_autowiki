@@ -4,10 +4,11 @@ title: "Hook Lifecycle Events"
 created: 2026-06-29
 updated: 2026-06-29
 tags: [hooks, lifecycle, events, automation]
-source_count: 2
+source_count: 3
 sources:
   - sources/clean/code-claude-com-docs-en-hooks-guide-md.md
   - sources/clean/code-claude-com-docs-en-hooks-md.md
+  - sources/clean/code-claude-com-docs-en-sub-agents-md.md
 ---
 
 # Hook Lifecycle Events
@@ -39,8 +40,8 @@ Events fall into three cadences:
 | `PostToolBatch` | After a full batch of parallel tool calls resolves, before the next model call |
 | `Notification` | When Claude Code sends a notification |
 | `MessageDisplay` | While assistant message text is displayed |
-| `SubagentStart` | When a subagent is spawned |
-| `SubagentStop` | When a subagent finishes |
+| `SubagentStart` | When a subagent is spawned. The `matcher` targets a specific agent type by name |
+| `SubagentStop` | When a subagent finishes. The `matcher` targets a specific agent type by name |
 | `TaskCreated` | When a task is being created via `TaskCreate` |
 | `TaskCompleted` | When a task is being marked as completed |
 | `Stop` | When Claude finishes responding |
@@ -88,3 +89,4 @@ Events fall into three cadences:
 - [Hook Scope](./hook-scope.md) — where hooks are configured
 - [Hook Input and Output](./hook-input-output.md) — JSON input/output protocol
 - [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns
+- [Subagent Hooks](./subagent-hooks.md) — `SubagentStart`/`SubagentStop` and per-subagent frontmatter hooks
