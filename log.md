@@ -6,6 +6,31 @@ type: log
 
 _Newest first._
 
+## 2026-06-29 — source task-3: plugins-reference.md (base tier)
+
+**Source:** `sources/clean/code-claude-com-docs-en-plugins-reference-md.md`
+**Pipeline stages completed:** clean → foundation → summarize → synthesize → compare → lint → index
+
+**Pages authored:**
+- `summaries/plugins-reference.md` — full summary covering all plugin components, manifest schema, CLI commands, installation scopes, and versioning
+- `concepts/plugin-components.md` — skills, agents, hooks, MCP, LSP, monitors, themes component specifications
+- `concepts/plugin-manifest-schema.md` — plugin.json field reference with required/optional field table
+- `concepts/plugin-installation-scopes.md` — user/project/local/managed scopes and skills-dir plugins
+- `concepts/plugin-directory-structure.md` — standard layout, file locations, and naming conventions
+- `concepts/plugin-environment-variables.md` — CLAUDE_PLUGIN_ROOT, CLAUDE_PLUGIN_DATA, CLAUDE_PROJECT_DIR
+- `concepts/plugin-cli-commands.md` — init, install, uninstall, enable, disable, update, list, validate
+- `concepts/plugin-versioning.md` — explicit semver vs commit-SHA versioning and cache lifecycle
+- `comparisons/plugin-scopes-vs-hook-scopes.md` — same four-tier hierarchy, different capability restrictions
+- `comparisons/monitors-vs-command-hooks.md` — persistent background stream vs event-triggered single-shot
+- `comparisons/skills-dir-plugins-vs-marketplace-plugins.md` — in-place discovery vs cache copy
+
+**Index entries added:** Sources (1), Summaries (1), Concepts (7), Comparisons (3)
+
+## [2026-06-29] maintain | full sweep (task-3 plugin pages)
+
+- fixed: `index.md` updated to include 7 plugin concept pages, 3 plugin comparison pages, and plugins-reference summary (all missing after task-3 foundation); `overview.md` expanded to cover plugins alongside hooks (was hooks-only); `synthesis.md` through-line numbering corrected (gap between #7 and #9 — renumbered to consecutive 8, 9)
+- flagged: 7 open questions in `synthesis.md` (agent hook real-world use, community recipes, scope conflicts, `MessageDisplay` in practice, `defer` Agent SDK patterns, monitors in the wild, plugin composition patterns) — will be answered by tip sources (tasks 12–30 in the ingest queue)
+
 ## [2026-06-29] maintain | full sweep
 
 - fixed: 5 orphaned pages added to `index.md` (`hook-input-output.md`, `hook-decision-control.md`, `summaries/hooks.md`, both comparison pages); `overview.md` filled with content (was boilerplate-only); 11 missing cross-references added across 6 concept/comparison pages; `MessageDisplay` added to no-matcher-support list in `summaries/hooks.md` (was inconsistent with `hook-matchers.md`)
