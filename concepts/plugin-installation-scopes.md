@@ -107,6 +107,7 @@ Managed settings can lock down marketplace additions with `strictKnownMarketplac
 
 ## Related concepts
 
+- [Creating Plugins](./creating-plugins.md) — authoring a plugin, including the skills-directory dev path
 - [Plugin Manifest Schema](./plugin-manifest-schema.md) — scope-related manifest fields (`defaultEnabled`)
 - [Plugin CLI Commands](./plugin-cli-commands.md) — `install`, `uninstall`, `enable`, `disable` with `--scope` flags
 - [Plugin Versioning](./plugin-versioning.md) — how the cache key determines available updates
