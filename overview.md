@@ -1,5 +1,8 @@
 ---
 type: overview
+created: 2026-06-29
+updated: 2026-06-29
+tags: [hooks, orientation]
 ---
 
 # Claude Code Hooks — Overview
