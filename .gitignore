@@ -1,0 +1,5 @@
+.autoloop/
+scripts/
+*.out
+*.log
+.DS_Store
