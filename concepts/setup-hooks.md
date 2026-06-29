@@ -141,3 +141,4 @@ The pattern's value is that it preserves determinism where you need it and adds 
 - [Hook Automation Use Cases](./hook-automation-use-cases.md) — where session-lifecycle automation sits among the generic recipes
 - [Skill Activation Hook](./skill-activation-hook.md) — a sibling claudefa.st pattern that pushes skill loading into a deterministic `UserPromptSubmit` hook
 - [SessionStart Context Injection (Auto-Load Context Pattern)](./session-context-injection.md) — the companion claudefa.st pattern for `SessionStart`/`SessionEnd`, where `Setup`'s "every session vs. one-time" split is decided
+- [Self-Improving CLAUDE.md (Stop-Hook Rule-Audit Pattern)](./self-improving-claude-md.md) — a sibling claudefa.st hook that audits the rule files rather than running setup

@@ -57,3 +57,4 @@ ClaudeKit's docs list events including `SubagentStart`, `TaskCompleted`, and `Te
 - [File Permission Patterns](./file-permission-patterns.md) — the access-control model the ignore-list and privacy gates complement
 - [AI Permission Reviewer (ClaudeFast Permission Hook Case Study)](./ai-permission-reviewer.md) — a sibling third-party case study, focused on the `PermissionRequest` permission surface
 - [Skill Activation Hook](./skill-activation-hook.md) — a sibling case study using the stateful-session technique on `UserPromptSubmit` to guarantee skill loading
+- [Self-Improving CLAUDE.md (Stop-Hook Rule-Audit Pattern)](./self-improving-claude-md.md) — a sibling case study that gates a headless reviewer behind a diff-size threshold, the same stateful-firing discipline
