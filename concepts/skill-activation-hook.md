@@ -92,7 +92,7 @@ Because matching is driven by your own keyword list, the hook adapts to your voc
 "keywords": ["commit", "git push", "push my code", "commit changes"]
 ```
 
-The maintenance discipline this implies: *every new skill needs its triggers registered*. As the source puts it — "After creating any new skill, update its triggers in skill-rules.json. Then read those triggers and keep those speech patterns in mind when prompting." This is the inverse of the model-side selection that [skill discovery](./skill-discovery.md) and [invocation control](./skill-invocation-control.md) describe: here *you* curate the trigger surface deterministically rather than relying on the model to weigh skill descriptions.
+The maintenance discipline this implies: *every new skill needs its triggers registered*. As the source puts it — "After creating any new skill, update its triggers in skill-rules.json. Then read those triggers and keep those speech patterns in mind when prompting." This is the inverse of the [model-side, description-driven activation](./skill-activation.md) that [skill discovery](./skill-discovery.md) and [invocation control](./skill-invocation-control.md) describe: here *you* curate the trigger surface deterministically rather than relying on the model to weigh skill descriptions.
 
 ## Session intelligence (no nagging)
 
@@ -125,6 +125,7 @@ The pattern's payoff is stated plainly: "The Skill Activation Hook removes human
 - [Hook Lifecycle Events](./hook-lifecycle-events.md) — the `UserPromptSubmit` event this hook attaches to
 - [Hook Input/Output](./hook-input-output.md) — `additionalContext` / prompt-adjacent injection, the mechanism behind the appended block
 - [Hook Types](./hook-types.md) — the `command` handler this hook uses
+- [Skill Activation (Description-Driven)](./skill-activation.md) — the model-side matching this hook bypasses
 - [Skill Evaluation](./skill-evaluation.md) — measuring the invocation-reliability problem this hook solves deterministically
 - [Skill Discovery](./skill-discovery.md) — the model-driven side of which skills are available
 - [Skill Invocation Control](./skill-invocation-control.md) — `skillOverrides` and per-skill visibility, the config-side complement

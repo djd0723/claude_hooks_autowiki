@@ -15,7 +15,7 @@ A **skill** extends what Claude can do. You create a `SKILL.md` file with instru
 
 > "Skills extend what Claude can do. Create a `SKILL.md` file with instructions, and Claude adds it to its toolkit. Claude uses skills when relevant, or you can invoke one directly with `/skill-name`."
 
-Two things can trigger a skill: Claude loads it automatically when your request matches its [description](./skill-invocation-control.md), or you invoke it directly by typing `/skill-name`.
+Two things can trigger a skill: Claude loads it automatically when your request [matches its description](./skill-activation.md), or you invoke it directly by typing `/skill-name`.
 
 Create a skill when you keep pasting the same instructions, checklist, or multi-step procedure into chat, or when a section of CLAUDE.md has grown into a procedure rather than a fact. The decisive advantage over CLAUDE.md:
 
@@ -86,6 +86,7 @@ Add a `.claude-plugin/plugin.json` to a skill folder and it loads as a [skills-d
 ## Related concepts
 
 - [Skill Frontmatter](./skill-frontmatter.md) — every configuration field and how the command name is derived
+- [Skill Activation (Description-Driven)](./skill-activation.md) — how Claude decides which skill to fire, and the description that makes it reliable
 - [Skill Discovery](./skill-discovery.md) — where skills live, scope/precedence, live change detection
 - [Skill Invocation Control](./skill-invocation-control.md) — who can invoke, tool pre-approval, visibility
 - [Skill Arguments](./skill-arguments.md) — `$ARGUMENTS`, indexed/named args, string substitutions
