@@ -61,3 +61,4 @@ If Anthropic lists your plugin in the official marketplace, your CLI can prompt 
 - [Plugin Versioning](./plugin-versioning.md) — explicit `version` vs commit-SHA, which governs catalog pinning
 - [Plugin CLI Commands](./plugin-cli-commands.md) — `plugin validate`, `plugin install`, `marketplace add`
 - [Plugin Installation Scopes](./plugin-installation-scopes.md) — where installed plugins land for the people who add your marketplace
+- [The Agent Manager Role](./agent-manager-role.md) — who curates the org's plugin marketplace, running it like an internal package registry
