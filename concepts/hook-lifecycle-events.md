@@ -92,3 +92,4 @@ Events fall into three cadences:
 - [Hook Automation Use Cases](./hook-automation-use-cases.md) — concrete automation recipes for each event group
 - [Subagent Hooks](./subagent-hooks.md) — `SubagentStart`/`SubagentStop` and per-subagent frontmatter hooks
 - [SDK Hook Events](./sdk-hook-events.md) — which of these events the Python/TypeScript SDKs expose as callbacks
+- [StatusLine-Driven Context Backup](./statusline-context-backup.md) — a practitioner pattern that front-runs `PreCompact` by triggering backups from the StatusLine instead

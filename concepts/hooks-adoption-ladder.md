@@ -114,3 +114,4 @@ Portability note worth knowing before you commit: **Codex CLI** ships "almost a 
 - [Production Hook Patterns (ClaudeKit Case Study)](./production-hook-patterns.md) — a shipping kit's design choices; complementary real-world counterpart
 - [Permission Modes](./permission-modes.md) — the built-in bypass-mode circuit breakers Safe YOLO extends with custom deny-hooks
 - [Hook Scope and Configuration Location](./hook-scope.md) — why the Stage-2 guard belongs in user-global settings
+- [StatusLine-Driven Context Backup](./statusline-context-backup.md) — the same source's proactive context-recovery system (the 33K autocompact-buffer math and dual trigger design)
