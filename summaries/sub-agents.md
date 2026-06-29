@@ -4,9 +4,11 @@ title: "Subagents — configuration, context, and invocation"
 slug: code-claude-com-docs-en-sub-agents-md
 created: 2026-06-29
 updated: 2026-06-29
-tags: [subagents, configuration, context, invocation, delegation, tool-access, hooks]
+tags: [subagents, configuration, context, invocation, delegation, tool-access, hooks, orchestration]
+source_count: 2
 sources:
   - sources/clean/code-claude-com-docs-en-sub-agents-md.md
+  - sources/clean/claudefa-st-blog-guide-development-agent-manager-role.md
 ---
 
 # Summary: Create custom subagents
@@ -182,6 +184,12 @@ A fork sees the same system prompt, tools, model, and message history as the mai
 | Prompt cache | Shared with main session | Separate cache |
 
 A fork can't spawn another fork.
+
+## Orchestration layer — who owns the harness
+
+As subagent fleets scale, a human-role question emerges that the reference doesn't cover:
+
+- [The agent manager role](../concepts/agent-manager-role.md) — who owns the harness (the agent definitions, hooks, and permission policy) at team scale, and how that ownership keeps a multi-subagent setup coherent. Pairs with [large-codebase strategies](large-codebase.md) for the broader scaling playbook.
 
 ## Relationship to concept pages
 

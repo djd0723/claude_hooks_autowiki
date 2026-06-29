@@ -4,9 +4,17 @@ title: "Hooks Guide — Automate actions with hooks"
 slug: code-claude-com-docs-en-hooks-guide-md
 created: 2026-06-29
 updated: 2026-06-29
-tags: [hooks, automation, lifecycle, configuration, recipes, troubleshooting]
+tags: [hooks, automation, lifecycle, configuration, recipes, troubleshooting, practitioner-workflow, security]
+source_count: 8
 sources:
   - sources/clean/code-claude-com-docs-en-hooks-guide-md.md
+  - sources/clean/claudefa-st-blog-tools-hooks-claude-code-setup-hooks.md
+  - sources/clean/claudefa-st-blog-tools-hooks-session-lifecycle-hooks.md
+  - sources/clean/claudefa-st-blog-tools-hooks-self-improving-claude-md.md
+  - sources/clean/claudefa-st-blog-tools-hooks-stop-hook-task-enforcement.md
+  - sources/clean/docs-claudekit-cc-docs-engineer-configuration-hooks.md
+  - sources/clean/mlops-community-blog-the-complete-guide-to-claude-code-hooks-automating-your-ai-coding-workflow.md
+  - sources/clean/thomas-wiegold-com-blog-claude-code-hooks.md
 ---
 
 # Summary: Automate actions with hooks
@@ -103,6 +111,22 @@ The reverse does not hold: a hook returning `"allow"` cannot override deny rules
 - Transcript view (`Ctrl+O`) shows one-line summary per hook that fired
 - Full debug log: `claude --debug-file /tmp/claude.log` then `tail -f /tmp/claude.log`
 - Common pitfall: shell profile `echo` statements corrupt hook JSON output; guard with `if [[ $- == *i* ]]`
+
+## Practitioner patterns (community sources)
+
+Beyond the official guide, the wiki collects field-tested hook patterns and the named pitfalls behind them:
+
+| Concept tip | What it adds |
+| :---------- | :----------- |
+| [Setup hooks](../concepts/setup-hooks.md) | Using the `Setup`/`SessionStart` events to bootstrap a session — install deps, export env, restore context |
+| [Session context injection](../concepts/session-context-injection.md) | Injecting fresh context at session start via `additionalContext` (the session-lifecycle pattern) |
+| [Session accumulation pattern](../concepts/session-accumulation-pattern.md) | "Track-cheap, process-once": accumulate signals across a session and act on them once at `Stop`/`SessionEnd` |
+| [Stop-hook task enforcement](../concepts/stop-hook-task-enforcement.md) | A `Stop` hook that blocks until declared tasks are done, with the 8-block cap and `stop_hook_active` guard |
+| [Self-improving CLAUDE.md](../concepts/self-improving-claude-md.md) | A stop-hook rule-audit loop that proposes CLAUDE.md edits from what went wrong this turn |
+| [Production hook patterns](../concepts/production-hook-patterns.md) | Hardened recipes (formatting, gating, logging) from a production hook config |
+| [Hook automation use cases](../concepts/hook-automation-use-cases.md) | A catalogue of what teams automate with hooks across the workflow |
+| [Hooks adoption ladder](../concepts/hooks-adoption-ladder.md) | A staged path from a first notification hook up to enforcement hooks |
+| [Hook security](../concepts/hook-security.md) | The trust model: hooks run arbitrary shell with your credentials — review before adopting third-party configs |
 
 ## Scope
 

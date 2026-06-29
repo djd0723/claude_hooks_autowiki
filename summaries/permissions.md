@@ -4,9 +4,12 @@ title: "Permissions — modes, rule evaluation, and settings"
 slug: code-claude-com-docs-en-permissions-md
 created: 2026-06-29
 updated: 2026-06-29
-tags: [permissions, modes, rule-evaluation, settings, bash, managed-settings]
+tags: [permissions, modes, rule-evaluation, settings, bash, managed-settings, practitioner-workflow]
+source_count: 3
 sources:
   - sources/clean/code-claude-com-docs-en-permissions-md.md
+  - sources/clean/claudefa-st-blog-guide-development-permission-management.md
+  - sources/clean/claudefa-st-blog-tools-hooks-permission-hook-guide.md
 ---
 
 # Summary: Configure permissions
@@ -135,6 +138,13 @@ Settings precedence (highest first):
 > "If a tool is denied at any level, no other level can allow it."
 
 Deny wins across scopes in both directions, because deny rules from any scope are evaluated before allow rules.
+
+## Practitioner layer — mode strategy and the AI reviewer hook
+
+Beyond the official reference mechanics, the wiki carries two practitioner-facing tips:
+
+- [Permission mode strategies](../concepts/permission-mode-strategies.md) — the workflow layer over the modes: Shift+Tab cycling ergonomics, a mode→scenario mapping (early dev → `default`, active dev → `acceptEdits`, code review → `plan`, automation → `dontAsk`, isolated env → `bypassPermissions`), persisting a start mode via `defaultMode`, and a five-named-pitfalls taxonomy (over-/under-permissioning, mode confusion, blanket permissions, fragile argument patterns).
+- [AI permission reviewer](../concepts/ai-permission-reviewer.md) — a case study using a `PreToolUse` prompt/agent hook to apply judgment to permission decisions, complementing the deterministic deny→ask→allow rules above.
 
 ## Relationship to concept pages
 

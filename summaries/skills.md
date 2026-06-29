@@ -4,9 +4,13 @@ title: "Skills — authoring, discovery, and invocation"
 slug: code-claude-com-docs-en-skills-md
 created: 2026-06-29
 updated: 2026-06-29
-tags: [skills, authoring, discovery, invocation, frontmatter, progressive-disclosure, subagents]
+tags: [skills, authoring, discovery, invocation, frontmatter, progressive-disclosure, subagents, practitioner-workflow]
+source_count: 4
 sources:
   - sources/clean/code-claude-com-docs-en-skills-md.md
+  - sources/clean/claudefa-st-blog-guide-mechanics-claude-skills-guide.md
+  - sources/clean/claudefa-st-blog-guide-mechanics-path-scoped-skills.md
+  - sources/clean/claudefa-st-blog-tools-hooks-skill-activation-hook.md
 ---
 
 # Summary: Extend Claude with skills
@@ -202,6 +206,14 @@ The check for both is a baseline comparison: run realistic prompts in a fresh se
 - **Not triggering**: add natural keywords to `description`; verify via `What skills are available?`; rephrase; invoke directly. Malformed frontmatter YAML loads the body with empty metadata (so `/name` works but Claude can't match) — use `--debug`.
 - **Triggers too often**: make the description more specific, or add `disable-model-invocation: true`.
 - **Descriptions cut short**: the listing budget scales at 1% of context window; least-used descriptions drop first. Run `/doctor` to see shortening/drops. Raise with `skillListingBudgetFraction` or `SLASH_COMMAND_TOOL_CHAR_BUDGET`; per-entry cap is `maxSkillDescriptionChars` (default 1,536).
+
+## Practitioner layer — activation reliability and path scoping
+
+Beyond the official reference, community sources add a "make skills actually fire" layer:
+
+- [Skill activation](../concepts/skill-activation.md) — why a skill triggers (or fails to): description-keyword matching, the always-loaded description budget, and how to write descriptions that Claude reliably matches.
+- [Path-scoped skills](../concepts/path-scoped-skills.md) — using the `paths` frontmatter glob so a skill auto-activates only when the relevant files are in play, keeping unrelated skills out of context.
+- [Skill activation hook](../concepts/skill-activation-hook.md) — a hook pattern that deterministically forces a skill to load at the right moment rather than relying on model-driven matching.
 
 ## Relationship to concept pages
 
