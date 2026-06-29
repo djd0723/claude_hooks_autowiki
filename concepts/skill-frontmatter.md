@@ -44,7 +44,7 @@ Your skill instructions here...
 | `context` | No | Set to `fork` to run in a [forked subagent context](./skill-subagent-execution.md) |
 | `agent` | No | Which subagent type to use when `context: fork` is set |
 | `hooks` | No | [Hooks](./hook-scope.md) scoped to this skill's lifecycle |
-| `paths` | No | Glob patterns that limit when the skill auto-activates. Comma string or YAML list |
+| `paths` | No | Glob patterns that limit when the skill auto-activates — see [Path-Scoped Skills](./path-scoped-skills.md). Comma string or YAML list |
 | `shell` | No | Shell for `` !`command` `` and `` ```! `` blocks: `bash` (default) or `powershell` |
 
 Tool-related fields (`allowed-tools`, `disallowed-tools`) are detailed in [Skill Invocation Control](./skill-invocation-control.md); `model`, `effort`, `context`, and `agent` interact with [Skill Subagent Execution](./skill-subagent-execution.md).
@@ -69,4 +69,5 @@ The plugin-root case is the one place where `name` sets the command name, becaus
 - [Skill Arguments](./skill-arguments.md) — the `arguments` field and `$` substitutions
 - [Skill Invocation Control](./skill-invocation-control.md) — `disable-model-invocation`, `user-invocable`, `allowed-tools`
 - [Skill Discovery](./skill-discovery.md) — how location determines scope and command name
+- [Path-Scoped Skills](./path-scoped-skills.md) — the practitioner view of the `paths:` field: scoping strategies and anti-patterns
 - [Tool Permission Rules](./tool-permission-rules.md) — the `ToolName(specifier)` format the `allowed-tools` field uses
