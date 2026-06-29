@@ -174,3 +174,4 @@ The hook must return the absolute path to the created worktree directory. Comman
 - [Hook Matchers](./hook-matchers.md) — filtering which hooks fire
 - [Hook Scope](./hook-scope.md) — configuration location and permission interaction
 - [SDK Callback Hooks](./sdk-callback-hooks.md) — SDK callbacks return this same JSON output format
+- [Hook Security](./hook-security.md) — why these stdin inputs must be validated and sanitized before use
