@@ -85,3 +85,4 @@ Validation errors surface in three places: a startup dialog (interactive), stder
 - [Settings Precedence](./settings-precedence.md) — how the layers combine when a key appears in several
 - [Permission Settings](./permission-settings.md) — the most common keys in a `settings.json`
 - [Sandbox Settings](./sandbox-settings.md) — the `sandbox` configuration block
+- [SDK Setting Sources](./sdk-setting-sources.md) — how the Agent SDK chooses which of these files to load

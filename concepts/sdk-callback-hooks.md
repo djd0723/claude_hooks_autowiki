@@ -99,6 +99,7 @@ const asyncHook: HookCallback = async (input, toolUseID, { signal }) => {
 
 ## Related concepts
 
+- [SDK Setting Sources](./sdk-setting-sources.md) — how filesystem hooks are loaded alongside these callbacks
 - [SDK Hook Events](./sdk-hook-events.md) — which events each SDK supports (Python vs. TypeScript)
 - [SDK Hook Patterns](./sdk-hook-patterns.md) — worked examples and troubleshooting
 - [Hook Lifecycle Events](./hook-lifecycle-events.md) — the full event list
