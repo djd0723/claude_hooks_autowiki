@@ -2,8 +2,8 @@
 type: synthesis
 created: 2026-06-29
 updated: 2026-06-29
-tags: [hooks, plugins, skills, subagents, permissions, settings, tools, agent-sdk, extensibility, determinism, lifecycle, progressive-disclosure, configuration-precedence, skill-activation, path-scoping]
-source_count: 22
+tags: [hooks, plugins, skills, subagents, permissions, settings, tools, agent-sdk, extensibility, determinism, lifecycle, progressive-disclosure, configuration-precedence, skill-activation, path-scoping, harness-ownership, context-engineering, scale, docs-generation, drift-detection]
+source_count: 27
 sources:
   - sources/clean/code-claude-com-docs-en-hooks-guide-md.md
   - sources/clean/code-claude-com-docs-en-hooks-md.md
@@ -27,6 +27,11 @@ sources:
   - sources/clean/claudefa-st-blog-guide-configuration-basics.md
   - sources/clean/claudefa-st-blog-guide-mechanics-path-scoped-skills.md
   - sources/clean/claudefa-st-blog-guide-mechanics-claude-skills-guide.md
+  - sources/clean/claudefa-st-blog-tools-hooks-self-improving-claude-md.md
+  - sources/clean/claudefa-st-blog-guide-development-agent-manager-role.md
+  - sources/clean/claudefa-st-blog-guide-development-large-codebase-playbook.md
+  - sources/clean/github-com-firstbitelabsllc-claudux.md
+  - sources/clean/firstbitelabsllc-github-io-claudux-guide-commands.md
 ---
 
 # Claude Code Extensibility — Synthesis
@@ -39,7 +44,7 @@ settings, the tool layer, and the Agent SDK**.
 
 ---
 
-## Core thesis (22 sources)
+## Core thesis (27 sources)
 
 Claude Code is built on one organizing idea: **the language model is the planner, but it is
 not the enforcer.** Everything in the extensibility surface exists to give the user
@@ -214,6 +219,60 @@ Stop-hook task-completion pattern), and only then reach for judgment hooks. Clau
 [ai-permission-reviewer.md](concepts/ai-permission-reviewer.md) are the two worked case studies
 of the top rung — both third-party tools wiring real judgment into `PreToolUse`/`PermissionRequest`.
 
+### 8. The newest sources lift the unit of analysis from *the surface* to *the harness as an owned, scale-engineered, drift-prone artifact*
+
+The earliest sources answered "what can you configure?" The latest cluster — claudefa.st's
+[agent-manager](concepts/agent-manager-role.md), [large-codebase playbook](concepts/large-codebase-playbook.md),
+and [self-improving CLAUDE.md](concepts/self-improving-claude-md.md), plus the claudux
+[structure-owned-generation](concepts/structure-owned-generation.md) /
+[generated-artifact-freshness](concepts/generated-artifact-freshness.md) pair — answers a
+harder one: **once you have configured all of it, how do you keep it working as the team, the
+codebase, and the model all change underneath you?** Three new through-lines emerge, all
+consistent with the determinism root above:
+
+- **The harness, not the model, is the performance variable — and it must be *engineered* at
+  scale.** The playbook's central correction is that the canonical scaling failure "has nothing
+  to do with the model. It is about the absence of a harness." Because Claude Code "navigates a
+  codebase the way a software engineer would" (traverse, read, grep) rather than indexing it,
+  past ~30,000 lines "the agent can no longer hold a useful mental map in its head," and the fix
+  is **context engineering**: "do the curation work that an index would have done for you, but at
+  the harness layer instead of the model layer." Its eight strategies are all the extensibility
+  surface re-applied as scale tactics — layered `CLAUDE.md`, subdirectory init, codebase maps,
+  committed `permissions.deny`/`.ignore`, scoped commands, an LSP MCP for symbol search,
+  exploration subagents, and [path-scoped skills](concepts/path-scoped-skills.md) — confirming
+  that "learn the substrate once" pays off precisely when the repo gets large.
+
+- **An unowned harness rots; therefore it needs an owner and a review cadence.** The
+  [agent-manager role](concepts/agent-manager-role.md) names the owner — a hybrid PM/engineer (or
+  minimum-viable single DRI) accountable for the canonical `CLAUDE.md`, the org `settings.json`,
+  the approved-skills list, the plugin marketplace, and permissions policy — because without one,
+  "the harness becomes the bottleneck instead of the leverage point." Both sources independently
+  converge on the same maintenance discipline: "Harnesses rot," so a "meaningful configuration
+  review every three to six months, and also after major model releases," because a rule written
+  to constrain a weaker model "becomes friction" on a stronger one. This generalizes the
+  configuration-precedence through-line into a *temporal* dimension the official docs omit:
+  config is not only layered across scopes, it decays over time and must be pruned.
+
+- **Determinism extends past tool-use into the lifecycle of generated artifacts.** The claudux
+  pair carries the "model proposes, repository enforces" principle into docs generation —
+  "The model can propose wording. The repository owns structure." A checked-in `docs-structure.json`
+  manifest owns page IDs and ordering; the model speaks only through validated
+  `CLAUDUX_SECTION_PATCHES_JSON` patches (the documentation analogue of a hook's
+  [structured decision output](concepts/hook-input-output.md)); and a checkpoint SHA in
+  `.claudux-state.json` makes "are these docs stale?" a deterministic Git diff rather than a model
+  judgment. The sharpest reusable idea is the **graduated no-AI gate**: one `claudux audit` report
+  hardens into a failure at escalating moments — `--strict` (everyday CI) → `--release` (publish) →
+  `--handoff-strict` (mandatory checkpoint freshness *before handing work to another agent*). The
+  handoff gate is the notable one — "an agent that inherits stale docs inherits a lie" — and it ties
+  the determinism root directly to the agent-manager's ownership of agent-to-agent handoffs.
+
+The unifying meta-move: the corpus has graduated from *cataloguing the levers* to *operating the
+machine* — who owns it, how it scales, and how it is kept honest over time. The
+[self-improving CLAUDE.md hook](concepts/self-improving-claude-md.md) is the emblem of the shift —
+"Most hooks enforce something. This one improves something" — a `Stop` hook that audits the rules
+against the diff and files proposals to the agent-manager's review queue, closing the loop so the
+harness maintains *itself* between human reviews.
+
 ---
 
 ## Resolved open questions
@@ -249,6 +308,19 @@ Earlier syntheses left questions that newer sources have now answered:
   component directories sit at the plugin root.
 - **SDK feature parity** — resolved: project instructions, skills, and hooks all load from the
   filesystem via `settingSources`, with the multi-tenant isolation caveat above.
+- **Subagent economics (partially answered)** — the [large-codebase playbook](concepts/large-codebase-playbook.md)
+  supplies a *qualitative* crossover the earlier sources lacked: delegate when the task "eats
+  context" while the parent's work "needs context" — the canonical case being **explore vs. edit**
+  ("the two activities you should never combine"), where a read-only exploration subagent reads ~50
+  files and returns a ~600-word report so the parent keeps its window for editing. At scale this is
+  "the trade worth making every time." Still unquantified: the line-count or task-size threshold
+  below which the fresh-system-prompt overhead isn't worth it.
+- **Who owns the configuration at team scale (newly answered)** — the
+  [agent-manager role](concepts/agent-manager-role.md) names the owner (a hybrid PM/engineer, or
+  minimum-viable single DRI), the five areas owned (plugin marketplace, approved skills, CLAUDE.md
+  conventions, permissions policy, review cadence), and the rollout shape (audit → v1 harness →
+  quiet single-team rollout). The unowned-harness failure modes — tribal knowledge, inconsistent
+  results, security drift — are the motivation.
 
 ---
 
@@ -277,7 +349,7 @@ Earlier syntheses left questions that newer sources have now answered:
 
 **Hooks**
 - [Hook Lifecycle Events](concepts/hook-lifecycle-events.md) · [Hook Types](concepts/hook-types.md) · [Hook Matchers](concepts/hook-matchers.md) · [Hook Exit Codes](concepts/hook-exit-codes.md) · [Hook Scope](concepts/hook-scope.md) · [Hook Input/Output](concepts/hook-input-output.md) · [Hook Decision Control](concepts/hook-decision-control.md)
-- Practitioner: [Setup Hooks](concepts/setup-hooks.md) · [Hook Automation Use Cases](concepts/hook-automation-use-cases.md) · [Hooks Adoption Ladder](concepts/hooks-adoption-ladder.md) · [Production Hook Patterns](concepts/production-hook-patterns.md) · [AI Permission Reviewer](concepts/ai-permission-reviewer.md) · [Statusline Context Backup](concepts/statusline-context-backup.md) · [SessionStart Context Injection](concepts/session-context-injection.md) · [Skill Activation Hook](concepts/skill-activation-hook.md)
+- Practitioner: [Setup Hooks](concepts/setup-hooks.md) · [Hook Automation Use Cases](concepts/hook-automation-use-cases.md) · [Hooks Adoption Ladder](concepts/hooks-adoption-ladder.md) · [Production Hook Patterns](concepts/production-hook-patterns.md) · [AI Permission Reviewer](concepts/ai-permission-reviewer.md) · [Statusline Context Backup](concepts/statusline-context-backup.md) · [SessionStart Context Injection](concepts/session-context-injection.md) · [Skill Activation Hook](concepts/skill-activation-hook.md) · [Self-Improving CLAUDE.md](concepts/self-improving-claude-md.md)
 - Summaries: [Hooks Guide](summaries/hooks-guide.md) · [Hooks Reference](summaries/hooks.md)
 
 **Plugins**
@@ -304,6 +376,10 @@ Earlier syntheses left questions that newer sources have now answered:
 **Agent SDK**
 - [SDK Callback Hooks](concepts/sdk-callback-hooks.md) · [SDK Hook Events](concepts/sdk-hook-events.md) · [SDK Hook Patterns](concepts/sdk-hook-patterns.md) · [SDK Project Instructions](concepts/sdk-project-instructions.md) · [SDK Setting Sources](concepts/sdk-setting-sources.md) · [SDK Skills Loading](concepts/sdk-skills-loading.md)
 - Summaries: [Agent SDK Features](summaries/agent-sdk-features.md) · [Agent SDK Hooks](summaries/agent-sdk-hooks.md)
+
+**Harness operations & scale**
+- [The Agent Manager Role](concepts/agent-manager-role.md) · [Large-Codebase Playbook](concepts/large-codebase-playbook.md) · [Self-Improving CLAUDE.md](concepts/self-improving-claude-md.md)
+- Generated docs (claudux): [Structure-Owned Generation](concepts/structure-owned-generation.md) · [Generated-Artifact Freshness](concepts/generated-artifact-freshness.md)
 
 **Cross-cutting comparisons**
 - [matcher vs if](comparisons/matcher-vs-if-field.md) · [sync vs async hooks](comparisons/sync-vs-async-hooks.md) · [monitors vs command hooks](comparisons/monitors-vs-command-hooks.md) · [plugin scopes vs hook scopes](comparisons/plugin-scopes-vs-hook-scopes.md) · [skills-dir vs marketplace plugins](comparisons/skills-dir-plugins-vs-marketplace-plugins.md) · [SDK extension features](comparisons/sdk-extension-features.md)
