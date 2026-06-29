@@ -2,8 +2,8 @@
 type: synthesis
 created: 2026-06-29
 updated: 2026-06-29
-tags: [hooks, plugins, skills, subagents, permissions, settings, tools, agent-sdk, extensibility, determinism, lifecycle, progressive-disclosure, configuration-precedence]
-source_count: 17
+tags: [hooks, plugins, skills, subagents, permissions, settings, tools, agent-sdk, extensibility, determinism, lifecycle, progressive-disclosure, configuration-precedence, skill-activation, path-scoping]
+source_count: 22
 sources:
   - sources/clean/code-claude-com-docs-en-hooks-guide-md.md
   - sources/clean/code-claude-com-docs-en-hooks-md.md
@@ -22,6 +22,11 @@ sources:
   - sources/clean/claudefa-st-blog-tools-hooks-claude-code-setup-hooks.md
   - sources/clean/claudefa-st-blog-tools-hooks-hooks-guide.md
   - sources/clean/claudefa-st-blog-tools-hooks-permission-hook-guide.md
+  - sources/clean/claudefa-st-blog-tools-hooks-skill-activation-hook.md
+  - sources/clean/claudefa-st-blog-tools-hooks-session-lifecycle-hooks.md
+  - sources/clean/claudefa-st-blog-guide-configuration-basics.md
+  - sources/clean/claudefa-st-blog-guide-mechanics-path-scoped-skills.md
+  - sources/clean/claudefa-st-blog-guide-mechanics-claude-skills-guide.md
 ---
 
 # Claude Code Extensibility — Synthesis
@@ -34,7 +39,7 @@ settings, the tool layer, and the Agent SDK**.
 
 ---
 
-## Core thesis (17 sources)
+## Core thesis (22 sources)
 
 Claude Code is built on one organizing idea: **the language model is the planner, but it is
 not the enforcer.** Everything in the extensibility surface exists to give the user
@@ -86,7 +91,14 @@ model judgment*. It shows up identically in every cluster:
   add judgment on top — but, critically, **never below**: "Deny and ask rules are evaluated
   regardless of what a PreToolUse hook returns."
 - **Skills:** a skill body is loaded deterministically when invoked, but *whether* Claude
-  reaches for it is a model judgment shaped by the description.
+  reaches for it is a model judgment shaped by the description
+  ([skill-activation.md](concepts/skill-activation.md): "Activation is description-driven,
+  not name-driven"). The practitioner sources now supply skills' *deterministic counterpart*
+  too: a [skill-activation hook](concepts/skill-activation-hook.md) on `UserPromptSubmit`
+  appends "use this skill" to the prompt so "Claude can't forget because it never had to
+  remember" — taking the model's judgment out of the loop exactly as a `type: command` hook
+  does. Skills thus span the *whole* axis, judgment activation on one end and hook-forced
+  activation on the other.
 - **Subagents & the AI-permission-reviewer pattern** ([ai-permission-reviewer.md](concepts/ai-permission-reviewer.md))
   push this furthest: a tiered design where deterministic fast-paths handle the common cases
   and an LLM is consulted only for the ambiguous remainder. **The deterministic tiers are the
@@ -137,6 +149,17 @@ principle: **descriptions are always-on and cheap; bodies are on-demand and isol
 skills source's evaluation guidance follows from this — "Seeing a skill trigger tells you Claude
 found it, not that it did what you intended" — because the always-on description is what governs
 *discovery*, separately from whether the on-demand body *works*.
+
+The practitioner sources push the principle one level deeper.
+[Path-scoped skills](concepts/path-scoped-skills.md) bind a skill to a directory glob so its
+*description never lands in the system prompt* unless the work touches a matching path — "not
+just 'load the body when needed' but 'do not list the skill if the work is somewhere else.'"
+That makes even the always-on tier conditional, and it surfaces a prior decision the sources
+call "the single most common skill mistake": **rules vs. workflows.** A convention that must
+hold every time belongs in `CLAUDE.md` (always in context); a multi-step procedure that fires
+only on specific tasks belongs in a skill (loaded on demand). Get it backwards and "you pay
+twice" — rules buried in a skill are missed on the 80% of tasks where it never activates, and
+workflows stuffed into `CLAUDE.md` "burn tokens in every session even when irrelevant."
 
 ### 5. The Agent SDK is the same foundation, re-exposed — and that is a footgun as well as a feature
 
@@ -200,10 +223,26 @@ Earlier syntheses left questions that newer sources have now answered:
 - **Async hooks** — fully documented: `async`/`asyncRewake` are first-class, with the explicit
   constraint that async outputs cannot block or inject context after the fact.
 - **Real-world hook recipes** — the practitioner sources supply them: pre-commit enforcement,
-  Stop-hook task gating, statusline context backup, format-on-write, and the tiered AI permission
-  reviewer. The adoption-ladder framing organizes them by risk.
+  Stop-hook task gating, statusline context backup, format-on-write,
+  [`SessionStart` context auto-injection](concepts/session-context-injection.md) (with the
+  `startup`/`resume`/`clear`/`compact` matcher axis and `CLAUDE_ENV_FILE` for persisting
+  session-wide env vars), and the tiered AI permission reviewer. The adoption-ladder framing
+  organizes them by risk.
 - **Skills vs. CLAUDE.md** — resolved by the skills source: use a skill "when a section of
   CLAUDE.md has grown into a procedure rather than a fact," because skill bodies load lazily.
+  The path-scoped-skills source sharpens this into a decision tree —
+  **rules** (every-time conventions, always in context) go in `CLAUDE.md`; **workflows**
+  (task-specific procedures, loaded on demand) go in a skill; when you need both, split them and
+  have the skill reference the rule.
+- **Skill discovery reliability** — answered by [skill-activation.md](concepts/skill-activation.md)
+  (the claude-skills-guide source): the `description` *is* an intent classifier — "Write it for
+  that job. Mention the trigger phrases users actually type. ... Skip marketing language."
+  Disambiguation breaks ties toward the *more specific* description, so vague ones ("helps with
+  documents") lose to anything sharper. The source also names the recurring failure modes and
+  their fixes: the **Silent No-Op** (missing `allowed-tools` or no concrete target — declare the
+  tools and reference a real artifact), the **Wrong Trigger** (too-broad description — tighten it
+  and add an explicit "out of scope" boundary), and the **Drift** (a skill that breaks when the
+  underlying tool changes — version the `SKILL.md` and review it on a cadence).
 - **Custom commands** — resolved: "Custom commands have been merged into skills." A
   `commands/deploy.md` and a `skills/deploy/SKILL.md` both create `/deploy`.
 - **Plugin layout pitfalls** — resolved: only `plugin.json` lives in `.claude-plugin/`; all other
@@ -218,20 +257,17 @@ Earlier syntheses left questions that newer sources have now answered:
 1. **Cross-surface interaction at scale:** when a plugin contributes hooks *and* skills *and*
    agents *and* an MCP server simultaneously, what coordination/ordering problems emerge that
    the per-component docs don't anticipate?
-2. **Skill discovery reliability:** the skills source warns that triggering ≠ correctness. Do
-   practitioner sources offer description-tuning techniques to raise the *invoked-when-it-should*
-   rate without raising false triggers?
-3. **`type: agent` hooks in practice:** the reference allots a 60s timeout / 50 tool-turns. Do
+2. **`type: agent` hooks in practice:** the reference allots a 60s timeout / 50 tool-turns. Do
    real deployments find this sufficient for meaningful verification, or too tight?
-4. **Subagent economics:** isolated contexts cost a fresh system prompt and lose parent context.
+3. **Subagent economics:** isolated contexts cost a fresh system prompt and lose parent context.
    When is delegation a net win vs. just doing the work inline? No source quantifies the
    crossover.
-5. **Monitors beyond log-tailing:** the component is new (v2.1.105+). Do community sources show
+4. **Monitors beyond log-tailing:** the component is new (v2.1.105+). Do community sources show
    CI/CD bridges, webhook consumers, or file watchers — the practical ceiling of the feature?
-6. **Permission rule authoring at team scale:** how do organizations manage large
+5. **Permission rule authoring at team scale:** how do organizations manage large
    allow/ask/deny rule sets across managed + project + user scopes without rule sprawl or
    accidental shadowing?
-7. **Agent teams (CLI-only):** the SDK source mentions agent teams that "share a task list and
+6. **Agent teams (CLI-only):** the SDK source mentions agent teams that "share a task list and
    message each other directly" as distinct from subagents. The corpus has no dedicated source on
    teams — a gap.
 
@@ -241,7 +277,7 @@ Earlier syntheses left questions that newer sources have now answered:
 
 **Hooks**
 - [Hook Lifecycle Events](concepts/hook-lifecycle-events.md) · [Hook Types](concepts/hook-types.md) · [Hook Matchers](concepts/hook-matchers.md) · [Hook Exit Codes](concepts/hook-exit-codes.md) · [Hook Scope](concepts/hook-scope.md) · [Hook Input/Output](concepts/hook-input-output.md) · [Hook Decision Control](concepts/hook-decision-control.md)
-- Practitioner: [Setup Hooks](concepts/setup-hooks.md) · [Hook Automation Use Cases](concepts/hook-automation-use-cases.md) · [Hooks Adoption Ladder](concepts/hooks-adoption-ladder.md) · [Production Hook Patterns](concepts/production-hook-patterns.md) · [AI Permission Reviewer](concepts/ai-permission-reviewer.md) · [Statusline Context Backup](concepts/statusline-context-backup.md)
+- Practitioner: [Setup Hooks](concepts/setup-hooks.md) · [Hook Automation Use Cases](concepts/hook-automation-use-cases.md) · [Hooks Adoption Ladder](concepts/hooks-adoption-ladder.md) · [Production Hook Patterns](concepts/production-hook-patterns.md) · [AI Permission Reviewer](concepts/ai-permission-reviewer.md) · [Statusline Context Backup](concepts/statusline-context-backup.md) · [SessionStart Context Injection](concepts/session-context-injection.md) · [Skill Activation Hook](concepts/skill-activation-hook.md)
 - Summaries: [Hooks Guide](summaries/hooks-guide.md) · [Hooks Reference](summaries/hooks.md)
 
 **Plugins**
@@ -249,7 +285,7 @@ Earlier syntheses left questions that newer sources have now answered:
 - Summaries: [Plugins Reference](summaries/plugins-reference.md) · [Plugins Guide](summaries/plugins.md)
 
 **Skills**
-- [Skills](concepts/skills.md) · [Bundled Skills](concepts/bundled-skills.md) · [Frontmatter](concepts/skill-frontmatter.md) · [Discovery](concepts/skill-discovery.md) · [Invocation Control](concepts/skill-invocation-control.md) · [Arguments](concepts/skill-arguments.md) · [Content Lifecycle](concepts/skill-content-lifecycle.md) · [Dynamic Context](concepts/skill-dynamic-context.md) · [Subagent Execution](concepts/skill-subagent-execution.md) · [Evaluation](concepts/skill-evaluation.md)
+- [Skills](concepts/skills.md) · [Bundled Skills](concepts/bundled-skills.md) · [Frontmatter](concepts/skill-frontmatter.md) · [Discovery](concepts/skill-discovery.md) · [Activation](concepts/skill-activation.md) · [Path-Scoped Skills](concepts/path-scoped-skills.md) · [Invocation Control](concepts/skill-invocation-control.md) · [Arguments](concepts/skill-arguments.md) · [Content Lifecycle](concepts/skill-content-lifecycle.md) · [Dynamic Context](concepts/skill-dynamic-context.md) · [Subagent Execution](concepts/skill-subagent-execution.md) · [Evaluation](concepts/skill-evaluation.md)
 - Summary: [Skills](summaries/skills.md)
 
 **Subagents**
@@ -258,7 +294,7 @@ Earlier syntheses left questions that newer sources have now answered:
 
 **Permissions & Settings**
 - [Permission Settings](concepts/permission-settings.md) · [Evaluation](concepts/permission-evaluation.md) · [Modes](concepts/permission-modes.md) · [Tool Permission Rules](concepts/tool-permission-rules.md) · [Bash Permission Matching](concepts/bash-permission-matching.md) · [File Permission Patterns](concepts/file-permission-patterns.md) · [Sandbox Settings](concepts/sandbox-settings.md)
-- [Settings Files](concepts/settings-files.md) · [Settings Precedence](concepts/settings-precedence.md) · [Configuration Scopes](concepts/configuration-scopes.md) · [Managed Settings](concepts/managed-settings.md)
+- [Settings Files](concepts/settings-files.md) · [Settings Precedence](concepts/settings-precedence.md) · [Configuration Scopes](concepts/configuration-scopes.md) · [Managed Settings](concepts/managed-settings.md) · [Environment Variables](concepts/environment-variables.md)
 - Summaries: [Permissions](summaries/permissions.md) · [Settings](summaries/settings.md)
 
 **Tools**
