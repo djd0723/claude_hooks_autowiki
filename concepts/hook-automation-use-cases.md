@@ -105,6 +105,7 @@ Swap the default git worktree behavior for custom VCS or setup:
 
 ## Related concepts
 
+- [Production Hook Patterns (ClaudeKit Case Study)](./production-hook-patterns.md) — how a real shipping kit applies these recipes, and the design lessons that emerge
 - [Hook Lifecycle Events](./hook-lifecycle-events.md) — the full event reference these recipes attach to
 - [Hook Types](./hook-types.md) — `command`/`http`/`prompt`/`agent` handlers and the `async` flag that make these recipes possible
 - [Hook Decision Control](./hook-decision-control.md) — the `block`/`deny`/`allow`/`additionalContext` mechanics behind the blocking and enrichment recipes
