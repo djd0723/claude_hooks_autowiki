@@ -102,6 +102,7 @@ The constraint that makes the pattern work: the `PostToolUse` step must be cheap
 
 ## Related concepts
 
+- [Per-edit hook processing vs. session-batch processing](../comparisons/per-edit-processing-vs-session-batch.md) — the placement-timing decision this pattern resolves, as a side-by-side
 - [Hooks Adoption Ladder](./hooks-adoption-ladder.md) — the source of the "never put tsc in PostToolUse" rule this pattern resolves
 - [Hook Automation Use Cases](./hook-automation-use-cases.md) — the broader recipe catalog; this page contributes one concrete pattern
 - [Production Hook Patterns (ClaudeKit Case Study)](./production-hook-patterns.md) — sibling case study; ClaudeKit's "stateful threshold" (fire a reminder every N edits) is a lighter version of session-state accumulation

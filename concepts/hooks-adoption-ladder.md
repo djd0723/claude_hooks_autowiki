@@ -71,7 +71,7 @@ Concrete consequences the source draws:
 - **Make logging `async: true`** so the audit hook never blocks the agent loop — "you'll have hundreds of these per session."
 - **Trim verifier output** (`tail -50`) so failure feedback stays cheap on the context window.
 
-This is the cost lens on [hook exit codes and output](./hook-exit-codes.md) and the `async` flag in [hook types](./hook-types.md).
+This is the cost lens on [hook exit codes and output](./hook-exit-codes.md) and the `async` flag in [hook types](./hook-types.md). For how to escape the `tsc`-in-`PostToolUse` trap without losing per-edit reactivity, see [per-edit hook processing vs. session-batch processing](../comparisons/per-edit-processing-vs-session-batch.md).
 
 ## The verification escalation ladder
 
