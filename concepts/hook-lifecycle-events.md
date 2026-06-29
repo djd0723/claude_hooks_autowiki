@@ -4,14 +4,24 @@ title: "Hook Lifecycle Events"
 created: 2026-06-29
 updated: 2026-06-29
 tags: [hooks, lifecycle, events, automation]
-source_count: 1
+source_count: 2
 sources:
   - sources/clean/code-claude-com-docs-en-hooks-guide-md.md
+  - sources/clean/code-claude-com-docs-en-hooks-md.md
 ---
 
 # Hook Lifecycle Events
 
 Claude Code fires hooks at specific lifecycle points. Each event passes JSON data to the hook's stdin and reads the hook's output to determine what to do next.
+
+## Cadences
+
+Events fall into three cadences:
+
+- **Once per session**: `SessionStart`, `SessionEnd`, `Setup`
+- **Once per turn**: `UserPromptSubmit`, `UserPromptExpansion`, `Stop`, `StopFailure`, `TeammateIdle`
+- **On every tool call inside the agentic loop**: `PreToolUse`, `PermissionRequest`, `PermissionDenied`, `PostToolUse`, `PostToolUseFailure`, `PostToolBatch`, `SubagentStart`, `SubagentStop`, `TaskCreated`, `TaskCompleted`
+- **Standalone async** (fire independently): `Notification`, `MessageDisplay`, `InstructionsLoaded`, `ConfigChange`, `CwdChanged`, `FileChanged`, `WorktreeCreate`, `WorktreeRemove`, `PreCompact`, `PostCompact`, `Elicitation`, `ElicitationResult`
 
 ## The event table
 
@@ -63,10 +73,12 @@ Claude Code fires hooks at specific lifecycle points. Each event passes JSON dat
 ## Key behaviors
 
 - Multiple matching hooks for the same event run **in parallel**, not sequentially
-- Identical hook commands are automatically deduplicated
+- Identical hook commands are automatically deduplicated (command hooks by command+args, HTTP hooks by URL)
 - For `PreToolUse` permission decisions, the most restrictive answer wins: `deny > defer > ask > allow`
 - `PermissionRequest` hooks do not fire in non-interactive mode (`-p`); use `PreToolUse` instead
 - `Stop` hooks fire whenever Claude finishes responding, not only at task completion; they do not fire on user interrupts
+- `Stop` has a block cap: after 8 consecutive blocks, Claude Code overrides the hook and ends the turn; check `stop_hook_active` in the input to detect this
+- `SessionStart`, `Setup` support only `command` and `mcp_tool` hooks; they do not support `http`, `prompt`, or `agent` hooks
 
 ## Related concepts
 
@@ -74,3 +86,5 @@ Claude Code fires hooks at specific lifecycle points. Each event passes JSON dat
 - [Hook Matchers](./hook-matchers.md) — filtering which hooks fire
 - [Hook Exit Codes](./hook-exit-codes.md) — communicating decisions back to Claude Code
 - [Hook Scope](./hook-scope.md) — where hooks are configured
+- [Hook Input and Output](./hook-input-output.md) — JSON input/output protocol
+- [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns

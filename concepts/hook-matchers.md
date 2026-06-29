@@ -4,9 +4,10 @@ title: "Hook Matchers"
 created: 2026-06-29
 updated: 2026-06-29
 tags: [hooks, matchers, filtering, configuration]
-source_count: 1
+source_count: 2
 sources:
   - sources/clean/code-claude-com-docs-en-hooks-guide-md.md
+  - sources/clean/code-claude-com-docs-en-hooks-md.md
 ---
 
 # Hook Matchers
@@ -27,18 +28,28 @@ The `matcher` is a string on the hook group that filters which occurrences of th
 | `SubagentStart` / `SubagentStop` | agent type | `general-purpose`, `Explore`, `Plan`, or custom agent names |
 | `PreCompact` / `PostCompact` | what triggered compaction | `manual`, `auto` |
 | `ConfigChange` | configuration source | `user_settings`, `project_settings`, `local_settings`, `policy_settings`, `skills` |
-| `StopFailure` | error type | `rate_limit`, `overloaded`, `authentication_failed`, `billing_error`, `invalid_request`, `server_error`, `unknown` |
+| `StopFailure` | error type | `rate_limit`, `overloaded`, `authentication_failed`, `oauth_org_not_allowed`, `billing_error`, `invalid_request`, `model_not_found`, `server_error`, `max_output_tokens`, `unknown` |
 | `InstructionsLoaded` | load reason | `session_start`, `nested_traversal`, `path_glob_match`, `include`, `compact` |
 | `Elicitation` / `ElicitationResult` | MCP server name | your configured MCP server names |
 | `FileChanged` | literal filenames to watch | `.envrc\|.env` |
 | `UserPromptExpansion` | command name | your skill or command names |
 | `UserPromptSubmit`, `PostToolBatch`, `Stop`, `TeammateIdle`, `TaskCreated`, `TaskCompleted`, `WorktreeCreate`, `WorktreeRemove`, `CwdChanged`, `MessageDisplay` | no matcher support | always fires on every occurrence |
 
-## Matcher syntax
+## Matcher syntax rules
 
-For tool-name matchers, pipe `|` and comma `,` are interchangeable list separators (Claude Code v2.1.191+). Regular expressions are also supported, e.g. `mcp__.*` matches all MCP tools.
+How a matcher value is evaluated depends on its characters:
 
-**MCP tool naming convention**: `mcp__<server>__<tool>`, e.g. `mcp__github__search_repositories`. Use `mcp__github__.*` to match all tools from one server, or `mcp__.*__write.*` to match across servers.
+| Matcher value | Evaluated as |
+| :------------ | :----------- |
+| `"*"`, `""`, or omitted | Match all |
+| Only letters, digits, `_`, spaces, `,`, and `\|` | Exact string, or list separated by `\|` or `,` (v2.1.191+) with optional surrounding whitespace |
+| Contains any other character | JavaScript regular expression |
+
+So `Bash` is an exact match; `Edit\|Write` matches either exactly; `^Notebook` is a regex matching any tool starting with Notebook.
+
+> Note: `FileChanged` and `StopFailure` accept only `|` as a list separator and treat `,` as a literal character. All other events accept `|` or `,`.
+
+**MCP tool naming convention**: `mcp__<server>__<tool>`, e.g. `mcp__github__search_repositories`. Use `mcp__github__.*` to match all tools from one server, or `mcp__.*__write.*` to match across servers. The `.*` is required — a matcher like `mcp__memory` contains only letters and underscores and is compared as an exact string, matching no tool.
 
 ## The `if` field — argument-level filtering
 
