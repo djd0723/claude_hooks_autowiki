@@ -103,6 +103,7 @@ Use `additionalContext` to inject text into Claude's context rather than making 
 - `"allow"` in a hook does not override deny rules from settings. Deny rules from any scope (including managed settings) always take precedence over hook approvals.
 - `PostToolUse` hooks cannot undo actions — the tool has already executed.
 - When multiple `PreToolUse` hooks return `updatedInput` to rewrite tool arguments, the last one to finish wins (non-deterministic due to parallel execution).
+- `Stop` hooks have a block cap of **8 consecutive blocks**. After 8 consecutive blocks, Claude Code stops calling the `Stop` hook for the session. Check the `stop_hook_active` field in the hook input to detect when a block cascade is in progress and avoid triggering additional blocks.
 
 ## Debug
 

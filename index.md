@@ -1,5 +1,8 @@
 ---
 type: index
+created: 2026-06-29
+updated: 2026-06-29
+tags: [hooks, navigation, index]
 ---
 
 # Claude Code Hooks
@@ -26,5 +29,7 @@ and the running [synthesis](synthesis.md).
 ## Entities
 
 ## Comparisons
+
+- [Hooks Guide accuracy check](comparisons/code-claude-com-docs-en-hooks-guide-md.md) — verified wiki pages against source; 2 inaccuracies corrected
 
 ## Answers
