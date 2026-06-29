@@ -2,8 +2,8 @@
 type: synthesis
 created: 2026-06-29
 updated: 2026-06-29
-tags: [hooks, plugins, skills, subagents, permissions, settings, tools, agent-sdk, extensibility, determinism, lifecycle, progressive-disclosure, configuration-precedence, skill-activation, path-scoping, harness-ownership, context-engineering, scale, docs-generation, drift-detection, incremental-processing]
-source_count: 28
+tags: [hooks, plugins, skills, subagents, permissions, settings, tools, agent-sdk, extensibility, determinism, lifecycle, progressive-disclosure, configuration-precedence, skill-activation, path-scoping, harness-ownership, context-engineering, scale, docs-generation, drift-detection, incremental-processing, permission-modes, mode-strategy, practitioner-workflow]
+source_count: 29
 sources:
   - sources/clean/code-claude-com-docs-en-hooks-guide-md.md
   - sources/clean/code-claude-com-docs-en-hooks-md.md
@@ -33,6 +33,7 @@ sources:
   - sources/clean/github-com-firstbitelabsllc-claudux.md
   - sources/clean/firstbitelabsllc-github-io-claudux-guide-commands.md
   - sources/clean/github-com-dev-gom-claude-code-marketplace-tree-head-plugins-hook-auto-docs.md
+  - sources/clean/claudefa-st-blog-guide-development-permission-management.md
 ---
 
 # Claude Code Extensibility — Synthesis
@@ -45,7 +46,7 @@ settings, the tool layer, and the Agent SDK**.
 
 ---
 
-## Core thesis (28 sources)
+## Core thesis (29 sources)
 
 Claude Code is built on one organizing idea: **the language model is the planner, but it is
 not the enforcer.** Everything in the extensibility surface exists to give the user
@@ -234,6 +235,25 @@ also models the cleanest use of `SessionStart` for config migration (it fires be
 generalizes to test selection, cache invalidation, and dependency analysis — any "process the
 changes, not everything" workflow.
 
+The practitioner lens does the same favor for *permissions* that the adoption ladder does for
+hooks: it reframes the modes catalogued in through-line #3 from a security setting into a
+**workflow ergonomic.** The [permission-mode-strategies](concepts/permission-mode-strategies.md)
+playbook treats permission prompts as a *flow* problem — "Claude Code asking for permission on
+every file edit and command kills your flow" — and answers it with a mode-per-phase mapping
+turned by **Shift+Tab** (`normal → auto-accept edits → plan mode → normal`) rather than by
+answering dialogs one at a time: explore an unfamiliar codebase in `plan`, build in
+`acceptEdits`, drop back to `default` for the risky parts, and reserve `dontAsk`/`bypassPermissions`
+for automation and isolated environments. This is the **same loosen-as-trust-grows shape** as the
+hooks ladder — start tight, widen deliberately — and crucially it does *not* dent the #3 floor:
+the source's own pitfalls reinscribe the enforcement invariant ("deny rules always win," "do not
+rely on Bash rules to restrict command arguments — use WebFetch domain rules"), so the ergonomic
+dial only ever moves *within* the deny-bounded envelope. Where the
+[ai-permission-reviewer](concepts/ai-permission-reviewer.md) automates the approve/deny *decision*
+with a hook, the mode playbook automates the approve/deny *posture* by the human picking the right
+gear for the task — two practitioner answers to the same friction, one judgment-bearing and one
+ergonomic, and the source closes the loop by pairing modes with [sandbox settings](concepts/sandbox-settings.md)
+for defense-in-depth.
+
 ### 8. The newest sources lift the unit of analysis from *the surface* to *the harness as an owned, scale-engineered, drift-prone artifact*
 
 The earliest sources answered "what can you configure?" The latest cluster — claudefa.st's
@@ -381,6 +401,7 @@ Earlier syntheses left questions that newer sources have now answered:
 
 **Permissions & Settings**
 - [Permission Settings](concepts/permission-settings.md) · [Evaluation](concepts/permission-evaluation.md) · [Modes](concepts/permission-modes.md) · [Tool Permission Rules](concepts/tool-permission-rules.md) · [Bash Permission Matching](concepts/bash-permission-matching.md) · [File Permission Patterns](concepts/file-permission-patterns.md) · [Sandbox Settings](concepts/sandbox-settings.md)
+- Practitioner: [Permission Mode Strategies](concepts/permission-mode-strategies.md)
 - [Settings Files](concepts/settings-files.md) · [Settings Precedence](concepts/settings-precedence.md) · [Configuration Scopes](concepts/configuration-scopes.md) · [Managed Settings](concepts/managed-settings.md) · [Environment Variables](concepts/environment-variables.md)
 - Summaries: [Permissions](summaries/permissions.md) · [Settings](summaries/settings.md)
 
