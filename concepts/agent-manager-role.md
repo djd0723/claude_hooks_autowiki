@@ -92,3 +92,4 @@ The article predicts "agent manager or an equivalent title" will appear in org c
 - [Self-Improving CLAUDE.md](./self-improving-claude-md.md) — a tool for keeping CLAUDE.md conventions current via a review queue
 - [Permission Evaluation](./permission-evaluation.md) — the permissions-policy surface that is the infosec touchpoint
 - [Settings Files](./settings-files.md) — the `.claude/settings.json` the manager standardizes
+- [Large-Codebase Playbook](./large-codebase-playbook.md) — the eight-strategy harness this role owns and reviews at scale
