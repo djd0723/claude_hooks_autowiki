@@ -14,6 +14,4 @@ https://claudefa.st/blog/guide/mechanics/claude-skills-guide
 https://claudefa.st/blog/tools/hooks/self-improving-claude-md
 https://claudefa.st/blog/guide/development/agent-manager-role
 https://claudefa.st/blog/guide/development/large-codebase-playbook
-https://github.com/firstbitelabsllc/claudux
 https://firstbitelabsllc.github.io/claudux/guide/commands
-https://github.com/Dev-GOM/claude-code-marketplace/tree/HEAD/plugins/hook-auto-docs
