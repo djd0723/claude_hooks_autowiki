@@ -132,5 +132,7 @@ and the running [synthesis](synthesis.md).
 - [Skills-dir plugins vs marketplace plugins](comparisons/skills-dir-plugins-vs-marketplace-plugins.md) — in-place discovery vs cache copy; path and capability differences
 - [Permission rules vs. permission hooks](comparisons/permission-rules-vs-permission-hooks.md) — static rules vs. hook judgment for tool access control
 - [Choosing an SDK extension feature](comparisons/sdk-extension-features.md) — which SDK extension mechanism fits which use case
+- [Description-driven activation vs. activation hook](comparisons/description-driven-activation-vs-activation-hook.md) — model-judgment description matching vs. deterministic UserPromptSubmit hook; when each wins and how they layer
+- [CLAUDE.md rules vs. skills workflows](comparisons/claude-md-rules-vs-skills-workflows.md) — always-on rules vs. on-demand workflows; the symmetric "pay twice" failure and three-way decision tree
 
 ## Answers
