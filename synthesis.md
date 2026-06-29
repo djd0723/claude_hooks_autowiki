@@ -2,8 +2,8 @@
 type: synthesis
 created: 2026-06-29
 updated: 2026-06-29
-tags: [hooks, plugins, skills, subagents, permissions, settings, tools, agent-sdk, extensibility, determinism, lifecycle, progressive-disclosure, configuration-precedence, skill-activation, path-scoping, harness-ownership, context-engineering, scale, docs-generation, drift-detection]
-source_count: 27
+tags: [hooks, plugins, skills, subagents, permissions, settings, tools, agent-sdk, extensibility, determinism, lifecycle, progressive-disclosure, configuration-precedence, skill-activation, path-scoping, harness-ownership, context-engineering, scale, docs-generation, drift-detection, incremental-processing]
+source_count: 28
 sources:
   - sources/clean/code-claude-com-docs-en-hooks-guide-md.md
   - sources/clean/code-claude-com-docs-en-hooks-md.md
@@ -32,6 +32,7 @@ sources:
   - sources/clean/claudefa-st-blog-guide-development-large-codebase-playbook.md
   - sources/clean/github-com-firstbitelabsllc-claudux.md
   - sources/clean/firstbitelabsllc-github-io-claudux-guide-commands.md
+  - sources/clean/github-com-dev-gom-claude-code-marketplace-tree-head-plugins-hook-auto-docs.md
 ---
 
 # Claude Code Extensibility — Synthesis
@@ -44,7 +45,7 @@ settings, the tool layer, and the Agent SDK**.
 
 ---
 
-## Core thesis (27 sources)
+## Core thesis (28 sources)
 
 Claude Code is built on one organizing idea: **the language model is the planner, but it is
 not the enforcer.** Everything in the extensibility surface exists to give the user
@@ -219,6 +220,20 @@ Stop-hook task-completion pattern), and only then reach for judgment hooks. Clau
 [ai-permission-reviewer.md](concepts/ai-permission-reviewer.md) are the two worked case studies
 of the top rung — both third-party tools wiring real judgment into `PreToolUse`/`PermissionRequest`.
 
+The ladder's sharpest *anti*-pattern — "never put `tsc --noEmit` in `PostToolUse`; multiply a
+10–30s typecheck by ~50 edits and you've added ~25 minutes of wall-clock" — now has its
+positive resolution in the community `hook-auto-docs` plugin's
+[session accumulation pattern](concepts/session-accumulation-pattern.md): use `PostToolUse` as a
+*lightweight change journal* (record which files were touched, in constant time) and let `Stop`
+batch-process only the accumulated delta once. This is the determinism root applied to *cost*
+rather than enforcement — "journal the path, not the content" keeps the per-edit step under the
+latency budget while a single incremental run at session end stays accurate. The same plugin
+also models the cleanest use of `SessionStart` for config migration (it fires before any
+`PostToolUse`/`Stop` reads the config, even on `--resume`/`/clear`), tying it back to the
+[session-context-injection](concepts/session-context-injection.md) matcher axis. The pattern
+generalizes to test selection, cache invalidation, and dependency analysis — any "process the
+changes, not everything" workflow.
+
 ### 8. The newest sources lift the unit of analysis from *the surface* to *the harness as an owned, scale-engineered, drift-prone artifact*
 
 The earliest sources answered "what can you configure?" The latest cluster — claudefa.st's
@@ -349,7 +364,7 @@ Earlier syntheses left questions that newer sources have now answered:
 
 **Hooks**
 - [Hook Lifecycle Events](concepts/hook-lifecycle-events.md) · [Hook Types](concepts/hook-types.md) · [Hook Matchers](concepts/hook-matchers.md) · [Hook Exit Codes](concepts/hook-exit-codes.md) · [Hook Scope](concepts/hook-scope.md) · [Hook Input/Output](concepts/hook-input-output.md) · [Hook Decision Control](concepts/hook-decision-control.md)
-- Practitioner: [Setup Hooks](concepts/setup-hooks.md) · [Hook Automation Use Cases](concepts/hook-automation-use-cases.md) · [Hooks Adoption Ladder](concepts/hooks-adoption-ladder.md) · [Production Hook Patterns](concepts/production-hook-patterns.md) · [AI Permission Reviewer](concepts/ai-permission-reviewer.md) · [Statusline Context Backup](concepts/statusline-context-backup.md) · [SessionStart Context Injection](concepts/session-context-injection.md) · [Skill Activation Hook](concepts/skill-activation-hook.md) · [Self-Improving CLAUDE.md](concepts/self-improving-claude-md.md)
+- Practitioner: [Setup Hooks](concepts/setup-hooks.md) · [Hook Automation Use Cases](concepts/hook-automation-use-cases.md) · [Hooks Adoption Ladder](concepts/hooks-adoption-ladder.md) · [Production Hook Patterns](concepts/production-hook-patterns.md) · [AI Permission Reviewer](concepts/ai-permission-reviewer.md) · [Statusline Context Backup](concepts/statusline-context-backup.md) · [SessionStart Context Injection](concepts/session-context-injection.md) · [Skill Activation Hook](concepts/skill-activation-hook.md) · [Self-Improving CLAUDE.md](concepts/self-improving-claude-md.md) · [Session Accumulation Pattern](concepts/session-accumulation-pattern.md)
 - Summaries: [Hooks Guide](summaries/hooks-guide.md) · [Hooks Reference](summaries/hooks.md)
 
 **Plugins**
