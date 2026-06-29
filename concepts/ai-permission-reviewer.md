@@ -100,3 +100,4 @@ This is the concrete form of the [PermissionRequest automation recipe](./hook-au
 - [Permission Modes](./permission-modes.md) — the native alternative to `--dangerously-skip-permissions`
 - [Hooks Adoption Ladder (Practitioner Playbook)](./hooks-adoption-ladder.md) — the "guarantees, not suggestions" framing this product applies to permissions
 - [Permission rules vs. permission hooks](../comparisons/permission-rules-vs-permission-hooks.md) — the rules-vs-hook decision this case study is the worked example of
+- [Switching permission modes vs. an AI permission reviewer](../comparisons/permission-modes-vs-ai-reviewer.md) — this automated per-call reviewer against the native, manual mode dial

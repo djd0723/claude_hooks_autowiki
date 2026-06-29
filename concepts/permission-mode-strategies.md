@@ -72,3 +72,4 @@ For the defense-in-depth layer the summary alludes to — pairing modes with OS-
 - [Sandbox Settings](./sandbox-settings.md) — the OS-level layer the summary's "defense-in-depth" refers to
 - [AI Permission Reviewer](./ai-permission-reviewer.md) — automating approvals via a hook instead of switching modes
 - [Hooks Adoption Ladder](./hooks-adoption-ladder.md) — the "Safe YOLO" pattern: a deny-hook that still bites under bypass mode
+- [Switching permission modes vs. an AI permission reviewer](../comparisons/permission-modes-vs-ai-reviewer.md) — posture-vs-decision: this manual dial against the automated per-call hook
