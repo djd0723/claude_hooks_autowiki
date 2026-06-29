@@ -41,7 +41,7 @@ This split matters: using a judgment hook where a deterministic one would do add
 
 Hooks talk back to Claude Code through:
 - **Exit code 0** — success, no action needed
-- **Exit code 1** — warning (shown in transcript, does not block)
+- **Other exit codes** (non-0, non-2) — action proceeds, but the transcript shows a hook error notice with the first line of stderr
 - **Exit code 2** — hard block (tool call denied, model is told to continue without it)
 - **Stdout JSON** — structured `hookSpecificOutput` to pass decisions, reasons, or directives to the model
 
@@ -77,7 +77,7 @@ Hooks can live in `~/.claude/settings.json` (user), `.claude/settings.json` (pro
 
 ## Concept index (pages so far)
 
-- [Hook Lifecycle Events](concepts/hook-lifecycle-events.md) — 29 events with categories
+- [Hook Lifecycle Events](concepts/hook-lifecycle-events.md) — 30 events with categories
 - [Hook Types](concepts/hook-types.md) — command, http, mcp_tool, prompt, agent
 - [Hook Matchers](concepts/hook-matchers.md) — matcher field, `if` field, per-event filter table
 - [Hook Exit Codes](concepts/hook-exit-codes.md) — exit codes and structured JSON output
