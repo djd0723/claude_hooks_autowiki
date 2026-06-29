@@ -65,3 +65,5 @@ Tool-name globs are supported only in the tool position after a literal `mcp__<s
 - [Settings Precedence](./settings-precedence.md) — why permission arrays merge instead of override
 - [Configuration Scopes](./configuration-scopes.md) — managed scope can lock permission rules org-wide
 - [Sandbox Settings](./sandbox-settings.md) — `Edit`/`Read`/`WebFetch` rules also feed sandbox filesystem and network restrictions
+- [Tool Permission Rules](./tool-permission-rules.md) — the `ToolName(specifier)` format and per-tool specifier table
+- [Built-in Tools](./built-in-tools.md) — the catalog of tool names `allow`/`ask`/`deny` reference
