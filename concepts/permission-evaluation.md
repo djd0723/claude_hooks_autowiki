@@ -77,3 +77,4 @@ A user-level deny blocks a project-level allow, and vice versa, "because deny ru
 - [Settings Precedence](./settings-precedence.md) — the general scope ordering
 - [Bash Permission Matching](./bash-permission-matching.md) — how Bash specifiers are matched
 - [File Permission Patterns](./file-permission-patterns.md) — how Read/Edit path specifiers are matched
+- [Permission rules vs. permission hooks](../comparisons/permission-rules-vs-permission-hooks.md) — when to reach for a static rule vs. a hook, and why a hook can only narrow

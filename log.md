@@ -6,6 +6,13 @@ type: log
 
 _Newest first._
 
+## [2026-06-29] maintain | full sweep (lint step)
+- fixed: 1 orphan linked — `comparisons/permission-rules-vs-permission-hooks.md` had no inbound links; added reciprocal "Related" backlinks from `concepts/permission-evaluation.md` and `concepts/ai-permission-reviewer.md` (both already linked *to* it).
+- verified clean: 0 Obsidian-style wikilinks, 0 broken relative links, 0 pages missing non-empty `type` frontmatter (whole-graph scan: concepts/summaries/comparisons/entities/answers + nav + synthesis).
+- consistent: `synthesis.md source_count: 17` = 19 clean sources − 1 dead 404 − 1 duplicate ingest. ✓
+- flagged (immutable provenance — can't fix in lint): `sources/clean/plugins.md` is an **unreferenced duplicate ingest** of `sources/clean/code-claude-com-docs-en-plugins-md.md` — identical 509-line body, same `source_url` https://code.claude.com/docs/en/plugins.md. The wiki consistently cites the `code-...-plugins-md.md` copy (8 pages); nothing cites `plugins.md`. A human can prune the redundant clean file; no wiki-layer duplication exists.
+- flagged for indexer (next step): `index.md` Comparisons section is missing 2 of 8 comparison pages — `permission-rules-vs-permission-hooks.md` (new) and `sdk-extension-features.md`.
+
 ## 2026-06-29 — source task-3: plugins-reference.md (base tier)
 
 **Source:** `sources/clean/code-claude-com-docs-en-plugins-reference-md.md`
