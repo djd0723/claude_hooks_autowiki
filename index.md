@@ -29,6 +29,8 @@ and the running [synthesis](synthesis.md).
 - [Tools reference](summaries/tools-reference.md) — built-in tool descriptions, Bash model, file behavior
 - [Agent SDK hooks](summaries/agent-sdk-hooks.md) — SDK callback hooks, event parity, patterns
 - [Claude Code features in the SDK](summaries/agent-sdk-features.md) — settings, skills, and instructions available in SDK agents
+- [Claude Code at scale](summaries/large-codebase.md) — context engineering, subagent economics, and harness ownership for large codebases
+- [Deterministic docs generation](summaries/automated-docs.md) — harness-owned structure, model-proposed wording, and freshness gating
 
 ## Concepts
 
@@ -46,6 +48,10 @@ and the running [synthesis](synthesis.md).
 - [Hooks Adoption Ladder](concepts/hooks-adoption-ladder.md) — practitioner playbook for why and when to adopt hooks
 - [Production Hook Patterns](concepts/production-hook-patterns.md) — ClaudeKit case study: design lessons from a shipped hook set
 - [StatusLine-Driven Context Backup](concepts/statusline-context-backup.md) — StatusLine-triggered context recovery pattern (alternative to PreCompact)
+- [Hook Security](concepts/hook-security.md) — input validation, shell hardening, and trust boundaries for hook scripts
+- [SessionStart Context Injection](concepts/session-context-injection.md) — auto-load context pattern: inject env vars and state at session open
+- [Session Accumulation Pattern](concepts/session-accumulation-pattern.md) — track-cheap, process-once: lightweight PostToolUse accumulation with batch Stop processing
+- [Stop-Hook Task Enforcement](concepts/stop-hook-task-enforcement.md) — guaranteed completion: Stop hook re-enters Claude to enforce task/test gates
 
 ### Plugins
 
@@ -75,6 +81,9 @@ and the running [synthesis](synthesis.md).
 - [Skill Dynamic Context Injection](concepts/skill-dynamic-context.md) — shell command substitution to inject live data into skill content
 - [Skill Subagent Execution](concepts/skill-subagent-execution.md) — `context: fork` runs a skill in an isolated subagent
 - [Bundled Skills](concepts/bundled-skills.md) — built-in skills shipped with every Claude Code session
+- [Path-Scoped Skills](concepts/path-scoped-skills.md) — directory-relative discovery for monorepo progressive disclosure
+- [Skill Activation](concepts/skill-activation.md) — description-driven intent matching: how the model decides which skill to invoke
+- [Skill Activation Hook](concepts/skill-activation-hook.md) — deterministic skill loading via UserPromptSubmit hook (bypasses description matching)
 
 ### Subagents
 
@@ -95,6 +104,7 @@ and the running [synthesis](synthesis.md).
 - [Bash Permission Matching](concepts/bash-permission-matching.md) — Bash's special matching mechanics for safe gating
 - [File Permission Patterns](concepts/file-permission-patterns.md) — gitignore-style path patterns for Read/Edit/Cd rules
 - [AI Permission Reviewer](concepts/ai-permission-reviewer.md) — ClaudeFast Permission Hook case study: approve/deny via hook
+- [Permission Mode Strategies](concepts/permission-mode-strategies.md) — practitioner playbook: mode-per-phase workflow, pitfalls, and Shift-Tab ergonomics
 
 ### Settings
 
@@ -103,6 +113,7 @@ and the running [synthesis](synthesis.md).
 - [Settings Precedence](concepts/settings-precedence.md) — how conflicts between scopes are resolved
 - [Managed Settings](concepts/managed-settings.md) — admin-deployed settings that can't be overridden
 - [Sandbox Settings](concepts/sandbox-settings.md) — OS-level bash sandboxing on macOS/Linux/WSL2
+- [Environment Variables](concepts/environment-variables.md) — daily-development subset: model selection, context, and capability env vars
 
 ### Tools
 
@@ -144,5 +155,6 @@ and the running [synthesis](synthesis.md).
 - [CLAUDE.md rules vs. skills workflows](comparisons/claude-md-rules-vs-skills-workflows.md) — always-on rules vs. on-demand workflows; the symmetric "pay twice" failure and three-way decision tree
 - [Deterministic drift detection vs. LLM-in-the-loop drift audit](comparisons/deterministic-drift-detection-vs-llm-drift-audit.md) — git-plumbing checkpoint vs. headless-Claude audit for detecting generated-artifact drift; they compose
 - [Per-edit hook processing vs. session-batch processing](comparisons/per-edit-processing-vs-session-batch.md) — where in the lifecycle to run expensive hook work: per-edit PostToolUse vs. journal-cheap accumulation with batch processing at Stop
+- [Switching permission modes vs. an AI permission reviewer](comparisons/permission-modes-vs-ai-reviewer.md) — posture automation (mode-per-phase) vs. decision automation (hook-delegated LLM); composable but different cost/latency/privacy tradeoffs
 
 ## Answers
