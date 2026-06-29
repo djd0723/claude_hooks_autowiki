@@ -118,3 +118,4 @@ Both paths use the same 8-consecutive-block cap and `stop_hook_active` guard.
 - [Hook Types](./hook-types.md) — command vs. prompt vs. agent
 - [Hook Matchers](./hook-matchers.md) — filtering which hooks fire
 - [Hook Scope](./hook-scope.md) — configuration location and permission interaction
+- [SDK Callback Hooks](./sdk-callback-hooks.md) — these same decisions returned from Python/TypeScript callbacks

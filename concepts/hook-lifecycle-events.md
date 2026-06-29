@@ -90,3 +90,4 @@ Events fall into three cadences:
 - [Hook Input and Output](./hook-input-output.md) — JSON input/output protocol
 - [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns
 - [Subagent Hooks](./subagent-hooks.md) — `SubagentStart`/`SubagentStop` and per-subagent frontmatter hooks
+- [SDK Hook Events](./sdk-hook-events.md) — which of these events the Python/TypeScript SDKs expose as callbacks

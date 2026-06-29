@@ -100,3 +100,4 @@ When multiple hooks match the same event, every hook's command runs to completio
 - [Hook Scope](./hook-scope.md) — where hooks are configured
 - [Hook Input and Output](./hook-input-output.md) — JSON input fields and output schema
 - [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns
+- [SDK Callback Hooks](./sdk-callback-hooks.md) — the SDK follows these same matcher rules
