@@ -2,7 +2,7 @@
 type: index
 created: 2026-06-29
 updated: 2026-06-29
-tags: [hooks, navigation, index]
+tags: [hooks, navigation, index, reference]
 ---
 
 # Claude Code Hooks
@@ -13,6 +13,7 @@ and the running [synthesis](synthesis.md).
 ## Sources
 
 - [Hooks Guide](sources/clean/code-claude-com-docs-en-hooks-guide-md.md) — official Claude Code hooks tutorial (clean source)
+- [Hooks Reference](sources/clean/code-claude-com-docs-en-hooks-md.md) — official hooks reference: event schemas, JSON I/O, decision control (clean source)
 
 ## Summaries
 
