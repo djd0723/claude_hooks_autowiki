@@ -12,7 +12,7 @@ and the running [synthesis](synthesis.md).
 
 ## Sources
 
-- [Hooks Guide](summaries/hooks-guide.md) — official Claude Code hooks tutorial
+- [Hooks Guide](sources/clean/code-claude-com-docs-en-hooks-guide-md.md) — official Claude Code hooks tutorial (clean source)
 
 ## Summaries
 
