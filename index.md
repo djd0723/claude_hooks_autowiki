@@ -2,7 +2,7 @@
 type: index
 created: 2026-06-29
 updated: 2026-06-29
-tags: [hooks, plugins, skills, subagents, permissions, settings, tools, sdk, navigation, index, reference]
+tags: [hooks, plugins, skills, subagents, permissions, settings, tools, sdk, harness, navigation, index, reference]
 ---
 
 # Claude Code Hooks & Plugins
@@ -120,6 +120,14 @@ and the running [synthesis](synthesis.md).
 - [SDK Skills Loading](concepts/sdk-skills-loading.md) — skills load on demand in SDK agents
 - [SDK Project Instructions](concepts/sdk-project-instructions.md) — CLAUDE.md and rules files in SDK agents
 
+### Harness Operations & Scale
+
+- [Claude Code in Large Codebases](concepts/large-codebase-playbook.md) — 8-strategy playbook for context engineering and subagent economics at scale
+- [The Agent Manager Role](concepts/agent-manager-role.md) — who owns the harness at scale: review cadence, drift prevention, rule hygiene
+- [Self-Improving CLAUDE.md](concepts/self-improving-claude-md.md) — stop-hook pattern that spawns a headless LLM audit to detect and fix semantic rule drift
+- [Structure-Owned Generation](concepts/structure-owned-generation.md) — claudux's deterministic docs mode: repo owns structure, model only proposes wording
+- [Generated-Artifact Freshness](concepts/generated-artifact-freshness.md) — checkpoint SHA drift detection and graduated no-AI gates (--strict / --release / --handoff-strict)
+
 ## Entities
 
 ## Comparisons
@@ -134,5 +142,6 @@ and the running [synthesis](synthesis.md).
 - [Choosing an SDK extension feature](comparisons/sdk-extension-features.md) — which SDK extension mechanism fits which use case
 - [Description-driven activation vs. activation hook](comparisons/description-driven-activation-vs-activation-hook.md) — model-judgment description matching vs. deterministic UserPromptSubmit hook; when each wins and how they layer
 - [CLAUDE.md rules vs. skills workflows](comparisons/claude-md-rules-vs-skills-workflows.md) — always-on rules vs. on-demand workflows; the symmetric "pay twice" failure and three-way decision tree
+- [Deterministic drift detection vs. LLM-in-the-loop drift audit](comparisons/deterministic-drift-detection-vs-llm-drift-audit.md) — git-plumbing checkpoint vs. headless-Claude audit for detecting generated-artifact drift; they compose
 
 ## Answers
