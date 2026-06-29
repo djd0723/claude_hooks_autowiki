@@ -69,3 +69,4 @@ The plugin-root case is the one place where `name` sets the command name, becaus
 - [Skill Arguments](./skill-arguments.md) — the `arguments` field and `$` substitutions
 - [Skill Invocation Control](./skill-invocation-control.md) — `disable-model-invocation`, `user-invocable`, `allowed-tools`
 - [Skill Discovery](./skill-discovery.md) — how location determines scope and command name
+- [Tool Permission Rules](./tool-permission-rules.md) — the `ToolName(specifier)` format the `allowed-tools` field uses

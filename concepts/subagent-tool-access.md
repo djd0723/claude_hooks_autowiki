@@ -103,3 +103,5 @@ This works for both built-in and custom subagents. You can also use `claude --di
 - [Subagent Configuration](./subagent-configuration.md) — where `tools` and `mcpServers` are declared
 - [Subagent Hooks](./subagent-hooks.md) — `PreToolUse` hooks for finer-grained conditional validation
 - [Permission Settings](./permission-settings.md) — the `permissions.deny` rules used to disable subagents
+- [Built-in Tools](./built-in-tools.md) — the catalog of tool names a `tools` list draws from
+- [Tool Permission Rules](./tool-permission-rules.md) — the `ToolName(specifier)` format shared with subagent frontmatter

@@ -101,3 +101,5 @@ When multiple hooks match the same event, every hook's command runs to completio
 - [Hook Input and Output](./hook-input-output.md) — JSON input fields and output schema
 - [Hook Decision Control](./hook-decision-control.md) — per-event decision patterns
 - [SDK Callback Hooks](./sdk-callback-hooks.md) — the SDK follows these same matcher rules
+- [Tool Permission Rules](./tool-permission-rules.md) — why matchers use bare tool names while the `if` field uses `ToolName(specifier)`
+- [Built-in Tools](./built-in-tools.md) — the tool names a matcher targets
