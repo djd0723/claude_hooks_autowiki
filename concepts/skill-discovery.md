@@ -32,7 +32,7 @@ For example, a `code-review` skill in your project's `.claude/skills/` replaces 
 
 Project skills load from `.claude/skills/` in your starting directory **and every parent directory up to the repository root**, so starting Claude in a subdirectory still picks up root-level skills.
 
-Claude Code also discovers skills from nested `.claude/skills/` directories on demand: when Claude reads or edits a file in a subdirectory, that subdirectory's `.claude/skills/` becomes available. This lets a monorepo package provide its own skills that apply when working on that package.
+Claude Code also discovers skills from nested `.claude/skills/` directories on demand: when Claude reads or edits a file in a subdirectory, that subdirectory's `.claude/skills/` becomes available. This lets a monorepo package provide its own skills that apply when working on that package. The complementary lever is [path scoping](./path-scoped-skills.md) — the `paths:` glob filters a skill *out* of discovery unless the work touches a matching path, even when the skill lives at the root.
 
 When a nested skill shares a name with another skill, **both stay available**:
 
@@ -62,6 +62,7 @@ Two caveats:
 ## Related concepts
 
 - [Skills](./skills.md) — what a skill is
+- [Path-Scoped Skills](./path-scoped-skills.md) — the `paths:` glob that filters discovery by working path
 - [Skill Frontmatter](./skill-frontmatter.md) — how location determines the command name
 - [Skill Invocation Control](./skill-invocation-control.md) — `skillOverrides` and per-skill visibility
 - [Plugin Installation Scopes](./plugin-installation-scopes.md) — skills-directory plugins and the `@skills-dir` suffix
