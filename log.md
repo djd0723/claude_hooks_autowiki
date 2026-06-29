@@ -6,6 +6,11 @@ type: log
 
 _Newest first._
 
+## [2026-06-29] maintain | full sweep
+
+- fixed: 5 orphaned pages added to `index.md` (`hook-input-output.md`, `hook-decision-control.md`, `summaries/hooks.md`, both comparison pages); `overview.md` filled with content (was boilerplate-only); 11 missing cross-references added across 6 concept/comparison pages; `MessageDisplay` added to no-matcher-support list in `summaries/hooks.md` (was inconsistent with `hook-matchers.md`)
+- flagged: 5 open questions in `synthesis.md` (agent hook real-world use, community recipes, scope conflicts, `MessageDisplay` in practice, `defer` Agent SDK patterns) — will be answered by tip sources (tasks 12–30 in the ingest queue); `hook-exit-codes.md` has a brief "Input" section that overlaps with `hook-input-output.md` — harmless duplication, not worth rewriting
+
 ## 2026-06-29 — source task-1: hooks-guide.md (base tier)
 
 **Source:** `sources/clean/code-claude-com-docs-en-hooks-guide-md.md`
