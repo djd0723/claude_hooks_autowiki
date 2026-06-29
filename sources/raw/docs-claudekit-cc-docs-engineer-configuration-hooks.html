@@ -1,0 +1,863 @@
+<html lang="en" data-theme="dark" data-astro-cid-37fxchfa=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Configure Claude Code hooks for notifications, automation, and custom behaviors"><meta name="author" content="ClaudeKit"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta name="theme-color" content="#0d0d0d"><meta name="generator" content="Astro v5.17.1"><link rel="icon" type="image/png" href="/logo-512-transparent.png"><link rel="canonical" href="https://docs.claudekit.cc/docs/engineer/configuration/hooks/"><!-- Hreflang tags for SEO --><link rel="alternate" hreflang="en" href="https://docs.claudekit.cc/docs/engineer/configuration/hooks"><link rel="alternate" hreflang="vi" href="https://docs.claudekit.cc/vi/docs/engineer/configuration/hooks"><link rel="alternate" hreflang="x-default" href="https://docs.claudekit.cc/docs/engineer/configuration/hooks"><meta property="og:site_name" content="ClaudeKit Documentation"><meta property="og:type" content="website"><meta property="og:title" content="Hooks - ClaudeKit Documentation"><meta property="og:description" content="Configure Claude Code hooks for notifications, automation, and custom behaviors"><meta property="og:url" content="https://docs.claudekit.cc/docs/engineer/configuration/hooks/"><meta property="og:image" content="https://docs.claudekit.cc/og-image.png"><meta property="og:image:alt" content="ClaudeKit Documentation"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="vi_VN"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hooks - ClaudeKit Documentation"><meta name="twitter:description" content="Configure Claude Code hooks for notifications, automation, and custom behaviors"><meta name="twitter:image" content="https://docs.claudekit.cc/og-image.png"><title>Hooks - ClaudeKit Documentation</title><link rel="stylesheet" href="/_astro/_slug_.B1QuViqJ.css"></head> <body data-astro-cid-37fxchfa=""> <div class="app-container" data-astro-cid-37fxchfa="">  <div class="docs-layout" data-astro-cid-mw7aashj=""> <aside class="sidebar" data-pagefind-ignore="" data-astro-cid-ssfzsv2f=""> <div class="sidebar-header" data-astro-cid-ssfzsv2f=""> <a href="/" class="logo" data-astro-cid-ssfzsv2f=""> <img src="/logo-horizontal.png" alt="ClaudeKit Engineer" class="logo-image" data-astro-cid-ssfzsv2f=""> </a> <button class="icon-button theme-toggle" onclick="window.toggleTheme()" aria-label="Toggle theme" title="Toggle theme" data-astro-cid-ssfzsv2f=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon" data-astro-cid-ssfzsv2f=""> <circle cx="12" cy="12" r="4" data-astro-cid-ssfzsv2f=""></circle> <path d="M12 2v2" data-astro-cid-ssfzsv2f=""></path> <path d="M12 20v2" data-astro-cid-ssfzsv2f=""></path> <path d="m4.93 4.93 1.41 1.41" data-astro-cid-ssfzsv2f=""></path> <path d="m17.66 17.66 1.41 1.41" data-astro-cid-ssfzsv2f=""></path> <path d="M2 12h2" data-astro-cid-ssfzsv2f=""></path> <path d="M20 12h2" data-astro-cid-ssfzsv2f=""></path> <path d="m6.34 17.66-1.41 1.41" data-astro-cid-ssfzsv2f=""></path> <path d="m19.07 4.93-1.41 1.41" data-astro-cid-ssfzsv2f=""></path> </svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon" data-astro-cid-ssfzsv2f=""> <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" data-astro-cid-ssfzsv2f=""></path> </svg> </button> </div> <div class="sidebar-content" data-astro-cid-ssfzsv2f=""> <!-- Search Trigger (opens modal) --> <button class="sidebar-search-trigger" onclick="window.openSearch()" type="button" data-astro-cid-ssfzsv2f=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon" data-astro-cid-ssfzsv2f=""> <circle cx="11" cy="11" r="8" data-astro-cid-ssfzsv2f=""></circle> <path d="m21 21-4.3-4.3" data-astro-cid-ssfzsv2f=""></path> </svg> <span class="search-placeholder" data-astro-cid-ssfzsv2f="">Search...</span> <kbd class="search-kbd" data-astro-cid-ssfzsv2f="">⌘K</kbd> </button> <nav class="sidebar-nav" aria-label="Documentation navigation" data-astro-cid-gvqsdny3="">    <div class="section-nav" style="--section-accent: var(--color-accent-blue)" data-astro-cid-r4ejjk5u=""> <div class="nav-header" data-astro-cid-r4ejjk5u=""> <span class="nav-kit-badge filled" data-astro-cid-r4ejjk5u="">  Engineer Kit </span> </div> <div class="nav-section collapsed" data-category="engineer:overview" data-collapsible="" data-default-expanded="false" data-astro-cid-lwzqmgbu=""> <button class="nav-section-title" aria-expanded="false" data-astro-cid-lwzqmgbu="" data-sidebar-bound="true"> <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-lwzqmgbu=""> <path d="m9 18 6-6-6-6" data-astro-cid-lwzqmgbu=""></path> </svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon" data-astro-cid-lwzqmgbu=""><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Overview <span class="item-count" data-astro-cid-lwzqmgbu="">(1)</span> </button> <div class="nav-items" hidden="" data-astro-cid-lwzqmgbu="">  <a href="/docs/engineer" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Engineer Kit</span> </a> </div> </div> <div class="nav-section collapsed" data-category="engineer:agents" data-collapsible="" data-default-expanded="false" data-astro-cid-lwzqmgbu=""> <button class="nav-section-title" aria-expanded="false" data-astro-cid-lwzqmgbu="" data-sidebar-bound="true"> <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-lwzqmgbu=""> <path d="m9 18 6-6-6-6" data-astro-cid-lwzqmgbu=""></path> </svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon" data-astro-cid-lwzqmgbu=""><circle cx="12" cy="8" r="5"></circle><path d="M20 21a8 8 0 0 0-16 0"></path></svg> Agents <span class="item-count" data-astro-cid-lwzqmgbu="">(14)</span> </button> <div class="nav-items" hidden="" data-astro-cid-lwzqmgbu=""> <a href="/docs/engineer/agents" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Agents Overview</span> </a> <div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">B</div> <a href="/docs/engineer/agents/brainstormer" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Brainstormer Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">C</div> <a href="/docs/engineer/agents/code-reviewer" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Code Reviewer Agent</span> </a><a href="/docs/engineer/agents/code-simplifier" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Code Simplifier Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">D</div> <a href="/docs/engineer/agents/debugger" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Debugger Agent</span> </a><a href="/docs/engineer/agents/docs-manager" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Docs Manager Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">F</div> <a href="/docs/engineer/agents/fullstack-developer" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Fullstack Developer Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">G</div> <a href="/docs/engineer/agents/git-manager" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Git Manager Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">J</div> <a href="/docs/engineer/agents/journal-writer" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Journal Writer Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">P</div> <a href="/docs/engineer/agents/planner" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Planner Agent</span> </a><a href="/docs/engineer/agents/project-manager" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Project Manager Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">R</div> <a href="/docs/engineer/agents/researcher" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Researcher Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">T</div> <a href="/docs/engineer/agents/tester" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Tester Agent</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">U</div> <a href="/docs/engineer/agents/ui-ux-designer" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">UI/UX Designer Agent</span> </a> </div> </div> </div> <div class="nav-section collapsed" data-category="engineer:skills" data-collapsible="" data-default-expanded="false" data-astro-cid-lwzqmgbu=""> <button class="nav-section-title" aria-expanded="false" data-astro-cid-lwzqmgbu="" data-sidebar-bound="true"> <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-lwzqmgbu=""> <path d="m9 18 6-6-6-6" data-astro-cid-lwzqmgbu=""></path> </svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon" data-astro-cid-lwzqmgbu=""><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg> Skills <span class="item-count" data-astro-cid-lwzqmgbu="">(83)</span> </button> <div class="nav-items" hidden="" data-astro-cid-lwzqmgbu=""> <a href="/docs/engineer/skills" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Skills Overview</span> </a> <div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">A</div> <a href="/docs/engineer/skills/agent-browser" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">agent-browser</span> </a><a href="/docs/engineer/skills/agentize" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">agentize</span> </a><a href="/docs/engineer/skills/ai-artist" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">ai-artist</span> </a><a href="/docs/engineer/skills/ai-multimodal" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">ai-multimodal</span> </a><a href="/docs/engineer/skills/ask" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">ask</span> </a><a href="/docs/engineer/skills/ck-autoresearch" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">autoresearch</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">B</div> <a href="/docs/engineer/skills/backend-development" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">backend-development</span> </a><a href="/docs/engineer/skills/better-auth" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">better-auth</span> </a><a href="/docs/engineer/skills/bootstrap" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">bootstrap</span> </a><a href="/docs/engineer/skills/brainstorm" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">brainstorm</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">C</div> <a href="/docs/engineer/skills/chrome-devtools" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">chrome-devtools</span> </a><a href="/docs/engineer/skills/code-review" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">code-review</span> </a><a href="/docs/engineer/skills/coding-level" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">coding-level</span> </a><a href="/docs/engineer/skills/context-engineering" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">context-engineering</span> </a><a href="/docs/engineer/skills/cook" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">cook</span> </a><a href="/docs/engineer/skills/copywriting" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">copywriting</span> </a><a href="/docs/engineer/skills/cti-expert" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">cti-expert</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">D</div> <a href="/docs/engineer/skills/databases" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">databases</span> </a><a href="/docs/engineer/skills/ck-debug" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">debug</span> </a><a href="/docs/engineer/skills/deploy" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">deploy</span> </a><a href="/docs/engineer/skills/design" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">design</span> </a><a href="/docs/engineer/skills/devops" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">devops</span> </a><a href="/docs/engineer/skills/docs" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">docs</span> </a><a href="/docs/engineer/skills/docs-seeker" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">docs-seeker</span> </a><a href="/docs/engineer/skills/document-skills" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">document-skills</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">E</div> <a href="/docs/engineer/skills/excalidraw" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">excalidraw</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">F</div> <a href="/docs/engineer/skills/find-skills" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">find-skills</span> </a><a href="/docs/engineer/skills/fix" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">fix</span> </a><a href="/docs/engineer/skills/frontend-design" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">frontend-design</span> </a><a href="/docs/engineer/skills/frontend-development" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">frontend-development</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">G</div> <a href="/docs/engineer/skills/git" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">git</span> </a><a href="/docs/engineer/skills/gkg" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">gkg</span> </a><a href="/docs/engineer/skills/google-adk-python" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">google-adk-python</span> </a><a href="/docs/engineer/skills/graphify" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">graphify</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">J</div> <a href="/docs/engineer/skills/journal" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">journal</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">K</div> <a href="/docs/engineer/skills/kanban" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">kanban</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">L</div> <a href="/docs/engineer/skills/llms" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">llms</span> </a><a href="/docs/engineer/skills/ck-loop" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">loop</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">M</div> <a href="/docs/engineer/skills/markdown-novel-viewer" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">markdown-novel-viewer</span> </a><a href="/docs/engineer/skills/mcp-builder" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">mcp-builder</span> </a><a href="/docs/engineer/skills/mcp-management" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">mcp-management</span> </a><a href="/docs/engineer/skills/media-processing" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">media-processing</span> </a><a href="/docs/engineer/skills/mermaidjs-v11" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">mermaidjs-v11</span> </a><a href="/docs/engineer/skills/mintlify" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">mintlify</span> </a><a href="/docs/engineer/skills/mobile-development" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">mobile-development</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">P</div> <a href="/docs/engineer/skills/payment-integration" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">payment-integration</span> </a><a href="/docs/engineer/skills/ck-plan" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">plan</span> </a><a href="/docs/engineer/skills/plans-kanban" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">plans-kanban</span> </a><a href="/docs/engineer/skills/ck-predict" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">predict</span> </a><a href="/docs/engineer/skills/preview" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">preview</span> </a><a href="/docs/engineer/skills/problem-solving" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">problem-solving</span> </a><a href="/docs/engineer/skills/project-management" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">project-management</span> </a><a href="/docs/engineer/skills/project-organization" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">project-organization</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">R</div> <a href="/docs/engineer/skills/react-best-practices" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">react-best-practices</span> </a><a href="/docs/engineer/skills/remotion" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">remotion</span> </a><a href="/docs/engineer/skills/repomix" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">repomix</span> </a><a href="/docs/engineer/skills/research" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">research</span> </a><a href="/docs/engineer/skills/retro" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">retro</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">S</div> <a href="/docs/engineer/skills/ck-scenario" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">scenario</span> </a><a href="/docs/engineer/skills/scout" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">scout</span> </a><a href="/docs/engineer/skills/ck-security" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">security</span> </a><a href="/docs/engineer/skills/security-scan" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">security-scan</span> </a><a href="/docs/engineer/skills/sequential-thinking" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">sequential-thinking</span> </a><a href="/docs/engineer/skills/shader" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">shader</span> </a><a href="/docs/engineer/skills/ship" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">ship</span> </a><a href="/docs/engineer/skills/shopify" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">shopify</span> </a><a href="/docs/engineer/skills/show-off" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">show-off</span> </a><a href="/docs/engineer/skills/skill-creator" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">skill-creator</span> </a><a href="/docs/engineer/skills/stitch" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">stitch</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">T</div> <a href="/docs/engineer/skills/tanstack" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">tanstack</span> </a><a href="/docs/engineer/skills/team" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">team</span> </a><a href="/docs/engineer/skills/test" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">test</span> </a><a href="/docs/engineer/skills/threejs" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">threejs</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">U</div> <a href="/docs/engineer/skills/ui-styling" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">ui-styling</span> </a><a href="/docs/engineer/skills/ui-ux-pro-max" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">ui-ux-pro-max</span> </a><a href="/docs/engineer/skills/use-mcp" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">use-mcp</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">W</div> <a href="/docs/engineer/skills/watzup" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">watzup</span> </a><a href="/docs/engineer/skills/web-design-guidelines" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">web-design-guidelines</span> </a><a href="/docs/engineer/skills/web-frameworks" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">web-frameworks</span> </a><a href="/docs/engineer/skills/web-testing" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">web-testing</span> </a><a href="/docs/engineer/skills/worktree" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">worktree</span> </a> </div><div class="alpha-group" data-astro-cid-lwzqmgbu=""> <div class="alpha-label" data-astro-cid-lwzqmgbu="">X</div> <a href="/docs/engineer/skills/xia" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">xia</span> </a> </div> </div> </div> <div class="nav-section" data-category="engineer:configuration" data-collapsible="" data-default-expanded="true" data-astro-cid-lwzqmgbu=""> <button class="nav-section-title" aria-expanded="true" data-astro-cid-lwzqmgbu="" data-sidebar-bound="true"> <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-lwzqmgbu=""> <path d="m9 18 6-6-6-6" data-astro-cid-lwzqmgbu=""></path> </svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon" data-astro-cid-lwzqmgbu=""><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Configuration <span class="item-count" data-astro-cid-lwzqmgbu="">(4)</span> </button> <div class="nav-items" data-astro-cid-lwzqmgbu="">  <a href="/docs/engineer/configuration/claude-md" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">CLAUDE.md</span> </a><a href="/docs/engineer/configuration/workflows" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Workflows</span> </a><a href="/docs/engineer/configuration/hooks" class="nav-link active" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">Hooks</span> </a><a href="/docs/engineer/configuration/mcp-setup" class="nav-link" data-astro-cid-lwzqmgbu=""> <span data-astro-cid-lwzqmgbu="">MCP Setup</span> </a> </div> </div>     </div>  </nav> <script type="module">const o="claudekit-sidebar-collapse-state";function i(){try{const s=sessionStorage.getItem(o);if(!s)return{};const e=JSON.parse(s);return e&&typeof e=="object"?e:{}}catch{return{}}}function l(){const s=i();document.querySelectorAll("[data-collapsible]").forEach(e=>{if(!(e instanceof HTMLElement))return;const t=e.getAttribute("data-category");if(!t)return;const n=e.getAttribute("data-default-expanded")==="true",d=e.querySelector("button"),a=e.querySelector(".nav-items"),r=n?!1:s[t]??!0;r?(e.classList.add("collapsed"),a?.setAttribute("hidden","")):(e.classList.remove("collapsed"),a?.removeAttribute("hidden")),d?.setAttribute("aria-expanded",String(!r))}),document.querySelectorAll("[data-collapsible] button").forEach(e=>{e instanceof HTMLButtonElement&&e.dataset.sidebarBound!=="true"&&(e.dataset.sidebarBound="true",e.addEventListener("click",()=>{const t=e.closest("[data-collapsible]");if(!(t instanceof HTMLElement))return;const n=t.getAttribute("data-category");if(!n)return;const d=t.querySelector(".nav-items"),a=t.classList.toggle("collapsed");a?d?.setAttribute("hidden",""):d?.removeAttribute("hidden"),e.setAttribute("aria-expanded",String(!a));const r=i();r[n]=a,sessionStorage.setItem(o,JSON.stringify(r))}))})}document.addEventListener("astro:page-load",l);document.addEventListener("DOMContentLoaded",l);</script>  <!-- Sidebar Footer --> <div class="sidebar-footer" data-astro-cid-ssfzsv2f=""> <a href="/llms.txt" target="_blank" rel="noopener noreferrer" class="llms-link" data-astro-cid-ssfzsv2f=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-astro-cid-ssfzsv2f=""> <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" data-astro-cid-ssfzsv2f=""></path> <polyline points="14 2 14 8 20 8" data-astro-cid-ssfzsv2f=""></polyline> <line x1="16" y1="13" x2="8" y2="13" data-astro-cid-ssfzsv2f=""></line> <line x1="16" y1="17" x2="8" y2="17" data-astro-cid-ssfzsv2f=""></line> <polyline points="10 9 9 9 8 9" data-astro-cid-ssfzsv2f=""></polyline> </svg> <span data-astro-cid-ssfzsv2f="">LLMs.txt</span> </a> </div> </div> </aside> <script type="module">function n(){const e=document.querySelector(".sidebar-content");if(!e)return;const t=localStorage.getItem("sidebar-scroll-position");t&&(e.scrollTop=parseInt(t,10));let o;e.addEventListener("scroll",()=>{clearTimeout(o),o=window.setTimeout(()=>{localStorage.setItem("sidebar-scroll-position",String(e.scrollTop))},100)})}document.addEventListener("astro:page-load",n);document.addEventListener("DOMContentLoaded",n);</script>  <div class="main-wrapper" data-astro-cid-mw7aashj=""> <header class="header" data-pagefind-ignore="" data-astro-cid-3ef6ksr2=""> <div class="header-content" data-astro-cid-3ef6ksr2=""> <div class="header-left" data-astro-cid-3ef6ksr2=""> <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" title="Toggle menu" data-astro-cid-3ef6ksr2=""> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-3ef6ksr2=""> <line x1="3" y1="12" x2="21" y2="12" data-astro-cid-3ef6ksr2=""></line> <line x1="3" y1="6" x2="21" y2="6" data-astro-cid-3ef6ksr2=""></line> <line x1="3" y1="18" x2="21" y2="18" data-astro-cid-3ef6ksr2=""></line> </svg> </button> <nav class="nav" data-astro-cid-3ef6ksr2=""> <a href="/docs/getting-started/introduction" class="nav-link" data-astro-cid-3ef6ksr2=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-3ef6ksr2=""><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg> <span data-astro-cid-3ef6ksr2="">Getting Started</span> </a> <a href="/docs/engineer/agents" class="nav-link docs-link active" data-engineer-path="/docs/engineer/agents" data-marketing-path="/docs/marketing/" data-astro-cid-3ef6ksr2=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-3ef6ksr2=""><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> <span data-astro-cid-3ef6ksr2="">Docs</span> </a> <a href="/docs/cli" class="nav-link" data-astro-cid-3ef6ksr2=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-3ef6ksr2=""><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg> <span data-astro-cid-3ef6ksr2="">CLI</span> </a> <a href="/docs/workflows/new-project" class="nav-link" data-astro-cid-3ef6ksr2=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-3ef6ksr2=""><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="12" height="12" x="8" y="8" rx="2" ry="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg> <span data-astro-cid-3ef6ksr2="">Workflows</span> </a> <a href="/docs/tools" class="nav-link" data-astro-cid-3ef6ksr2=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-3ef6ksr2=""><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg> <span data-astro-cid-3ef6ksr2="">Tools</span> </a> <a href="/docs/support/troubleshooting" class="nav-link" data-astro-cid-3ef6ksr2=""> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-3ef6ksr2=""><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M8 10h.01"></path><path d="M12 10h.01"></path><path d="M16 10h.01"></path></svg> <span data-astro-cid-3ef6ksr2="">Support</span> </a> </nav> </div> <div class="header-right" data-astro-cid-3ef6ksr2=""> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="1ivh0n" prefix="r6" component-url="/_astro/KitSwitcher.D7Q3pZHW.js" component-export="KitSwitcher" renderer-url="/_astro/client.Kt8EXpwP.js" props="{&quot;data-astro-cid-3ef6ksr2&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;KitSwitcher&quot;,&quot;value&quot;:true}"></astro-island> <astro-island uid="iOkd0" prefix="r7" component-url="/_astro/LanguageSwitcher.ChAFG5nz.js" component-export="default" renderer-url="/_astro/client.Kt8EXpwP.js" props="{&quot;currentLocale&quot;:[0,&quot;en&quot;],&quot;currentPath&quot;:[0,&quot;/docs/engineer/configuration/hooks/&quot;],&quot;data-astro-cid-3ef6ksr2&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;LanguageSwitcher&quot;,&quot;value&quot;:true}" await-children=""><button class="language-switcher-trigger" aria-label="Switch language" title="Switch language" type="button" id="radix-:r7R0:" aria-haspopup="menu" aria-expanded="false" data-state="closed"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg><span class="language-label">English</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><polyline points="6 9 12 15 18 9"></polyline></svg></button></astro-island> </div> </div> </header> <!-- Mobile sidebar backdrop --> <div class="sidebar-backdrop" id="sidebar-backdrop" data-astro-cid-3ef6ksr2=""></div> <script type="module">function m(){const i=document.getElementById("mobile-menu-toggle"),e=document.querySelector(".sidebar"),t=document.getElementById("sidebar-backdrop");if(!i||!e||!t)return;function n(){e.classList.remove("open"),t.classList.remove("visible"),document.body.style.overflow=""}function d(){e.classList.add("open"),t.classList.add("visible"),document.body.style.overflow="hidden"}function o(){e.classList.contains("open")?n():d()}function r(){n()}function l(s){s.key==="Escape"&&e.classList.contains("open")&&n()}const c=window.matchMedia("(min-width: 769px)");function a(s){s.matches&&n()}i.addEventListener("click",o),t.addEventListener("click",r),document.addEventListener("keydown",l),c.addEventListener("change",a),a(c);function u(){i.removeEventListener("click",o),t.removeEventListener("click",r),document.removeEventListener("keydown",l),c.removeEventListener("change",a)}return document.addEventListener("astro:before-swap",u),u}document.addEventListener("DOMContentLoaded",m);function L(){const i="claudekit-selected-kit",e=document.querySelector(".docs-link");if(!e)return;function t(){const n=localStorage.getItem(i),d=e.getAttribute("data-engineer-path"),o=e.getAttribute("data-marketing-path");n==="marketing"&&o?e.setAttribute("href",o):d&&e.setAttribute("href",d)}t(),window.addEventListener("storage",n=>{n.key===i&&t()}),window.addEventListener("kit-changed",t)}document.addEventListener("DOMContentLoaded",L);</script>  <div class="content-wrapper" data-astro-cid-mw7aashj=""> <main class="content-area" data-pagefind-body="" data-astro-cid-mw7aashj=""> <div class="content-header" data-pagefind-ignore="" data-astro-cid-mw7aashj=""> <astro-island uid="Z168u29" prefix="r4" component-url="/_astro/CopyForLLMs.Dp48YpjC.js" component-export="default" renderer-url="/_astro/client.Kt8EXpwP.js" props="{&quot;pageContent&quot;:[0,&quot;# Hooks\n\nHooks allow you to extend Claude Code with custom scripts that run at specific points in the workflow. ClaudeKit Engineer includes pre-built hooks for file access control, naming guidance, simplification gates, statusline rendering, optional session context, and notifications.\n\n## Overview\n\nHooks are configured in `.claude/settings.json` and execute shell commands in response to Claude Code events.\n\n&gt; **Current default (v2.19.0+):** ClaudeKit installs only lightweight safety and workflow hooks by default. Generated session/subagent/usage context hooks are opt-in and are pruned from existing installs during `ck update` or `ck migrate`.\n\n### Available Hook Events\n\n| Event | When Triggered |\n|-------|----------------|\n| `SessionStart` | When a Claude Code session begins |\n| `SubagentStart` | When a Task tool spawns a subagent |\n| `UserPromptSubmit` | Before user prompt is processed |\n| `PreToolUse` | Before a tool executes |\n| `PostToolUse` | After a tool executes |\n| `TaskCompleted` | When a task is marked completed |\n| `TeammateIdle` | When an Agent Team member goes idle |\n| `Stop` | When Claude session ends |\n| `SubagentStop` | When a subagent completes |\n\n## Configuration\n\nHooks are defined in `.claude/settings.json`:\n\n```json\n{\n  \&quot;statusLine\&quot;: {\n    \&quot;type\&quot;: \&quot;command\&quot;,\n    \&quot;command\&quot;: \&quot;bash .claude/hooks/node-hook-runner.sh .claude/statusline.cjs\&quot;,\n    \&quot;padding\&quot;: 0\n  },\n  \&quot;hooks\&quot;: {\n    \&quot;UserPromptSubmit\&quot;: [\n      {\n        \&quot;hooks\&quot;: [\n          {\n            \&quot;type\&quot;: \&quot;command\&quot;,\n            \&quot;command\&quot;: \&quot;bash .claude/hooks/node-hook-runner.sh .claude/hooks/simplify-gate.cjs\&quot;\n          }\n        ]\n      }\n    ],\n    \&quot;PreToolUse\&quot;: [\n      {\n        \&quot;matcher\&quot;: \&quot;Write\&quot;,\n        \&quot;hooks\&quot;: [\n          {\n            \&quot;type\&quot;: \&quot;command\&quot;,\n            \&quot;command\&quot;: \&quot;bash .claude/hooks/node-hook-runner.sh .claude/hooks/descriptive-name.cjs\&quot;\n          }\n        ]\n      },\n      {\n        \&quot;matcher\&quot;: \&quot;Bash|Glob|Grep|Read|Edit|Write\&quot;,\n        \&quot;hooks\&quot;: [\n          {\n            \&quot;type\&quot;: \&quot;command\&quot;,\n            \&quot;command\&quot;: \&quot;bash .claude/hooks/node-hook-runner.sh .claude/hooks/scout-block.cjs\&quot;\n          },\n          {\n            \&quot;type\&quot;: \&quot;command\&quot;,\n            \&quot;command\&quot;: \&quot;bash .claude/hooks/node-hook-runner.sh .claude/hooks/privacy-block.cjs\&quot;\n          }\n        ]\n      }\n    ]\n  }\n}\n```\n\n### Hook Properties\n\n- **type**: Always `\&quot;command\&quot;` for shell execution\n- **command**: Shell command to run\n- **matcher**: (PreToolUse only) Regex to match tool names\n\n## Built-in Hooks\n\nClaudeKit Engineer ships with hooks organized by event type. All default hook files live in `.claude/hooks/`. Shared utilities are in `.claude/hooks/lib/`. Notification providers are in `.claude/hooks/notifications/`.\n\n### Summary Table\n\n| Hook File | Default | Event | Purpose |\n|-----------|---------|-------|---------|\n| `simplify-gate.cjs` | Yes | `UserPromptSubmit` | Enforce simplification workflow rules when relevant |\n| `descriptive-name.cjs` | Yes | `PreToolUse` (Write) | Inject file naming guidance: kebab-case, language conventions |\n| `scout-block.cjs` | Yes | `PreToolUse` (Bash/Glob/Grep/Read/Edit/Write) | Block access to `.ckignore`-listed directories |\n| `privacy-block.cjs` | Yes | `PreToolUse` (Bash/Glob/Grep/Read/Edit/Write) | Block sensitive files, require user approval |\n| `session-init.cjs` | No | `SessionStart` | Load config, detect project, persist env vars |\n| `subagent-init.cjs` | No | `SubagentStart` | Inject minimal context to subagents |\n| `team-context-inject.cjs` | No | `SubagentStart` | Inject peer info + task summary for Agent Team members |\n| `cook-after-plan-reminder.cjs` | No | `SubagentStop` (Plan) | Print user-choice guidance after planning |\n| `dev-rules-reminder.cjs` | No | `UserPromptSubmit` | Inject session context, rules, modularization, Plan Context |\n| `usage-context-awareness.cjs` | No | `UserPromptSubmit` + `PostToolUse` | Fetch usage limits, write to cache |\n| `post-edit-simplify-reminder.cjs` | No | `PostToolUse` (Edit/Write/MultiEdit) | Remind about code-simplifier after repeated edits |\n| `task-completed-handler.cjs` | No | `TaskCompleted` | Log completions, inject progress for Agent Team leads |\n| `teammate-idle-handler.cjs` | No | `TeammateIdle` | Inject available task context when team member goes idle |\n\nThe hooks marked `No` are no longer installed by default because they generate context on session, prompt, subagent, or tool events. Existing installations are cleaned up idempotently by the CLI during update and migration.\n\n---\n\n### session-init.cjs\n\n**Event:** `SessionStart`\n\n**Purpose:** Runs once when a Claude Code session begins. Loads `.claude/.env`, detects the current project, and persists environment variables for the session.\n\n**What it does:**\n- Reads `.claude/.env` and `.env` files and exports variables to the session\n- Detects project type (Next.js, Express, etc.) and sets `CK_PROJECT_TYPE`\n- Stores session metadata for hooks that run later in the session\n\n---\n\n### subagent-init.cjs\n\n**Event:** `SubagentStart`\n\n**Purpose:** Injects minimal context (~200 tokens) into subagents spawned by the Task tool. Keeps subagent prompts lean while ensuring they have the critical paths and config they need.\n\n**What it does:**\n- Injects CWD, plan directory, reports directory\n- Passes `CK_SESSION_ID` and project type to subagents\n- Does NOT inject full rules (those come from `dev-rules-reminder.cjs`)\n\n---\n\n### team-context-inject.cjs\n\n**Event:** `SubagentStart`\n\n**Purpose:** Used in Agent Team workflows. Injects peer agent names, task summary, and coordination context into team member subagents.\n\n**What it does:**\n- Reads team config from `.claude/teams/`\n- Injects available peer names and their current task status\n- Provides file ownership boundaries from the active task\n\n&gt; Only active when `CK_TEAM_MODE=1` is set.\n\n---\n\n### cook-after-plan-reminder.cjs\n\n**Event:** `SubagentStop` (matcher: Plan subagents)\n\n**Purpose:** After a planning subagent completes, prints boundary guidance so Claude stops before implementation and presents the available next steps.\n\n**What it does:**\n- Detects if the stopping subagent was a planner\n- Prints an optional `/ck:cook &lt;plan.md&gt;` command with the generated plan path\n- Keeps planning and implementation separated until the user approves implementation\n- Mentions `--auto` only as an explicit opt-in for autonomous implementation\n\n---\n\n### dev-rules-reminder.cjs\n\n**Event:** `UserPromptSubmit`\n\n**Purpose:** Injects session context, development rules, modularization guidelines, and Plan Context into Claude's context before each user prompt.\n\n**What it does:**\n- Reads `.claude/workflows/development-rules.md` and injects key rules\n- Injects active Plan Context (current plan directory) from session state\n- Reminds about modularization limits (200-line files)\n- Ensures consistent code quality standards across prompts\n\n---\n\n### usage-context-awareness.cjs\n\n**Event:** `UserPromptSubmit` + `PostToolUse`\n\n**Purpose:** Fetches Claude Code usage limits from the API and writes them to a cache file. Throttled to avoid excessive API calls. Helps Claude be aware of remaining token budget.\n\n**What it does:**\n- Reads cached usage data from `.claude/.usage-cache.json` (max 60s old)\n- Fetches fresh usage stats if cache is stale\n- Injects remaining token budget into context\n- Silently skips if `ANTHROPIC_API_KEY` is not set\n\n---\n\n### descriptive-name.cjs\n\n**Event:** `PreToolUse` (matcher: `Write`)\n\n**Purpose:** Injects file naming guidance before Claude writes a new file, enforcing kebab-case and language-specific conventions.\n\n**What it does:**\n- Detects the target file path from the Write tool parameters\n- Checks if the name follows kebab-case (for most files) or language conventions (e.g., PascalCase for React components)\n- Injects a reminder if the name is non-descriptive or uses the wrong convention\n\n---\n\n### scout-block.cjs\n\n**Event:** `PreToolUse` (matcher: `Bash|Glob|Grep|Read|Edit|Write`)\n\n**Purpose:** Blocks file system access to directories listed in `.ckignore`. Allows build commands (e.g., `npm run build`) to pass through.\n\n**What it does:**\n- Reads the shipped `.ckignore` baseline and then layers an optional git-root `./.claude/.ckignore` override\n- Blocks Read/Edit/Write/Glob/Grep operations on matched paths\n- Allows Bash commands that are recognized build/test commands\n- Returns a clear error message explaining which path is blocked and which `.ckignore` file to edit\n\n---\n\n### privacy-block.cjs\n\n**Event:** `PreToolUse` (matcher: `Bash|Glob|Grep|Read|Edit|Write`)\n\n**Purpose:** Blocks access to sensitive files (`.env`, credentials, private keys). Requires explicit user approval via `AskUserQuestion` before allowing access.\n\n**What it does:**\n- Matches file paths against a list of sensitive patterns (`.env*`, `*.pem`, `*.key`, `credentials.*`, etc.)\n- On match: returns a `@@PRIVACY_PROMPT@@` JSON marker that triggers the `AskUserQuestion` flow\n- If user approves: Claude uses `bash cat` to read the file (bypasses the hook)\n- If user denies: continues without the sensitive file\n\n&gt; See `$HOME/.claude/CLAUDE.md` → \&quot;Hook Response Protocol\&quot; for the full `@@PRIVACY_PROMPT@@` flow.\n\n---\n\n### post-edit-simplify-reminder.cjs\n\n**Event:** `PostToolUse` (matcher: `Edit|Write|MultiEdit`)\n\n**Purpose:** Tracks the number of file edits in the current session. After 5 or more edits, injects a reminder to run the `code-simplifier` agent to review accumulated complexity.\n\n**What it does:**\n- Increments edit counter in session state after each Edit/Write/MultiEdit\n- At threshold (default: 5), injects: \&quot;You've made N edits. Consider invoking `/simplify` to review accumulated complexity.\&quot;\n- Resets counter after reminder is shown\n\n---\n\n### task-completed-handler.cjs\n\n**Event:** `TaskCompleted`\n\n**Purpose:** Logs task completions to `.claude/logs/tasks.log`. In Agent Team mode, injects progress summary for the lead agent.\n\n**What it does:**\n- Appends task ID, subject, completion time, and owner to the task log\n- If `CK_TEAM_MODE=1`: formats a progress summary showing completed vs total tasks and injects it into lead's context\n\n---\n\n### teammate-idle-handler.cjs\n\n**Event:** `TeammateIdle`\n\n**Purpose:** When an Agent Team member goes idle (waiting for input), injects available unblocked task context so they can claim the next task without waiting for a message.\n\n**What it does:**\n- Reads `TaskList` for unblocked pending tasks\n- Formats task summary and injects it as context\n- Prevents teammates from staying idle when work is available\n\n---\n\n### Discord Notifications\n\n**File:** `.claude/hooks/send-discord.sh`\n\n**Purpose:** Sends rich notifications to Discord when tasks complete.\n\n&gt; **Note:** Discord notifications are triggered manually in workflows, not automatically via hook events. This is intentional for flexibility.\n\n**Setup:**\n\n1. **Create Discord Webhook:**\n   - Discord Server → Settings → Integrations → Webhooks\n   - Create webhook, copy URL\n\n2. **Configure Environment:**\n   ```bash\n   # .env or .claude/.env\n   DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN\n   ```\n\n3. **Make Executable:**\n   ```bash\n   chmod +x .claude/hooks/send-discord.sh\n   ```\n\n4. **Test:**\n   ```bash\n   ./.claude/hooks/send-discord.sh 'Test notification'\n   ```\n\n**Usage in Workflows:**\n```markdown\n&lt;!-- In .claude/workflows/development-rules.md --&gt;\n- When implementation complete, run:\n  `./.claude/hooks/send-discord.sh 'Task completed: [summary]'`\n```\n\n**Message Format:**\n```\n╔═══════════════════════════════════════╗\n║ 🤖 Claude Code Session Complete       ║\n╠═══════════════════════════════════════╣\n║ Implementation Complete               ║\n║                                       ║\n║ ✅ Added user authentication          ║\n║ ✅ Created login/signup forms         ║\n║ ✅ All tests passing                  ║\n╠═══════════════════════════════════════╣\n║ ⏰ Session Time: 14:30:45             ║\n║ 📂 Project: my-project                ║\n╚═══════════════════════════════════════╝\n```\n\n### Telegram Notifications\n\n**File:** `.claude/hooks/telegram_notify.sh`\n\n**Purpose:** Sends detailed notifications to Telegram with tool usage stats.\n\n**Setup:**\n\n1. **Create Telegram Bot:**\n   - Message @BotFather on Telegram\n   - Send `/newbot`, follow prompts\n   - Copy bot token\n\n2. **Get Chat ID:**\n   ```bash\n   # After messaging your bot, run:\n   curl -s \&quot;https://api.telegram.org/bot&lt;TOKEN&gt;/getUpdates\&quot; | jq '.result[-1].message.chat.id'\n   ```\n\n3. **Configure Environment:**\n   ```bash\n   # .env or .claude/.env\n   TELEGRAM_BOT_TOKEN=123456789:ABCdefGHIjklMNOpqrsTUVwxyz\n   TELEGRAM_CHAT_ID=987654321\n   ```\n\n4. **Configure Hook (add to `.claude/settings.json`):**\n\n   &gt; **Note:** Telegram hooks are not configured by default. Add this to your `settings.json` to enable automatic notifications.\n\n   ```json\n   {\n     \&quot;hooks\&quot;: {\n       \&quot;Stop\&quot;: [\n         {\n           \&quot;hooks\&quot;: [\n             {\n               \&quot;type\&quot;: \&quot;command\&quot;,\n               \&quot;command\&quot;: \&quot;${CLAUDE_PROJECT_DIR}/.claude/hooks/telegram_notify.sh\&quot;\n             }\n           ]\n         }\n       ],\n       \&quot;SubagentStop\&quot;: [\n         {\n           \&quot;hooks\&quot;: [\n             {\n               \&quot;type\&quot;: \&quot;command\&quot;,\n               \&quot;command\&quot;: \&quot;${CLAUDE_PROJECT_DIR}/.claude/hooks/telegram_notify.sh\&quot;\n             }\n           ]\n         }\n       ]\n     }\n   }\n   ```\n\n**Message Format:**\n```\n🚀 Project Task Completed\n\n📅 Time: 2025-10-22 14:30:45\n📁 Project: my-project\n🔧 Total Operations: 15\n🆔 Session: abc12345...\n\nTools Used:\n   5 Edit\n   3 Read\n   2 Bash\n   2 Write\n\nFiles Modified:\n• src/auth/service.ts\n• src/utils/validation.ts\n• tests/auth.test.ts\n\n📍 Location: /Users/user/projects/my-project\n```\n\n## Notification System\n\nNotification providers live in `.claude/hooks/notifications/`. Each provider is a standalone module that reads from environment variables.\n\n| Provider | File | Event |\n|----------|------|-------|\n| Discord | `notifications/discord.cjs` | `Stop`, `SubagentStop` |\n| Slack | `notifications/slack.cjs` | `Stop`, `SubagentStop` |\n| Telegram | `notifications/telegram.cjs` | `Stop`, `SubagentStop` |\n\nConfigure providers by setting the relevant env vars (see Discord/Telegram sections below) and adding them to `settings.json` hooks. The provider scripts are called by the main notification orchestrator.\n\n## Creating Custom Hooks\n\n### Basic Hook Structure\n\n```javascript\n// .claude/hooks/my-hook.cjs\n\n// Read hook input from stdin (JSON)\nlet input = '';\nprocess.stdin.on('data', chunk =&gt; input += chunk);\nprocess.stdin.on('end', () =&gt; {\n  const data = JSON.parse(input);\n\n  // Hook logic here\n  console.log('Hook triggered:', data.hookType);\n\n  // Exit 0 for success, non-zero to block\n  process.exit(0);\n});\n```\n\n### Hook Input Data\n\n**UserPromptSubmit:**\n```json\n{\n  \&quot;hookType\&quot;: \&quot;UserPromptSubmit\&quot;,\n  \&quot;projectDir\&quot;: \&quot;/path/to/project\&quot;,\n  \&quot;prompt\&quot;: \&quot;User's prompt text\&quot;\n}\n```\n\n**PreToolUse:**\n```json\n{\n  \&quot;hookType\&quot;: \&quot;PreToolUse\&quot;,\n  \&quot;projectDir\&quot;: \&quot;/path/to/project\&quot;,\n  \&quot;tool\&quot;: \&quot;Edit\&quot;,\n  \&quot;parameters\&quot;: {\n    \&quot;file_path\&quot;: \&quot;/path/to/file.ts\&quot;,\n    \&quot;old_string\&quot;: \&quot;...\&quot;,\n    \&quot;new_string\&quot;: \&quot;...\&quot;\n  }\n}\n```\n\n**Stop:**\n```json\n{\n  \&quot;hookType\&quot;: \&quot;Stop\&quot;,\n  \&quot;projectDir\&quot;: \&quot;/path/to/project\&quot;,\n  \&quot;sessionId\&quot;: \&quot;abc123\&quot;,\n  \&quot;toolsUsed\&quot;: [\n    {\&quot;tool\&quot;: \&quot;Read\&quot;, \&quot;parameters\&quot;: {\&quot;file_path\&quot;: \&quot;...\&quot;}},\n    {\&quot;tool\&quot;: \&quot;Edit\&quot;, \&quot;parameters\&quot;: {\&quot;file_path\&quot;: \&quot;...\&quot;}}\n  ]\n}\n```\n\n### Example: Logging Hook\n\n```javascript\n// .claude/hooks/log-tools.cjs\nconst fs = require('fs');\n\nlet input = '';\nprocess.stdin.on('data', chunk =&gt; input += chunk);\nprocess.stdin.on('end', () =&gt; {\n  const data = JSON.parse(input);\n\n  const logEntry = {\n    timestamp: new Date().toISOString(),\n    hookType: data.hookType,\n    tool: data.tool,\n    file: data.parameters?.file_path\n  };\n\n  fs.appendFileSync('logs.txt', JSON.stringify(logEntry) + '\\n');\n  process.exit(0);\n});\n```\n\n### Example: Blocking Hook\n\n```javascript\n// .claude/hooks/prevent-secrets.cjs\nlet input = '';\nprocess.stdin.on('data', chunk =&gt; input += chunk);\nprocess.stdin.on('end', () =&gt; {\n  const data = JSON.parse(input);\n\n  // Block edits to .env files\n  if (data.tool === 'Edit' &amp;&amp; data.parameters?.file_path?.includes('.env')) {\n    console.error('Blocked: Cannot edit .env files directly');\n    process.exit(1); // Non-zero exits block the action\n  }\n\n  process.exit(0);\n});\n```\n\n## Environment Variables\n\nHooks can access these environment variables:\n\n| Variable | Description |\n|----------|-------------|\n| `CLAUDE_PROJECT_DIR` | Project root directory |\n| `CLAUDE_SESSION_ID` | Current session identifier |\n| Custom variables | From `.env` files |\n\n### Loading .env Files\n\nClaudeKit hooks load environment variables in this priority:\n\n1. System environment variables\n2. `.claude/.env` (project-level)\n3. `.claude/hooks/.env` (hook-specific)\n\n## Best Practices\n\n### Security\n\n1. **Never commit secrets:**\n   ```bash\n   # .gitignore\n   .env\n   .env.*\n   ```\n\n2. **Use environment variables** for tokens and URLs\n\n3. **Rotate webhook tokens** regularly\n\n4. **Limit hook permissions** to necessary scope\n\n### Performance\n\n1. **Keep hooks lightweight** - they run on every event\n2. **Use async operations** for slow tasks\n3. **Exit quickly** if no action needed\n\n### Reliability\n\n1. **Handle errors gracefully**\n2. **Log hook failures** for debugging\n3. **Test hooks manually** before deployment\n\n## Troubleshooting\n\n### Hook Not Triggering\n\n**Solutions:**\n1. Verify hook in `settings.json` is valid JSON\n2. Check script is executable (`chmod +x`)\n3. Verify path is correct\n4. Test script manually\n\n### Hook Blocking Unexpectedly\n\n**Solutions:**\n1. Check exit code (0 = allow, non-zero = block)\n2. Review matcher regex for PreToolUse\n3. Add logging to debug\n\n### Environment Variables Not Loading\n\n**Solutions:**\n1. Check `.env` file exists and has correct format\n2. Verify no spaces around `=` in `.env`\n3. Ensure script reads `.env` files\n\n## Related\n\n- [CLAUDE.md](/docs/engineer/configuration/claude-md) - Project instructions\n- [MCP Setup](/docs/engineer/configuration/mcp-setup) - MCP server configuration\n- [Workflows](/docs/engineer/configuration/workflows) - Development workflows\n\n---\n\n**Key Takeaway**: Hooks extend Claude Code with custom automation - from development rule enforcement to real-time notifications. Use built-in Discord/Telegram hooks or create custom hooks to fit your workflow.&quot;],&quot;pageUrl&quot;:[0,&quot;/docs/engineer/configuration/hooks/&quot;],&quot;pageSlug&quot;:[0,&quot;engineer/configuration/hooks&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Hooks&quot;],&quot;description&quot;:[0,&quot;Configure Claude Code hooks for notifications, automation, and custom behaviors&quot;],&quot;section&quot;:[0,&quot;engineer&quot;],&quot;category&quot;:[0,&quot;configuration&quot;]}],&quot;data-astro-cid-mw7aashj&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;CopyForLLMs&quot;,&quot;value&quot;:true}" await-children=""><button type="button" id="radix-:r4R0:" aria-haspopup="menu" aria-expanded="false" data-state="closed" class="group flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-text-primary bg-bg-primary border border-border rounded-lg shadow-sm hover:bg-bg-secondary hover:border-border-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-blue data-[state=open]:bg-bg-secondary transition-all duration-200"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-text-secondary group-hover:text-text-primary transition-colors"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>Copy for AI</span><svg width="12" height="12" viewBox="0 0 12 12" class="text-text-muted transition-transform duration-200 group-data-[state=open]:rotate-180 group-hover:text-text-secondary"><path d="M3 5l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"></path></svg></button></astro-island> </div> <article class="prose" data-pagefind-meta="title:Hooks - ClaudeKit Documentation" data-astro-cid-mw7aashj="">  <h1 id="hooks"><a class="heading-anchor" href="#hooks">Hooks</a></h1>
+<p>Hooks allow you to extend Claude Code with custom scripts that run at specific points in the workflow. ClaudeKit Engineer includes pre-built hooks for file access control, naming guidance, simplification gates, statusline rendering, optional session context, and notifications.</p>
+<h2 id="overview"><a class="heading-anchor" href="#overview">Overview</a></h2>
+<p>Hooks are configured in <code>.claude/settings.json</code> and execute shell commands in response to Claude Code events.</p>
+<blockquote>
+<p><strong>Current default (v2.19.0+):</strong> ClaudeKit installs only lightweight safety and workflow hooks by default. Generated session/subagent/usage context hooks are opt-in and are pruned from existing installs during <code>ck update</code> or <code>ck migrate</code>.</p>
+</blockquote>
+<h3 id="available-hook-events"><a class="heading-anchor" href="#available-hook-events">Available Hook Events</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Event</th><th>When Triggered</th></tr></thead><tbody><tr><td><code>SessionStart</code></td><td>When a Claude Code session begins</td></tr><tr><td><code>SubagentStart</code></td><td>When a Task tool spawns a subagent</td></tr><tr><td><code>UserPromptSubmit</code></td><td>Before user prompt is processed</td></tr><tr><td><code>PreToolUse</code></td><td>Before a tool executes</td></tr><tr><td><code>PostToolUse</code></td><td>After a tool executes</td></tr><tr><td><code>TaskCompleted</code></td><td>When a task is marked completed</td></tr><tr><td><code>TeammateIdle</code></td><td>When an Agent Team member goes idle</td></tr><tr><td><code>Stop</code></td><td>When Claude session ends</td></tr><tr><td><code>SubagentStop</code></td><td>When a subagent completes</td></tr></tbody></table>
+<h2 id="configuration"><a class="heading-anchor" href="#configuration">Configuration</a></h2>
+<p>Hooks are defined in <code>.claude/settings.json</code>:</p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "statusLine"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "type"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"bash .claude/hooks/node-hook-runner.sh .claude/statusline.cjs"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "padding"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#098658;--shiki-dark:#D19A66">0</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">  },</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "hooks"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "UserPromptSubmit"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">        "hooks"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "type"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"bash .claude/hooks/node-hook-runner.sh .claude/hooks/simplify-gate.cjs"</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">        ]</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">    ],</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "PreToolUse"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">        "matcher"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"Write"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">        "hooks"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "type"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"bash .claude/hooks/node-hook-runner.sh .claude/hooks/descriptive-name.cjs"</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">        ]</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      },</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">        "matcher"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"Bash|Glob|Grep|Read|Edit|Write"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">        "hooks"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "type"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"bash .claude/hooks/node-hook-runner.sh .claude/hooks/scout-block.cjs"</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          },</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "type"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"bash .claude/hooks/node-hook-runner.sh .claude/hooks/privacy-block.cjs"</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">        ]</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">    ]</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">  }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<h3 id="hook-properties"><a class="heading-anchor" href="#hook-properties">Hook Properties</a></h3>
+<ul>
+<li><strong>type</strong>: Always <code>"command"</code> for shell execution</li>
+<li><strong>command</strong>: Shell command to run</li>
+<li><strong>matcher</strong>: (PreToolUse only) Regex to match tool names</li>
+</ul>
+<h2 id="built-in-hooks"><a class="heading-anchor" href="#built-in-hooks">Built-in Hooks</a></h2>
+<p>ClaudeKit Engineer ships with hooks organized by event type. All default hook files live in <code>.claude/hooks/</code>. Shared utilities are in <code>.claude/hooks/lib/</code>. Notification providers are in <code>.claude/hooks/notifications/</code>.</p>
+<h3 id="summary-table"><a class="heading-anchor" href="#summary-table">Summary Table</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Hook File</th><th>Default</th><th>Event</th><th>Purpose</th></tr></thead><tbody><tr><td><code>simplify-gate.cjs</code></td><td>Yes</td><td><code>UserPromptSubmit</code></td><td>Enforce simplification workflow rules when relevant</td></tr><tr><td><code>descriptive-name.cjs</code></td><td>Yes</td><td><code>PreToolUse</code> (Write)</td><td>Inject file naming guidance: kebab-case, language conventions</td></tr><tr><td><code>scout-block.cjs</code></td><td>Yes</td><td><code>PreToolUse</code> (Bash/Glob/Grep/Read/Edit/Write)</td><td>Block access to <code>.ckignore</code>-listed directories</td></tr><tr><td><code>privacy-block.cjs</code></td><td>Yes</td><td><code>PreToolUse</code> (Bash/Glob/Grep/Read/Edit/Write)</td><td>Block sensitive files, require user approval</td></tr><tr><td><code>session-init.cjs</code></td><td>No</td><td><code>SessionStart</code></td><td>Load config, detect project, persist env vars</td></tr><tr><td><code>subagent-init.cjs</code></td><td>No</td><td><code>SubagentStart</code></td><td>Inject minimal context to subagents</td></tr><tr><td><code>team-context-inject.cjs</code></td><td>No</td><td><code>SubagentStart</code></td><td>Inject peer info + task summary for Agent Team members</td></tr><tr><td><code>cook-after-plan-reminder.cjs</code></td><td>No</td><td><code>SubagentStop</code> (Plan)</td><td>Print user-choice guidance after planning</td></tr><tr><td><code>dev-rules-reminder.cjs</code></td><td>No</td><td><code>UserPromptSubmit</code></td><td>Inject session context, rules, modularization, Plan Context</td></tr><tr><td><code>usage-context-awareness.cjs</code></td><td>No</td><td><code>UserPromptSubmit</code> + <code>PostToolUse</code></td><td>Fetch usage limits, write to cache</td></tr><tr><td><code>post-edit-simplify-reminder.cjs</code></td><td>No</td><td><code>PostToolUse</code> (Edit/Write/MultiEdit)</td><td>Remind about code-simplifier after repeated edits</td></tr><tr><td><code>task-completed-handler.cjs</code></td><td>No</td><td><code>TaskCompleted</code></td><td>Log completions, inject progress for Agent Team leads</td></tr><tr><td><code>teammate-idle-handler.cjs</code></td><td>No</td><td><code>TeammateIdle</code></td><td>Inject available task context when team member goes idle</td></tr></tbody></table>
+<p>The hooks marked <code>No</code> are no longer installed by default because they generate context on session, prompt, subagent, or tool events. Existing installations are cleaned up idempotently by the CLI during update and migration.</p>
+<hr>
+<h3 id="session-initcjs"><a class="heading-anchor" href="#session-initcjs">session-init.cjs</a></h3>
+<p><strong>Event:</strong> <code>SessionStart</code></p>
+<p><strong>Purpose:</strong> Runs once when a Claude Code session begins. Loads <code>.claude/.env</code>, detects the current project, and persists environment variables for the session.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Reads <code>.claude/.env</code> and <code>.env</code> files and exports variables to the session</li>
+<li>Detects project type (Next.js, Express, etc.) and sets <code>CK_PROJECT_TYPE</code></li>
+<li>Stores session metadata for hooks that run later in the session</li>
+</ul>
+<hr>
+<h3 id="subagent-initcjs"><a class="heading-anchor" href="#subagent-initcjs">subagent-init.cjs</a></h3>
+<p><strong>Event:</strong> <code>SubagentStart</code></p>
+<p><strong>Purpose:</strong> Injects minimal context (~200 tokens) into subagents spawned by the Task tool. Keeps subagent prompts lean while ensuring they have the critical paths and config they need.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Injects CWD, plan directory, reports directory</li>
+<li>Passes <code>CK_SESSION_ID</code> and project type to subagents</li>
+<li>Does NOT inject full rules (those come from <code>dev-rules-reminder.cjs</code>)</li>
+</ul>
+<hr>
+<h3 id="team-context-injectcjs"><a class="heading-anchor" href="#team-context-injectcjs">team-context-inject.cjs</a></h3>
+<p><strong>Event:</strong> <code>SubagentStart</code></p>
+<p><strong>Purpose:</strong> Used in Agent Team workflows. Injects peer agent names, task summary, and coordination context into team member subagents.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Reads team config from <code>.claude/teams/</code></li>
+<li>Injects available peer names and their current task status</li>
+<li>Provides file ownership boundaries from the active task</li>
+</ul>
+<blockquote>
+<p>Only active when <code>CK_TEAM_MODE=1</code> is set.</p>
+</blockquote>
+<hr>
+<h3 id="cook-after-plan-remindercjs"><a class="heading-anchor" href="#cook-after-plan-remindercjs">cook-after-plan-reminder.cjs</a></h3>
+<p><strong>Event:</strong> <code>SubagentStop</code> (matcher: Plan subagents)</p>
+<p><strong>Purpose:</strong> After a planning subagent completes, prints boundary guidance so Claude stops before implementation and presents the available next steps.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Detects if the stopping subagent was a planner</li>
+<li>Prints an optional <code>/ck:cook &lt;plan.md&gt;</code> command with the generated plan path</li>
+<li>Keeps planning and implementation separated until the user approves implementation</li>
+<li>Mentions <code>--auto</code> only as an explicit opt-in for autonomous implementation</li>
+</ul>
+<hr>
+<h3 id="dev-rules-remindercjs"><a class="heading-anchor" href="#dev-rules-remindercjs">dev-rules-reminder.cjs</a></h3>
+<p><strong>Event:</strong> <code>UserPromptSubmit</code></p>
+<p><strong>Purpose:</strong> Injects session context, development rules, modularization guidelines, and Plan Context into Claude’s context before each user prompt.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Reads <code>.claude/workflows/development-rules.md</code> and injects key rules</li>
+<li>Injects active Plan Context (current plan directory) from session state</li>
+<li>Reminds about modularization limits (200-line files)</li>
+<li>Ensures consistent code quality standards across prompts</li>
+</ul>
+<hr>
+<h3 id="usage-context-awarenesscjs"><a class="heading-anchor" href="#usage-context-awarenesscjs">usage-context-awareness.cjs</a></h3>
+<p><strong>Event:</strong> <code>UserPromptSubmit</code> + <code>PostToolUse</code></p>
+<p><strong>Purpose:</strong> Fetches Claude Code usage limits from the API and writes them to a cache file. Throttled to avoid excessive API calls. Helps Claude be aware of remaining token budget.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Reads cached usage data from <code>.claude/.usage-cache.json</code> (max 60s old)</li>
+<li>Fetches fresh usage stats if cache is stale</li>
+<li>Injects remaining token budget into context</li>
+<li>Silently skips if <code>ANTHROPIC_API_KEY</code> is not set</li>
+</ul>
+<hr>
+<h3 id="descriptive-namecjs"><a class="heading-anchor" href="#descriptive-namecjs">descriptive-name.cjs</a></h3>
+<p><strong>Event:</strong> <code>PreToolUse</code> (matcher: <code>Write</code>)</p>
+<p><strong>Purpose:</strong> Injects file naming guidance before Claude writes a new file, enforcing kebab-case and language-specific conventions.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Detects the target file path from the Write tool parameters</li>
+<li>Checks if the name follows kebab-case (for most files) or language conventions (e.g., PascalCase for React components)</li>
+<li>Injects a reminder if the name is non-descriptive or uses the wrong convention</li>
+</ul>
+<hr>
+<h3 id="scout-blockcjs"><a class="heading-anchor" href="#scout-blockcjs">scout-block.cjs</a></h3>
+<p><strong>Event:</strong> <code>PreToolUse</code> (matcher: <code>Bash|Glob|Grep|Read|Edit|Write</code>)</p>
+<p><strong>Purpose:</strong> Blocks file system access to directories listed in <code>.ckignore</code>. Allows build commands (e.g., <code>npm run build</code>) to pass through.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Reads the shipped <code>.ckignore</code> baseline and then layers an optional git-root <code>./.claude/.ckignore</code> override</li>
+<li>Blocks Read/Edit/Write/Glob/Grep operations on matched paths</li>
+<li>Allows Bash commands that are recognized build/test commands</li>
+<li>Returns a clear error message explaining which path is blocked and which <code>.ckignore</code> file to edit</li>
+</ul>
+<hr>
+<h3 id="privacy-blockcjs"><a class="heading-anchor" href="#privacy-blockcjs">privacy-block.cjs</a></h3>
+<p><strong>Event:</strong> <code>PreToolUse</code> (matcher: <code>Bash|Glob|Grep|Read|Edit|Write</code>)</p>
+<p><strong>Purpose:</strong> Blocks access to sensitive files (<code>.env</code>, credentials, private keys). Requires explicit user approval via <code>AskUserQuestion</code> before allowing access.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Matches file paths against a list of sensitive patterns (<code>.env*</code>, <code>*.pem</code>, <code>*.key</code>, <code>credentials.*</code>, etc.)</li>
+<li>On match: returns a <code>@@PRIVACY_PROMPT@@</code> JSON marker that triggers the <code>AskUserQuestion</code> flow</li>
+<li>If user approves: Claude uses <code>bash cat</code> to read the file (bypasses the hook)</li>
+<li>If user denies: continues without the sensitive file</li>
+</ul>
+<blockquote>
+<p>See <code>$HOME/.claude/CLAUDE.md</code> → “Hook Response Protocol” for the full <code>@@PRIVACY_PROMPT@@</code> flow.</p>
+</blockquote>
+<hr>
+<h3 id="post-edit-simplify-remindercjs"><a class="heading-anchor" href="#post-edit-simplify-remindercjs">post-edit-simplify-reminder.cjs</a></h3>
+<p><strong>Event:</strong> <code>PostToolUse</code> (matcher: <code>Edit|Write|MultiEdit</code>)</p>
+<p><strong>Purpose:</strong> Tracks the number of file edits in the current session. After 5 or more edits, injects a reminder to run the <code>code-simplifier</code> agent to review accumulated complexity.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Increments edit counter in session state after each Edit/Write/MultiEdit</li>
+<li>At threshold (default: 5), injects: “You’ve made N edits. Consider invoking <code>/simplify</code> to review accumulated complexity.”</li>
+<li>Resets counter after reminder is shown</li>
+</ul>
+<hr>
+<h3 id="task-completed-handlercjs"><a class="heading-anchor" href="#task-completed-handlercjs">task-completed-handler.cjs</a></h3>
+<p><strong>Event:</strong> <code>TaskCompleted</code></p>
+<p><strong>Purpose:</strong> Logs task completions to <code>.claude/logs/tasks.log</code>. In Agent Team mode, injects progress summary for the lead agent.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Appends task ID, subject, completion time, and owner to the task log</li>
+<li>If <code>CK_TEAM_MODE=1</code>: formats a progress summary showing completed vs total tasks and injects it into lead’s context</li>
+</ul>
+<hr>
+<h3 id="teammate-idle-handlercjs"><a class="heading-anchor" href="#teammate-idle-handlercjs">teammate-idle-handler.cjs</a></h3>
+<p><strong>Event:</strong> <code>TeammateIdle</code></p>
+<p><strong>Purpose:</strong> When an Agent Team member goes idle (waiting for input), injects available unblocked task context so they can claim the next task without waiting for a message.</p>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Reads <code>TaskList</code> for unblocked pending tasks</li>
+<li>Formats task summary and injects it as context</li>
+<li>Prevents teammates from staying idle when work is available</li>
+</ul>
+<hr>
+<h3 id="discord-notifications"><a class="heading-anchor" href="#discord-notifications">Discord Notifications</a></h3>
+<p><strong>File:</strong> <code>.claude/hooks/send-discord.sh</code></p>
+<p><strong>Purpose:</strong> Sends rich notifications to Discord when tasks complete.</p>
+<blockquote>
+<p><strong>Note:</strong> Discord notifications are triggered manually in workflows, not automatically via hook events. This is intentional for flexibility.</p>
+</blockquote>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>
+<p><strong>Create Discord Webhook:</strong></p>
+<ul>
+<li>Discord Server → Settings → Integrations → Webhooks</li>
+<li>Create webhook, copy URL</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure Environment:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># .env or .claude/.env</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E06C75">DISCORD_WEBHOOK_URL</span><span style="color:#000000;--shiki-dark:#56B6C2">=</span><span style="color:#A31515;--shiki-dark:#98C379">https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN</span></span></code></pre>
+</li>
+<li>
+<p><strong>Make Executable:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#795E26;--shiki-dark:#61AFEF">chmod</span><span style="color:#A31515;--shiki-dark:#98C379"> +x</span><span style="color:#A31515;--shiki-dark:#98C379"> .claude/hooks/send-discord.sh</span></span></code></pre>
+</li>
+<li>
+<p><strong>Test:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#795E26;--shiki-dark:#61AFEF">./.claude/hooks/send-discord.sh</span><span style="color:#A31515;--shiki-dark:#98C379"> 'Test notification'</span></span></code></pre>
+</li>
+</ol>
+<p><strong>Usage in Workflows:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">&lt;!-- In .claude/workflows/development-rules.md --&gt;</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E5C07B">-</span><span style="color:#000000;--shiki-dark:#ABB2BF"> When implementation complete, run:</span></span>
+<span class="line"><span style="color:#800000;--shiki-dark:#E5C07B">  `</span><span style="color:#800000;--shiki-dark:#98C379">./.claude/hooks/send-discord.sh 'Task completed: [summary]'</span><span style="color:#800000;--shiki-dark:#E5C07B">`</span></span></code></pre>
+<p><strong>Message Format:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>╔═══════════════════════════════════════╗</span></span>
+<span class="line"><span>║ 🤖 Claude Code Session Complete       ║</span></span>
+<span class="line"><span>╠═══════════════════════════════════════╣</span></span>
+<span class="line"><span>║ Implementation Complete               ║</span></span>
+<span class="line"><span>║                                       ║</span></span>
+<span class="line"><span>║ ✅ Added user authentication          ║</span></span>
+<span class="line"><span>║ ✅ Created login/signup forms         ║</span></span>
+<span class="line"><span>║ ✅ All tests passing                  ║</span></span>
+<span class="line"><span>╠═══════════════════════════════════════╣</span></span>
+<span class="line"><span>║ ⏰ Session Time: 14:30:45             ║</span></span>
+<span class="line"><span>║ 📂 Project: my-project                ║</span></span>
+<span class="line"><span>╚═══════════════════════════════════════╝</span></span></code></pre>
+<h3 id="telegram-notifications"><a class="heading-anchor" href="#telegram-notifications">Telegram Notifications</a></h3>
+<p><strong>File:</strong> <code>.claude/hooks/telegram_notify.sh</code></p>
+<p><strong>Purpose:</strong> Sends detailed notifications to Telegram with tool usage stats.</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>
+<p><strong>Create Telegram Bot:</strong></p>
+<ul>
+<li>Message @BotFather on Telegram</li>
+<li>Send <code>/newbot</code>, follow prompts</li>
+<li>Copy bot token</li>
+</ul>
+</li>
+<li>
+<p><strong>Get Chat ID:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># After messaging your bot, run:</span></span>
+<span class="line"><span style="color:#795E26;--shiki-dark:#61AFEF">curl</span><span style="color:#0000FF;--shiki-dark:#D19A66"> -s</span><span style="color:#A31515;--shiki-dark:#98C379"> "https://api.telegram.org/bot&lt;TOKEN&gt;/getUpdates"</span><span style="color:#000000;--shiki-dark:#ABB2BF"> | </span><span style="color:#795E26;--shiki-dark:#61AFEF">jq</span><span style="color:#A31515;--shiki-dark:#98C379"> '.result[-1].message.chat.id'</span></span></code></pre>
+</li>
+<li>
+<p><strong>Configure Environment:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># .env or .claude/.env</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E06C75">TELEGRAM_BOT_TOKEN</span><span style="color:#000000;--shiki-dark:#56B6C2">=</span><span style="color:#A31515;--shiki-dark:#98C379">123456789:ABCdefGHIjklMNOpqrsTUVwxyz</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E06C75">TELEGRAM_CHAT_ID</span><span style="color:#000000;--shiki-dark:#56B6C2">=</span><span style="color:#A31515;--shiki-dark:#98C379">987654321</span></span></code></pre>
+</li>
+<li>
+<p><strong>Configure Hook (add to <code>.claude/settings.json</code>):</strong></p>
+<blockquote>
+<p><strong>Note:</strong> Telegram hooks are not configured by default. Add this to your <code>settings.json</code> to enable automatic notifications.</p>
+</blockquote>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "hooks"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "Stop"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">        "hooks"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "type"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"${CLAUDE_PROJECT_DIR}/.claude/hooks/telegram_notify.sh"</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">        ]</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">    ],</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "SubagentStop"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">        "hooks"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "type"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">            "command"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"${CLAUDE_PROJECT_DIR}/.claude/hooks/telegram_notify.sh"</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">          }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">        ]</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">      }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">    ]</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">  }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+</li>
+</ol>
+<p><strong>Message Format:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>🚀 Project Task Completed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>📅 Time: 2025-10-22 14:30:45</span></span>
+<span class="line"><span>📁 Project: my-project</span></span>
+<span class="line"><span>🔧 Total Operations: 15</span></span>
+<span class="line"><span>🆔 Session: abc12345...</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Tools Used:</span></span>
+<span class="line"><span>   5 Edit</span></span>
+<span class="line"><span>   3 Read</span></span>
+<span class="line"><span>   2 Bash</span></span>
+<span class="line"><span>   2 Write</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Files Modified:</span></span>
+<span class="line"><span>• src/auth/service.ts</span></span>
+<span class="line"><span>• src/utils/validation.ts</span></span>
+<span class="line"><span>• tests/auth.test.ts</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>📍 Location: /Users/user/projects/my-project</span></span></code></pre>
+<h2 id="notification-system"><a class="heading-anchor" href="#notification-system">Notification System</a></h2>
+<p>Notification providers live in <code>.claude/hooks/notifications/</code>. Each provider is a standalone module that reads from environment variables.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Provider</th><th>File</th><th>Event</th></tr></thead><tbody><tr><td>Discord</td><td><code>notifications/discord.cjs</code></td><td><code>Stop</code>, <code>SubagentStop</code></td></tr><tr><td>Slack</td><td><code>notifications/slack.cjs</code></td><td><code>Stop</code>, <code>SubagentStop</code></td></tr><tr><td>Telegram</td><td><code>notifications/telegram.cjs</code></td><td><code>Stop</code>, <code>SubagentStop</code></td></tr></tbody></table>
+<p>Configure providers by setting the relevant env vars (see Discord/Telegram sections below) and adding them to <code>settings.json</code> hooks. The provider scripts are called by the main notification orchestrator.</p>
+<h2 id="creating-custom-hooks"><a class="heading-anchor" href="#creating-custom-hooks">Creating Custom Hooks</a></h2>
+<h3 id="basic-hook-structure"><a class="heading-anchor" href="#basic-hook-structure">Basic Hook Structure</a></h3>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// .claude/hooks/my-hook.cjs</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// Read hook input from stdin (JSON)</span></span>
+<span class="line"><span style="color:#0000FF;--shiki-dark:#C678DD">let</span><span style="color:#001080;--shiki-dark:#E06C75"> input</span><span style="color:#000000;--shiki-dark:#56B6C2"> =</span><span style="color:#A31515;--shiki-dark:#98C379"> ''</span><span style="color:#000000;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E5C07B">stdin</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">on</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'data'</span><span style="color:#000000;--shiki-dark:#ABB2BF">, </span><span style="color:#001080;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">chunk</span><span style="color:#0000FF;--shiki-dark:#C678DD"> =&gt;</span><span style="color:#001080;--shiki-dark:#E06C75"> input</span><span style="color:#000000;--shiki-dark:#56B6C2"> +=</span><span style="color:#001080;--shiki-dark:#E06C75"> chunk</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E5C07B">stdin</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">on</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'end'</span><span style="color:#000000;--shiki-dark:#ABB2BF">, () </span><span style="color:#0000FF;--shiki-dark:#C678DD">=&gt;</span><span style="color:#000000;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#0000FF;--shiki-dark:#C678DD">  const</span><span style="color:#0070C1;--shiki-dark:#E5C07B"> data</span><span style="color:#000000;--shiki-dark:#56B6C2"> =</span><span style="color:#0070C1;--shiki-dark:#E5C07B"> JSON</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">parse</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#001080;--shiki-dark:#E06C75">input</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  // Hook logic here</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">  console</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">log</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'Hook triggered:'</span><span style="color:#000000;--shiki-dark:#ABB2BF">, </span><span style="color:#001080;--shiki-dark:#E5C07B">data</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E06C75">hookType</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  // Exit 0 for success, non-zero to block</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">  process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">exit</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#098658;--shiki-dark:#D19A66">0</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">});</span></span></code></pre>
+<h3 id="hook-input-data"><a class="heading-anchor" href="#hook-input-data">Hook Input Data</a></h3>
+<p><strong>UserPromptSubmit:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "hookType"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"UserPromptSubmit"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "projectDir"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"/path/to/project"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "prompt"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"User's prompt text"</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<p><strong>PreToolUse:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "hookType"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"PreToolUse"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "projectDir"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"/path/to/project"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "tool"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"Edit"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "parameters"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: {</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "file_path"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"/path/to/file.ts"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "old_string"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"..."</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">    "new_string"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"..."</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">  }</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<p><strong>Stop:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "hookType"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"Stop"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "projectDir"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"/path/to/project"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "sessionId"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"abc123"</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#0451A5;--shiki-dark:#E06C75">  "toolsUsed"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: [</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">    {</span><span style="color:#0451A5;--shiki-dark:#E06C75">"tool"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"Read"</span><span style="color:#000000;--shiki-dark:#ABB2BF">, </span><span style="color:#0451A5;--shiki-dark:#E06C75">"parameters"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: {</span><span style="color:#0451A5;--shiki-dark:#E06C75">"file_path"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"..."</span><span style="color:#000000;--shiki-dark:#ABB2BF">}},</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">    {</span><span style="color:#0451A5;--shiki-dark:#E06C75">"tool"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"Edit"</span><span style="color:#000000;--shiki-dark:#ABB2BF">, </span><span style="color:#0451A5;--shiki-dark:#E06C75">"parameters"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: {</span><span style="color:#0451A5;--shiki-dark:#E06C75">"file_path"</span><span style="color:#000000;--shiki-dark:#ABB2BF">: </span><span style="color:#A31515;--shiki-dark:#98C379">"..."</span><span style="color:#000000;--shiki-dark:#ABB2BF">}}</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">  ]</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<h3 id="example-logging-hook"><a class="heading-anchor" href="#example-logging-hook">Example: Logging Hook</a></h3>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// .claude/hooks/log-tools.cjs</span></span>
+<span class="line"><span style="color:#0000FF;--shiki-dark:#C678DD">const</span><span style="color:#0070C1;--shiki-dark:#E5C07B"> fs</span><span style="color:#000000;--shiki-dark:#56B6C2"> =</span><span style="color:#795E26;--shiki-dark:#61AFEF"> require</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'fs'</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0000FF;--shiki-dark:#C678DD">let</span><span style="color:#001080;--shiki-dark:#E06C75"> input</span><span style="color:#000000;--shiki-dark:#56B6C2"> =</span><span style="color:#A31515;--shiki-dark:#98C379"> ''</span><span style="color:#000000;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E5C07B">stdin</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">on</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'data'</span><span style="color:#000000;--shiki-dark:#ABB2BF">, </span><span style="color:#001080;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">chunk</span><span style="color:#0000FF;--shiki-dark:#C678DD"> =&gt;</span><span style="color:#001080;--shiki-dark:#E06C75"> input</span><span style="color:#000000;--shiki-dark:#56B6C2"> +=</span><span style="color:#001080;--shiki-dark:#E06C75"> chunk</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E5C07B">stdin</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">on</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'end'</span><span style="color:#000000;--shiki-dark:#ABB2BF">, () </span><span style="color:#0000FF;--shiki-dark:#C678DD">=&gt;</span><span style="color:#000000;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#0000FF;--shiki-dark:#C678DD">  const</span><span style="color:#0070C1;--shiki-dark:#E5C07B"> data</span><span style="color:#000000;--shiki-dark:#56B6C2"> =</span><span style="color:#0070C1;--shiki-dark:#E5C07B"> JSON</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">parse</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#001080;--shiki-dark:#E06C75">input</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0000FF;--shiki-dark:#C678DD">  const</span><span style="color:#0070C1;--shiki-dark:#E5C07B"> logEntry</span><span style="color:#000000;--shiki-dark:#56B6C2"> =</span><span style="color:#000000;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E06C75">    timestamp</span><span style="color:#001080;--shiki-dark:#ABB2BF">:</span><span style="color:#0000FF;--shiki-dark:#C678DD"> new</span><span style="color:#795E26;--shiki-dark:#61AFEF"> Date</span><span style="color:#000000;--shiki-dark:#ABB2BF">().</span><span style="color:#795E26;--shiki-dark:#61AFEF">toISOString</span><span style="color:#000000;--shiki-dark:#ABB2BF">(),</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E06C75">    hookType</span><span style="color:#001080;--shiki-dark:#ABB2BF">:</span><span style="color:#001080;--shiki-dark:#E5C07B"> data</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E06C75">hookType</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E06C75">    tool</span><span style="color:#001080;--shiki-dark:#ABB2BF">:</span><span style="color:#001080;--shiki-dark:#E5C07B"> data</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E06C75">tool</span><span style="color:#000000;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E06C75">    file</span><span style="color:#001080;--shiki-dark:#ABB2BF">:</span><span style="color:#001080;--shiki-dark:#E5C07B"> data</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E5C07B">parameters</span><span style="color:#000000;--shiki-dark:#ABB2BF">?.</span><span style="color:#001080;--shiki-dark:#E06C75">file_path</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">  fs</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">appendFileSync</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'logs.txt'</span><span style="color:#000000;--shiki-dark:#ABB2BF">, </span><span style="color:#0070C1;--shiki-dark:#E5C07B">JSON</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">stringify</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#001080;--shiki-dark:#E06C75">logEntry</span><span style="color:#000000;--shiki-dark:#ABB2BF">) </span><span style="color:#000000;--shiki-dark:#56B6C2">+</span><span style="color:#A31515;--shiki-dark:#98C379"> '</span><span style="color:#EE0000;--shiki-dark:#56B6C2">\n</span><span style="color:#A31515;--shiki-dark:#98C379">'</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">  process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">exit</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#098658;--shiki-dark:#D19A66">0</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">});</span></span></code></pre>
+<h3 id="example-blocking-hook"><a class="heading-anchor" href="#example-blocking-hook">Example: Blocking Hook</a></h3>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// .claude/hooks/prevent-secrets.cjs</span></span>
+<span class="line"><span style="color:#0000FF;--shiki-dark:#C678DD">let</span><span style="color:#001080;--shiki-dark:#E06C75"> input</span><span style="color:#000000;--shiki-dark:#56B6C2"> =</span><span style="color:#A31515;--shiki-dark:#98C379"> ''</span><span style="color:#000000;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E5C07B">stdin</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">on</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'data'</span><span style="color:#000000;--shiki-dark:#ABB2BF">, </span><span style="color:#001080;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">chunk</span><span style="color:#0000FF;--shiki-dark:#C678DD"> =&gt;</span><span style="color:#001080;--shiki-dark:#E06C75"> input</span><span style="color:#000000;--shiki-dark:#56B6C2"> +=</span><span style="color:#001080;--shiki-dark:#E06C75"> chunk</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E5C07B">stdin</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">on</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'end'</span><span style="color:#000000;--shiki-dark:#ABB2BF">, () </span><span style="color:#0000FF;--shiki-dark:#C678DD">=&gt;</span><span style="color:#000000;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#0000FF;--shiki-dark:#C678DD">  const</span><span style="color:#0070C1;--shiki-dark:#E5C07B"> data</span><span style="color:#000000;--shiki-dark:#56B6C2"> =</span><span style="color:#0070C1;--shiki-dark:#E5C07B"> JSON</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">parse</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#001080;--shiki-dark:#E06C75">input</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  // Block edits to .env files</span></span>
+<span class="line"><span style="color:#AF00DB;--shiki-dark:#C678DD">  if</span><span style="color:#000000;--shiki-dark:#ABB2BF"> (</span><span style="color:#001080;--shiki-dark:#E5C07B">data</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E06C75">tool</span><span style="color:#000000;--shiki-dark:#56B6C2"> ===</span><span style="color:#A31515;--shiki-dark:#98C379"> 'Edit'</span><span style="color:#000000;--shiki-dark:#56B6C2"> &amp;&amp;</span><span style="color:#001080;--shiki-dark:#E5C07B"> data</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#001080;--shiki-dark:#E5C07B">parameters</span><span style="color:#000000;--shiki-dark:#ABB2BF">?.</span><span style="color:#001080;--shiki-dark:#E5C07B">file_path</span><span style="color:#000000;--shiki-dark:#ABB2BF">?.</span><span style="color:#795E26;--shiki-dark:#61AFEF">includes</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'.env'</span><span style="color:#000000;--shiki-dark:#ABB2BF">)) {</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">    console</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">error</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#A31515;--shiki-dark:#98C379">'Blocked: Cannot edit .env files directly'</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">    process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">exit</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#098658;--shiki-dark:#D19A66">1</span><span style="color:#000000;--shiki-dark:#ABB2BF">); </span><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// Non-zero exits block the action</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#001080;--shiki-dark:#E5C07B">  process</span><span style="color:#000000;--shiki-dark:#ABB2BF">.</span><span style="color:#795E26;--shiki-dark:#61AFEF">exit</span><span style="color:#000000;--shiki-dark:#ABB2BF">(</span><span style="color:#098658;--shiki-dark:#D19A66">0</span><span style="color:#000000;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#000000;--shiki-dark:#ABB2BF">});</span></span></code></pre>
+<h2 id="environment-variables"><a class="heading-anchor" href="#environment-variables">Environment Variables</a></h2>
+<p>Hooks can access these environment variables:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Variable</th><th>Description</th></tr></thead><tbody><tr><td><code>CLAUDE_PROJECT_DIR</code></td><td>Project root directory</td></tr><tr><td><code>CLAUDE_SESSION_ID</code></td><td>Current session identifier</td></tr><tr><td>Custom variables</td><td>From <code>.env</code> files</td></tr></tbody></table>
+<h3 id="loading-env-files"><a class="heading-anchor" href="#loading-env-files">Loading .env Files</a></h3>
+<p>ClaudeKit hooks load environment variables in this priority:</p>
+<ol>
+<li>System environment variables</li>
+<li><code>.claude/.env</code> (project-level)</li>
+<li><code>.claude/hooks/.env</code> (hook-specific)</li>
+</ol>
+<h2 id="best-practices"><a class="heading-anchor" href="#best-practices">Best Practices</a></h2>
+<h3 id="security"><a class="heading-anchor" href="#security">Security</a></h3>
+<ol>
+<li>
+<p><strong>Never commit secrets:</strong></p>
+<pre class="astro-code astro-code-themes light-plus one-dark-pro" style="background-color:#FFFFFF;--shiki-dark-bg:#282c34;color:#000000;--shiki-dark:#abb2bf; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#008000;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># .gitignore</span></span>
+<span class="line"><span style="color:#795E26;--shiki-dark:#61AFEF">.env</span></span>
+<span class="line"><span style="color:#795E26;--shiki-dark:#61AFEF">.env.*</span></span></code></pre>
+</li>
+<li>
+<p><strong>Use environment variables</strong> for tokens and URLs</p>
+</li>
+<li>
+<p><strong>Rotate webhook tokens</strong> regularly</p>
+</li>
+<li>
+<p><strong>Limit hook permissions</strong> to necessary scope</p>
+</li>
+</ol>
+<h3 id="performance"><a class="heading-anchor" href="#performance">Performance</a></h3>
+<ol>
+<li><strong>Keep hooks lightweight</strong> - they run on every event</li>
+<li><strong>Use async operations</strong> for slow tasks</li>
+<li><strong>Exit quickly</strong> if no action needed</li>
+</ol>
+<h3 id="reliability"><a class="heading-anchor" href="#reliability">Reliability</a></h3>
+<ol>
+<li><strong>Handle errors gracefully</strong></li>
+<li><strong>Log hook failures</strong> for debugging</li>
+<li><strong>Test hooks manually</strong> before deployment</li>
+</ol>
+<h2 id="troubleshooting"><a class="heading-anchor" href="#troubleshooting">Troubleshooting</a></h2>
+<h3 id="hook-not-triggering"><a class="heading-anchor" href="#hook-not-triggering">Hook Not Triggering</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li>Verify hook in <code>settings.json</code> is valid JSON</li>
+<li>Check script is executable (<code>chmod +x</code>)</li>
+<li>Verify path is correct</li>
+<li>Test script manually</li>
+</ol>
+<h3 id="hook-blocking-unexpectedly"><a class="heading-anchor" href="#hook-blocking-unexpectedly">Hook Blocking Unexpectedly</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li>Check exit code (0 = allow, non-zero = block)</li>
+<li>Review matcher regex for PreToolUse</li>
+<li>Add logging to debug</li>
+</ol>
+<h3 id="environment-variables-not-loading"><a class="heading-anchor" href="#environment-variables-not-loading">Environment Variables Not Loading</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li>Check <code>.env</code> file exists and has correct format</li>
+<li>Verify no spaces around <code>=</code> in <code>.env</code></li>
+<li>Ensure script reads <code>.env</code> files</li>
+</ol>
+<h2 id="related"><a class="heading-anchor" href="#related">Related</a></h2>
+<ul>
+<li><a href="/docs/engineer/configuration/claude-md">CLAUDE.md</a> - Project instructions</li>
+<li><a href="/docs/engineer/configuration/mcp-setup">MCP Setup</a> - MCP server configuration</li>
+<li><a href="/docs/engineer/configuration/workflows">Workflows</a> - Development workflows</li>
+</ul>
+<hr>
+<p><strong>Key Takeaway</strong>: Hooks extend Claude Code with custom automation - from development rule enforcement to real-time notifications. Use built-in Discord/Telegram hooks or create custom hooks to fit your workflow.</p>  </article> </main> <astro-island uid="1d9P8f" prefix="r5" component-url="/_astro/TableOfContents.D3Q8f82Z.js" component-export="default" renderer-url="/_astro/client.Kt8EXpwP.js" props="{&quot;headings&quot;:[1,[[0,{&quot;depth&quot;:[0,1],&quot;slug&quot;:[0,&quot;hooks&quot;],&quot;text&quot;:[0,&quot;Hooks&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;overview&quot;],&quot;text&quot;:[0,&quot;Overview&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;available-hook-events&quot;],&quot;text&quot;:[0,&quot;Available Hook Events&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;configuration&quot;],&quot;text&quot;:[0,&quot;Configuration&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;hook-properties&quot;],&quot;text&quot;:[0,&quot;Hook Properties&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;built-in-hooks&quot;],&quot;text&quot;:[0,&quot;Built-in Hooks&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;summary-table&quot;],&quot;text&quot;:[0,&quot;Summary Table&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;session-initcjs&quot;],&quot;text&quot;:[0,&quot;session-init.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;subagent-initcjs&quot;],&quot;text&quot;:[0,&quot;subagent-init.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;team-context-injectcjs&quot;],&quot;text&quot;:[0,&quot;team-context-inject.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;cook-after-plan-remindercjs&quot;],&quot;text&quot;:[0,&quot;cook-after-plan-reminder.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;dev-rules-remindercjs&quot;],&quot;text&quot;:[0,&quot;dev-rules-reminder.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;usage-context-awarenesscjs&quot;],&quot;text&quot;:[0,&quot;usage-context-awareness.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;descriptive-namecjs&quot;],&quot;text&quot;:[0,&quot;descriptive-name.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;scout-blockcjs&quot;],&quot;text&quot;:[0,&quot;scout-block.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;privacy-blockcjs&quot;],&quot;text&quot;:[0,&quot;privacy-block.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;post-edit-simplify-remindercjs&quot;],&quot;text&quot;:[0,&quot;post-edit-simplify-reminder.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;task-completed-handlercjs&quot;],&quot;text&quot;:[0,&quot;task-completed-handler.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;teammate-idle-handlercjs&quot;],&quot;text&quot;:[0,&quot;teammate-idle-handler.cjs&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;discord-notifications&quot;],&quot;text&quot;:[0,&quot;Discord Notifications&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;telegram-notifications&quot;],&quot;text&quot;:[0,&quot;Telegram Notifications&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;notification-system&quot;],&quot;text&quot;:[0,&quot;Notification System&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;creating-custom-hooks&quot;],&quot;text&quot;:[0,&quot;Creating Custom Hooks&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;basic-hook-structure&quot;],&quot;text&quot;:[0,&quot;Basic Hook Structure&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;hook-input-data&quot;],&quot;text&quot;:[0,&quot;Hook Input Data&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;example-logging-hook&quot;],&quot;text&quot;:[0,&quot;Example: Logging Hook&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;example-blocking-hook&quot;],&quot;text&quot;:[0,&quot;Example: Blocking Hook&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;environment-variables&quot;],&quot;text&quot;:[0,&quot;Environment Variables&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;loading-env-files&quot;],&quot;text&quot;:[0,&quot;Loading .env Files&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;best-practices&quot;],&quot;text&quot;:[0,&quot;Best Practices&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;security&quot;],&quot;text&quot;:[0,&quot;Security&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;performance&quot;],&quot;text&quot;:[0,&quot;Performance&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;reliability&quot;],&quot;text&quot;:[0,&quot;Reliability&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;troubleshooting&quot;],&quot;text&quot;:[0,&quot;Troubleshooting&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;hook-not-triggering&quot;],&quot;text&quot;:[0,&quot;Hook Not Triggering&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;hook-blocking-unexpectedly&quot;],&quot;text&quot;:[0,&quot;Hook Blocking Unexpectedly&quot;]}],[0,{&quot;depth&quot;:[0,3],&quot;slug&quot;:[0,&quot;environment-variables-not-loading&quot;],&quot;text&quot;:[0,&quot;Environment Variables Not Loading&quot;]}],[0,{&quot;depth&quot;:[0,2],&quot;slug&quot;:[0,&quot;related&quot;],&quot;text&quot;:[0,&quot;Related&quot;]}]]],&quot;data-astro-cid-mw7aashj&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:true}" await-children=""><aside class="table-of-contents" aria-label="Table of contents"><nav class="toc-nav"><h2 class="toc-title">On this page</h2><ul class="toc-list"><li class="toc-item toc-h2"><a href="#overview" class="toc-link ">Overview</a></li><li class="toc-item toc-h3"><a href="#available-hook-events" class="toc-link ">Available Hook Events</a></li><li class="toc-item toc-h2"><a href="#configuration" class="toc-link ">Configuration</a></li><li class="toc-item toc-h3"><a href="#hook-properties" class="toc-link ">Hook Properties</a></li><li class="toc-item toc-h2"><a href="#built-in-hooks" class="toc-link ">Built-in Hooks</a></li><li class="toc-item toc-h3"><a href="#summary-table" class="toc-link ">Summary Table</a></li><li class="toc-item toc-h3"><a href="#session-initcjs" class="toc-link ">session-init.cjs</a></li><li class="toc-item toc-h3"><a href="#subagent-initcjs" class="toc-link ">subagent-init.cjs</a></li><li class="toc-item toc-h3"><a href="#team-context-injectcjs" class="toc-link ">team-context-inject.cjs</a></li><li class="toc-item toc-h3"><a href="#cook-after-plan-remindercjs" class="toc-link ">cook-after-plan-reminder.cjs</a></li><li class="toc-item toc-h3"><a href="#dev-rules-remindercjs" class="toc-link ">dev-rules-reminder.cjs</a></li><li class="toc-item toc-h3"><a href="#usage-context-awarenesscjs" class="toc-link ">usage-context-awareness.cjs</a></li><li class="toc-item toc-h3"><a href="#descriptive-namecjs" class="toc-link ">descriptive-name.cjs</a></li><li class="toc-item toc-h3"><a href="#scout-blockcjs" class="toc-link ">scout-block.cjs</a></li><li class="toc-item toc-h3"><a href="#privacy-blockcjs" class="toc-link ">privacy-block.cjs</a></li><li class="toc-item toc-h3"><a href="#post-edit-simplify-remindercjs" class="toc-link ">post-edit-simplify-reminder.cjs</a></li><li class="toc-item toc-h3"><a href="#task-completed-handlercjs" class="toc-link ">task-completed-handler.cjs</a></li><li class="toc-item toc-h3"><a href="#teammate-idle-handlercjs" class="toc-link ">teammate-idle-handler.cjs</a></li><li class="toc-item toc-h3"><a href="#discord-notifications" class="toc-link ">Discord Notifications</a></li><li class="toc-item toc-h3"><a href="#telegram-notifications" class="toc-link ">Telegram Notifications</a></li><li class="toc-item toc-h2"><a href="#notification-system" class="toc-link ">Notification System</a></li><li class="toc-item toc-h2"><a href="#creating-custom-hooks" class="toc-link ">Creating Custom Hooks</a></li><li class="toc-item toc-h3"><a href="#basic-hook-structure" class="toc-link ">Basic Hook Structure</a></li><li class="toc-item toc-h3"><a href="#hook-input-data" class="toc-link ">Hook Input Data</a></li><li class="toc-item toc-h3"><a href="#example-logging-hook" class="toc-link ">Example: Logging Hook</a></li><li class="toc-item toc-h3"><a href="#example-blocking-hook" class="toc-link ">Example: Blocking Hook</a></li><li class="toc-item toc-h2"><a href="#environment-variables" class="toc-link ">Environment Variables</a></li><li class="toc-item toc-h3"><a href="#loading-env-files" class="toc-link ">Loading .env Files</a></li><li class="toc-item toc-h2"><a href="#best-practices" class="toc-link ">Best Practices</a></li><li class="toc-item toc-h3"><a href="#security" class="toc-link ">Security</a></li><li class="toc-item toc-h3"><a href="#performance" class="toc-link ">Performance</a></li><li class="toc-item toc-h3"><a href="#reliability" class="toc-link ">Reliability</a></li><li class="toc-item toc-h2"><a href="#troubleshooting" class="toc-link ">Troubleshooting</a></li><li class="toc-item toc-h3"><a href="#hook-not-triggering" class="toc-link ">Hook Not Triggering</a></li><li class="toc-item toc-h3"><a href="#hook-blocking-unexpectedly" class="toc-link ">Hook Blocking Unexpectedly</a></li><li class="toc-item toc-h3"><a href="#environment-variables-not-loading" class="toc-link ">Environment Variables Not Loading</a></li><li class="toc-item toc-h2"><a href="#related" class="toc-link ">Related</a></li></ul></nav></aside></astro-island> </div> <script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();</script><astro-island uid="PKOXv" component-url="/_astro/assistant.KqjTGj9M.js" component-export="DocsAssistant" renderer-url="/_astro/client.Kt8EXpwP.js" props="{&quot;data-astro-cid-mw7aashj&quot;:[0,true]}" ssr="" client="only" opts="{&quot;name&quot;:&quot;DocsAssistant&quot;,&quot;value&quot;:&quot;react&quot;}"></astro-island>  </div> </div> <div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden=""> <h2 id="search-title" class="sr-only">Search documentation</h2> <div class="search-backdrop"></div> <div class="search-container"> <div class="search-wrapper"> <!-- Search Header --> <div class="search-header"> <div class="search-input-wrapper"> <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="11" cy="11" r="8"></circle> <path d="m21 21-4.35-4.35"></path> </svg> <input type="text" id="search-input" class="search-input" placeholder="Search documentation..." autocomplete="off" aria-autocomplete="list" aria-controls="search-results"> <kbd class="search-kbd">ESC</kbd> <button class="search-close-btn" aria-label="Close search" onclick="window.closeSearch()"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M18 6L6 18M6 6l12 12"></path> </svg> </button> </div> </div> <!-- Search Results --> <div id="search-results" class="search-results" role="listbox" aria-live="polite"> <div class="search-placeholder"> <p>Type to search documentation...</p> </div> </div> <!-- Search Footer --> <div class="search-footer"> <div class="search-meta" id="search-meta"></div> <div class="search-hints"> <span class="hint"><kbd>↵</kbd> select</span> <span class="hint"><kbd>↑</kbd><kbd>↓</kbd> navigate</span> <span class="hint"><kbd>esc</kbd> close</span> </div> </div> </div> </div> </div> <script>
+  window.pagefindInstance = null;
+  let searchTimeout;
+  let selectedIdx = -1;
+
+  async function loadPagefind() {
+    if (window.pagefindInstance) return window.pagefindInstance;
+    try {
+      const pf = await import('/pagefind/pagefind.js');
+      await pf.init();
+      window.pagefindInstance = pf;
+      return pf;
+    } catch (e) {
+      console.warn('Pagefind not available:', e);
+      return null;
+    }
+  }
+
+  function openSearch() {
+    const modal = document.getElementById('search-modal');
+    if (!modal) return;
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    selectedIdx = -1;
+    setTimeout(() => {
+      const input = document.getElementById('search-input');
+      if (input) input.focus();
+    }, 50);
+    loadPagefind();
+  }
+
+  function closeSearch() {
+    const modal = document.getElementById('search-modal');
+    if (!modal) return;
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    selectedIdx = -1;
+    const input = document.getElementById('search-input');
+    const results = document.getElementById('search-results');
+    const meta = document.getElementById('search-meta');
+    if (input) input.value = '';
+    if (meta) meta.innerHTML = '';
+    if (results) results.innerHTML = '<div class="search-placeholder"><p>Type to search documentation...</p></div>';
+  }
+
+  function getBreadcrumb(url) {
+    const parts = url.replace(/^\/|\/$/g, '').split('/');
+    return parts.map(p => p.charAt(0).toUpperCase() + p.slice(1).replace(/-/g, ' ')).join(' › ');
+  }
+
+  function getIcon(url) {
+    const isSection = url.includes('#');
+    if (isSection) {
+      return '<svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>';
+    }
+    return '<svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>';
+  }
+
+  function updateSelection(items, idx) {
+    items.forEach((el, i) => {
+      el.classList.toggle('selected', i === idx);
+      el.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+    if (idx >= 0 && items[idx]) {
+      items[idx].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  async function performSearch(query) {
+    const container = document.getElementById('search-results');
+    const meta = document.getElementById('search-meta');
+    if (!container) return;
+
+    selectedIdx = -1;
+
+    if (!query.trim()) {
+      container.innerHTML = '<div class="search-placeholder"><p>Type to search documentation...</p></div>';
+      if (meta) meta.innerHTML = '';
+      return;
+    }
+
+    // Loading
+    container.innerHTML = '<div class="search-loading"><div class="loading-spinner"></div><p>Searching...</p></div>';
+
+    const pf = await loadPagefind();
+    if (!pf) {
+      container.innerHTML = '<div class="search-error"><p>Search unavailable</p><span>Run <code>bun run build</code> to enable search</span></div>';
+      if (meta) meta.innerHTML = '';
+      return;
+    }
+
+    try {
+      const search = await pf.search(query);
+
+      if (search.results.length === 0) {
+        container.innerHTML = '<div class="search-empty"><p>No results for "<strong>' + escapeHtml(query) + '</strong>"</p><span>Try different keywords</span></div>';
+        if (meta) meta.innerHTML = '';
+        return;
+      }
+
+      const loaded = await Promise.all(
+        search.results.slice(0, 12).map(r => r.data())
+      );
+
+      let html = '<div class="results-list">';
+
+      loaded.forEach((result, i) => {
+        const title = result.meta?.title || 'Untitled';
+        const breadcrumb = getBreadcrumb(result.url);
+        let excerpt = result.excerpt || '';
+        if (excerpt.length > 120) excerpt = excerpt.substring(0, 120) + '...';
+        const icon = getIcon(result.url);
+
+        html += `
+          <a href="${result.url}" class="result-item" role="option" aria-selected="false" data-idx="${i}" onclick="window.closeSearch()">
+            ${icon}
+            <div class="result-body">
+              <span class="result-breadcrumb">${breadcrumb}</span>
+              <span class="result-title">${title}</span>
+              <span class="result-excerpt">${excerpt}</span>
+            </div>
+            <svg class="result-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        `;
+      });
+
+      html += '</div>';
+      container.innerHTML = html;
+
+      if (meta) {
+        meta.innerHTML = search.results.length + ' result' + (search.results.length === 1 ? '' : 's');
+      }
+
+      // Keyboard nav
+      const items = container.querySelectorAll('.result-item');
+      items.forEach((item, i) => {
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            selectedIdx = Math.min(i + 1, items.length - 1);
+            updateSelection(items, selectedIdx);
+            items[selectedIdx].focus();
+          }
+          if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (i === 0) {
+              document.getElementById('search-input').focus();
+              selectedIdx = -1;
+              updateSelection(items, selectedIdx);
+            } else {
+              selectedIdx = i - 1;
+              updateSelection(items, selectedIdx);
+              items[selectedIdx].focus();
+            }
+          }
+          if (e.key === 'Enter') item.click();
+        });
+      });
+
+    } catch (err) {
+      console.error('Search error:', err);
+      container.innerHTML = '<div class="search-error"><p>Search failed</p><span>Please try again</span></div>';
+      if (meta) meta.innerHTML = '';
+    }
+  }
+
+  window.openSearch = openSearch;
+  window.closeSearch = closeSearch;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('search-input');
+    const backdrop = document.querySelector('.search-backdrop');
+
+    if (input) {
+      input.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => performSearch(e.target.value), 150);
+      });
+
+      input.addEventListener('keydown', (e) => {
+        const items = document.querySelectorAll('.result-item');
+        if (e.key === 'Enter' && selectedIdx === -1 && items.length > 0) {
+          items[0].click();
+        }
+        if (e.key === 'ArrowDown' && items.length > 0) {
+          e.preventDefault();
+          selectedIdx = 0;
+          updateSelection(items, selectedIdx);
+          items[0].focus();
+        }
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeSearch);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const modal = document.getElementById('search-modal');
+        modal?.hasAttribute('hidden') ? openSearch() : closeSearch();
+      }
+      if (e.key === 'Escape') closeSearch();
+    });
+  });
+</script>   </div> <script type="module">const t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);function m(){const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}window.toggleTheme=m;</script>    <script type="module">"scrollRestoration"in history&&(history.scrollRestoration="manual");window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;let o=!0;const e=l=>{o&&(window.scrollTo(0,0),document.documentElement.scrollTop=0,document.body.scrollTop=0)};window.addEventListener("scroll",e,{passive:!1});window.addEventListener("load",()=>{setTimeout(()=>{o=!1,window.removeEventListener("scroll",e),window.scrollTo(0,0),document.documentElement.scrollTop=0,document.body.scrollTop=0},100)});document.addEventListener("DOMContentLoaded",()=>{window.scrollTo(0,0),document.documentElement.scrollTop=0,document.body.scrollTop=0});</script> </body></html>
