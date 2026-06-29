@@ -6,7 +6,7 @@ updated: 2026-06-29
 tags: [plugins, development, testing, plugin-dir, plugin-url, reload-plugins, debugging]
 source_count: 1
 sources:
-  - sources/clean/plugins.md
+  - sources/clean/code-claude-com-docs-en-plugins-md.md
 ---
 
 # Plugin Development Workflow
