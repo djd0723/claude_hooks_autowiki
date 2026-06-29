@@ -55,3 +55,4 @@ ClaudeKit's docs list events including `SubagentStart`, `TaskCompleted`, and `Te
 - [Hook Decision Control](./hook-decision-control.md) — the block/allow/escalate mechanics behind the privacy and access gates
 - [Hook Scope](./hook-scope.md) — these are all project-scoped (`.claude/settings.json`) hooks
 - [File Permission Patterns](./file-permission-patterns.md) — the access-control model the ignore-list and privacy gates complement
+- [AI Permission Reviewer (ClaudeFast Permission Hook Case Study)](./ai-permission-reviewer.md) — a sibling third-party case study, focused on the `PermissionRequest` permission surface

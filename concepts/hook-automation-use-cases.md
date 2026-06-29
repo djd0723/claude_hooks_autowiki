@@ -114,3 +114,4 @@ Swap the default git worktree behavior for custom VCS or setup:
 - [Hook Scope](./hook-scope.md) — where to define these hooks (user, project, plugin, managed)
 - [Subagent Hooks](./subagent-hooks.md) — gating nested subagent activity
 - [Permission Evaluation](./permission-evaluation.md) — how auto-allow/deny recipes interact with the permission system
+- [AI Permission Reviewer (ClaudeFast Permission Hook Case Study)](./ai-permission-reviewer.md) — a real product implementing the `PermissionRequest` recipes as a tiered AI reviewer
