@@ -93,3 +93,4 @@ Events fall into three cadences:
 - [Subagent Hooks](./subagent-hooks.md) — `SubagentStart`/`SubagentStop` and per-subagent frontmatter hooks
 - [SDK Hook Events](./sdk-hook-events.md) — which of these events the Python/TypeScript SDKs expose as callbacks
 - [StatusLine-Driven Context Backup](./statusline-context-backup.md) — a practitioner pattern that front-runs `PreCompact` by triggering backups from the StatusLine instead
+- [Setup Hooks (Onboarding & Maintenance Pattern)](./setup-hooks.md) — the onboarding/CI pattern built on the once-per-session `Setup` event

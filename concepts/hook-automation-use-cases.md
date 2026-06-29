@@ -23,6 +23,7 @@ Prime context, persist environment, and clean up:
 - Set up project-specific environment variables (Node version, API keys, feature flags) so every Bash command Claude runs has them — persisted via `CLAUDE_ENV_FILE`
 - Log session metadata to a metrics dashboard for auditing how the team uses Claude
 - Clean up temporary files or close database connections on `SessionEnd` (no decision control here — cleanup only)
+- Run a deterministic install/maintenance script on `Setup` (`claude --init`/`--maintenance`), then let a slash command read its log and report — see [Setup Hooks](./setup-hooks.md)
 
 ## User prompt (`UserPromptSubmit`)
 
